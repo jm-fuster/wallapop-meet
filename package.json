@@ -1,6 +1,9 @@
 {
   "name": "wallapop-meet",
   "private": true,
+  "description": "Concepto de producto no oficial, sin afiliacion con Wallapop: convierte acuerdos de chat en un encuentro presencial con maquina de estados, reglas por rol y design system propio.",
+  "license": "MIT",
+  "author": "Jorge Molina Fuster",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
