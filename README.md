@@ -11,7 +11,7 @@
 > «Wallapop» y el resto de marcas citadas pertenecen a sus respectivos titulares y se
 > usan aquí únicamente para identificar el contexto del ejercicio. El código y la
 > documentación son míos y se publican bajo licencia MIT (ver [LICENSE](LICENSE)); esa
-> licencia cubre el código, no concede ningún derecho sobre marcas de terceros.
+> licencia cubre el código, no concede ningún derecho sobre marcas de terceros (ver [NOTICE](NOTICE)).
 >
 > No contiene datos reales de personas ni de usuarios de ninguna plataforma.
 
