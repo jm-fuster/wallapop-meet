@@ -229,7 +229,7 @@ function ChatConversationHeader({
                     </button>
 
                     <IconButton
-                        label={menuLabel ?? `Mas opciones de la conversacion con ${userName}`}
+                        label={menuLabel ?? `Mas opciones de la conversación con ${userName}`}
                         icon={<WallapopIcon name="ellipsis_horizontal" size={20} strokeWidth={1.8} />}
                         variant="menu_close"
                         onClick={onMenuClick}
@@ -258,7 +258,7 @@ function ChatConversationHeader({
                     )}
 
                     <IconButton
-                        label={menuLabel ?? `Mas opciones de la conversacion con ${userName}`}
+                        label={menuLabel ?? `Mas opciones de la conversación con ${userName}`}
                         icon={<WallapopIcon name="ellipsis_horizontal" size={20} strokeWidth={1.8} />}
                         variant="menu_close"
                         onClick={onMenuClick}

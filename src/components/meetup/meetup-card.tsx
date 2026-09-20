@@ -41,7 +41,7 @@ type MeetupCardProps = {
     onOpenMapPreview?: () => void
     onRedZoneCancelConfirmed?: () => void
     useLiveMapThumbnail?: boolean
-    /** Distancia estimada al punto de encuentro; si es mayor a 100 m, se bloquea "Estoy aqui" y se muestra el aviso de proximidad. */
+    /** Distancia estimada al punto de encuentro; si es mayor a 100 m, se bloquea "Estoy aquí" y se muestra el aviso de proximidad. */
     distanceToMeetupMeters?: number | null
     /** Saldo disponible en Wallapop Wallet del comprador (para aceptar quedada con pago Wallet). */
     buyerWalletAvailableEur?: number
@@ -233,7 +233,7 @@ function WalletInPersonQr({ value }: { value: string }) {
                     value={value}
                     size={dimension}
                     level="M"
-                    title="Codigo QR de pago con Wallapop Wallet"
+                    title="Código QR de pago con Wallapop Wallet"
                     className="h-full w-full"
                 />
             ) : null}
@@ -518,7 +518,7 @@ function MeetupCard({
             case "arrived":
                 return {
                     id: "arrived",
-                    label: "Estoy aqui",
+                    label: "Estoy aquí",
                     variant: "primary",
                     run: () =>
                         applyEvent({
@@ -533,14 +533,14 @@ function MeetupCard({
             case "calendar":
                 return {
                     id: "calendar",
-                    label: "Anadir a Calendar",
+                    label: "Añadir a Calendar",
                     variant: "outline",
                     run: addToCalendar,
                     className: OUTLINE_ACTION_CLASS,
                     fullWidth: true,
                 }
             case "wallet-scan-sale": {
-                const scanLabel = `Escanear codigo QR de ${counterpartName ?? "el comprador"}`
+                const scanLabel = `Escanear código QR de ${counterpartName ?? "el comprador"}`
                 return {
                     id: "wallet-scan-sale",
                     label: (
@@ -579,7 +579,7 @@ function MeetupCard({
             case "no-show":
                 return {
                     id: "no-show",
-                    label: hasContradictionAlert ? "Definitivamente no esta" : "El comprador no ha aparecido",
+                    label: hasContradictionAlert ? "Definitivamente no está" : "El comprador no ha aparecido",
                     variant: "ghost",
                     run: openNoShowFlow,
                     className: TEXT_ACTION_CLASS,
@@ -861,7 +861,7 @@ function MeetupCard({
                                     className={PRIMARY_ACTION_CLASS}
                                     onClick={confirmNoShowFlow}
                                 >
-                                    {hasContradictionAlert ? "Definitivamente no esta" : "Confirmar no-show"}
+                                    {hasContradictionAlert ? "Definitivamente no está" : "Confirmar no-show"}
                                 </Button>
                                 <Button
                                     variant="outline"

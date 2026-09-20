@@ -184,7 +184,7 @@ function resolveProposalEntryActionState(
         return {
             visible: true,
             enabled: true,
-            message: "Inicia la propuesta desde esta conversacion con el comprador.",
+            message: "Inicia la propuesta desde esta conversación con el comprador.",
         }
     }
 
@@ -520,7 +520,7 @@ const initialMessagesByConversation: Record<string, Message[]> = {
 const safeMeetingPoints: SafeMeetingPoint[] = [
     {
         id: "station",
-        name: "Estacion de Sants",
+        name: "Estación de Sants",
         hint: "Zona principal con transito y camaras.",
         address: "Placa dels Paisos Catalans, Barcelona",
         distanceMeters: 320,
@@ -965,7 +965,7 @@ function buildInitialMeetupState(): Record<string, MeetupMachine[]> {
             const proposedDraft: MeetupMachine = {
                 ...baseMeetup,
                 scheduledAt: createQuarterHourDateWithOffset(now, 20),
-                proposedLocation: "Estacion de Sants - Acceso principal",
+                proposedLocation: "Estación de Sants - Acceso principal",
                 proposedLocationLat: 41.37906,
                 proposedLocationLng: 2.14006,
                 finalPrice: 240,
@@ -994,7 +994,7 @@ function buildInitialMeetupState(): Record<string, MeetupMachine[]> {
             const incomingProposal: MeetupMachine = {
                 ...baseMeetup,
                 scheduledAt: createQuarterHourDateWithOffset(now, 90),
-                proposedLocation: "Estacion de Sants - Acceso principal",
+                proposedLocation: "Estación de Sants - Acceso principal",
                 proposedLocationLat: 41.37906,
                 proposedLocationLng: 2.14006,
                 finalPrice: 640,
@@ -2099,7 +2099,7 @@ function ConversationPane({
                         className="ml-auto h-9 w-9 rounded-full border border-[color:var(--border-strong)] object-cover"
                     />
                     <IconButton
-                        label={`Mas opciones de la conversacion con ${conversation.userName}`}
+                        label={`Mas opciones de la conversación con ${conversation.userName}`}
                         icon={<WallapopIcon name="ellipsis_horizontal" size={20} strokeWidth={1.8} />}
                         variant="menu_close"
                         className="h-10 w-10 rounded-full bg-transparent p-0 text-[color:var(--text-tertiary)] hover:bg-[color:var(--bg-surface)]"
@@ -3115,7 +3115,7 @@ function WallapopChatWorkspace() {
 
     const confirmMeetupProposal = () => {
         if (!selectedMeetup) {
-            setProposalError("No existe contexto de meetup en esta conversacion.")
+            setProposalError("No existe contexto de meetup en esta conversación.")
             return
         }
 

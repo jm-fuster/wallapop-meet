@@ -1,7 +1,7 @@
 import { isWithinArrivalWindow } from "@/meetup/arrival-window"
 import type { ActorRole, MeetupMachine } from "@/meetup/types"
 
-/** Distancia maxima al punto de encuentro para habilitar "Estoy aqui" (mismo umbral que el mensaje de proximidad). */
+/** Distancia maxima al punto de encuentro para habilitar "Estoy aquí" (mismo umbral que el mensaje de proximidad). */
 export const MEETUP_ARRIVAL_NEAR_METERS = 100
 
 export type ArrivalActionState = {

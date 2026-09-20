@@ -10,7 +10,7 @@ const meta = {
   },
   tags: ["autodocs"],
   args: {
-    children: "Perfecto, nos vemos en la estacion.",
+    children: "Perfecto, nos vemos en la estación.",
     variant: "received",
     time: "14:52",
   },

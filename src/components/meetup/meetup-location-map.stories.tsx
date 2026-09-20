@@ -4,7 +4,7 @@ import * as React from "react"
 import { MeetupLocationMap } from "@/components/meetup/meetup-location-map"
 
 const safePoints = [
-    { id: "station", name: "Estacion de Sants", lat: 41.37906, lng: 2.14006 },
+    { id: "station", name: "Estación de Sants", lat: 41.37906, lng: 2.14006 },
     { id: "mall", name: "Centro comercial Arenas", lat: 41.37617, lng: 2.14918 },
     { id: "police", name: "Comisaria Mossos - Les Corts", lat: 41.38762, lng: 2.13441 },
 ]
