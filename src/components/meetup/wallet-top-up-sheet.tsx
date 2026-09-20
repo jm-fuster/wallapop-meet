@@ -58,7 +58,7 @@ function WalletTopUpSheet({ open, onClose, minSuggestedAmountEur, onConfirmTopUp
                     href="https://ayuda.wallapop.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="shrink-0 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--action-primary)]"
+                    className="shrink-0 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--action-link)]"
                 >
                     ¿Dudas?
                 </a>
@@ -84,7 +84,7 @@ function WalletTopUpSheet({ open, onClose, minSuggestedAmountEur, onConfirmTopUp
                         </span>
                     </div>
                     <div className="mt-3 border-t border-[color:var(--border-divider)] pt-3">
-                        <p className="text-center font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--action-primary)]">
+                        <p className="text-center font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--action-link)]">
                             Tarifa segun el importe de la recarga.
                         </p>
                     </div>
@@ -115,7 +115,7 @@ function WalletTopUpSheet({ open, onClose, minSuggestedAmountEur, onConfirmTopUp
                             </div>
                             <button
                                 type="button"
-                                className="shrink-0 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--action-primary)]"
+                                className="shrink-0 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--action-link)]"
                             >
                                 Editar
                             </button>

@@ -218,7 +218,7 @@
   --wm-color-semantic-meet-rating-prompt-cta: #46abb9;
   --wm-color-semantic-meet-rating-prompt-cta-hover: #3a9db0;
   --wm-color-semantic-meet-rating-prompt-cta-text: #ffffff;
-  --wm-color-semantic-meet-rating-prompt-meta: #8ec5d1;
+  --wm-color-semantic-meet-rating-prompt-meta: #3a9db0;
   --wm-color-semantic-meet-rating-prompt-icon-bg: #ffffff;
   --wm-color-delivery-sent: #c2cdd3;
   --wm-color-domain-status-reserved: #86418a;
@@ -533,6 +533,7 @@
   --wm-color-semantic-label-cancelled-text: #f7b0b4;
   --wm-color-semantic-meet-rating-prompt-background: #1b4146;
   --wm-color-semantic-meet-rating-prompt-text: #d5f2f7;
+  --wm-color-semantic-meet-rating-prompt-meta: #8ec5d1;
   --wm-color-semantic-meet-rating-prompt-icon-bg: #253238;
   --wm-color-delivery-sent: #6e8792;
   --wm-color-domain-status-reserved-subtle: #341735;
