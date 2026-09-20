@@ -73,6 +73,11 @@ components
   - Variables: `--bg-surface`, `--text-primary`, `--action-primary`, `--action-primary-pressed`, `--border-focus`, etc.
   - Convención Tailwind (v4 `@theme`): `text-/bg-/border-<raiz>` (ejemplo: `text-/bg-/border-action-primary`).
 
+## Token `border.bubble` (2026-09-09)
+- Añadido `color/border/bubble` en Figma (Semantic): Light `neutral/300` `#d3dee2`, Dark `neutral/700` `#4a5a63`. Alias corto `--border-bubble`.
+- Mismo valor que `border.strong` en ambos modos, pero es un token propio: comparte mando único la card de quedada (`MeetupCard`) y la variante `received` de `ChatMessageBubble`, sin arrastrar a los otros 11 componentes que usan `border.divider`/`border.strong` como separador.
+- La variante `sent` de `ChatMessageBubble` no lo usa: su trazo coincide con su relleno y no debe verse.
+
 ## Mapeo base de botones extraidos de web (2026-02-18)
 
 ### Paletas oficiales (50-900)

@@ -643,7 +643,7 @@ function MeetupCard({
         (meetup.status === "PROPOSED" || meetup.status === "COUNTER_PROPOSED")
     return (
         <>
-            <section className="relative w-full max-w-[var(--wm-size-360)] rounded-[var(--wm-size-20)] border border-[color:var(--border-divider)] bg-[color:var(--bg-base)] px-4 pb-3 pt-3">
+            <section className="relative w-full max-w-[var(--wm-size-360)] rounded-[var(--wm-size-20)] border border-[color:var(--border-bubble)] bg-[color:var(--bg-base)] px-4 pb-3 pt-3">
             <button
                 type="button"
                 className="wm-mini-map relative mb-3 h-[var(--wm-size-88)] w-full overflow-hidden rounded-[var(--wm-size-14)] border border-[color:var(--border-strong)] bg-[color:var(--bg-accent-subtle)] text-left [contain:paint]"

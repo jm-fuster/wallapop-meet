@@ -134,6 +134,7 @@
   --color-action-disabled-text: var(--action-disabled-text);
   --color-border-divider: var(--border-divider);
   --color-border-strong: var(--border-strong);
+  --color-border-bubble: var(--border-bubble);
   --color-border-focus: var(--border-focus);
   --color-border-error: var(--border-error);
   --color-feedback-success: var(--feedback-success);
@@ -184,6 +185,7 @@
   --wm-color-semantic-action-sale-confirm-hover: #703474;
   --wm-color-semantic-border-divider: #e8ecef;
   --wm-color-semantic-border-strong: #d3dee2;
+  --wm-color-semantic-border-bubble: #d3dee2;
   --wm-color-semantic-border-soft: #d9e1e5;
   --wm-color-semantic-border-success-subtle: #59d4c1;
   --wm-color-semantic-border-warning-subtle: #f4a92f;
@@ -257,6 +259,7 @@
   --action-sale-confirm-hover: var(--wm-color-semantic-action-sale-confirm-hover);
   --border-divider: var(--wm-color-semantic-border-divider);
   --border-strong: var(--wm-color-semantic-border-strong);
+  --border-bubble: var(--wm-color-semantic-border-bubble);
   --border-soft: var(--wm-color-semantic-border-soft);
   --border-success-subtle: var(--wm-color-semantic-border-success-subtle);
   --border-warning-subtle: var(--wm-color-semantic-border-warning-subtle);
@@ -485,6 +488,7 @@
   --wm-color-semantic-action-disabled-text: #6e7d86;
   --wm-color-semantic-border-divider: #34444d;
   --wm-color-semantic-border-strong: #4a5a63;
+  --wm-color-semantic-border-bubble: #4a5a63;
   --wm-color-semantic-border-soft: #29363d;
   --wm-color-semantic-border-success-subtle: #0fa896;
   --wm-color-semantic-border-warning-subtle: #d18800;
