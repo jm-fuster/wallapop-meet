@@ -318,6 +318,10 @@
   /* Invariante al modo: un QR necesita modulos oscuros sobre placa blanca
      tambien en dark (par de color/bg/qr en Figma). */
   --bg-qr: #ffffff;
+  /* Invariante al modo: los pills de estado (reservado/vendido) usan
+     status-reserved/status-sold como texto, calibrados para leerse sobre
+     blanco. Sobre --bg-base en dark (#212529) caen a ~2.3:1 de contraste. */
+  --bg-status-badge: #ffffff;
   --wm-radius-200: 4px;
   --wm-radius-300: 8px;
   --wm-color-input-text: #29363d;
@@ -471,7 +475,8 @@
    entre modos, igual que en Figma: la marca en botones (action-primary,
    reserved, sold, sale-confirm), los blancos sobre color (text-inverse,
    text-on-action, text-on-dark), los feedback-* base (fondos de toast),
-   las sombras, el scrim y la placa del QR (--bg-qr). */
+   las sombras, el scrim, la placa del QR (--bg-qr) y la placa de los
+   pills de estado (--bg-status-badge). */
 .dark {
   --wm-color-text-primary: #f8fafb;
   --wm-color-text-secondary: #d3dee2;
