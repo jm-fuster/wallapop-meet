@@ -242,9 +242,11 @@ Propiedades visuales:
 
 Reglas:
 - Debe mantener orden fijo de estados para facilitar lectura del progreso.
+- Las etiquetas se muestran traducidas en minusculas (`propuesta`, `contrapropuesta`, `confirmada`, `has llegado`, `completada`, `cancelada`), nunca el enum crudo.
+- `COMPLETED` y `CANCELLED` son terminales mutuamente excluyentes: solo se renderiza el terminal que aplica (`cancelada` sustituye a `completada` cuando la quedada esta cancelada).
 - En estado `null`, todos los pasos se muestran como pendientes.
 - Estado actual resaltado visualmente.
-- Estados anteriores al actual se muestran como completados.
+- Estados anteriores al actual se muestran como completados; con la quedada cancelada, los pasos intermedios quedan neutros (el estado actual no permite afirmar hasta donde llego el flujo).
 - Estados finales (`COMPLETED`, `CANCELLED`) deben comunicarse tambien con texto, no solo color.
 
 ## 14. Simulador de flujo (`MeetupSimulator`)

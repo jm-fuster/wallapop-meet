@@ -1,16 +1,29 @@
 import type { MeetupStatus } from "@/meetup/types"
 
-const ORDERED_STATUSES: MeetupStatus[] = [
+const FLOW_STATUSES: MeetupStatus[] = [
     "PROPOSED",
     "COUNTER_PROPOSED",
     "CONFIRMED",
     "ARRIVED",
-    "COMPLETED",
-    "CANCELLED",
 ]
+
+// COMPLETED y CANCELLED son terminales mutuamente excluyentes (ver state-machine.ts):
+// el timeline solo muestra el terminal que aplica a la quedada actual.
+const STEP_LABELS: Record<MeetupStatus, string> = {
+    PROPOSED: "propuesta",
+    COUNTER_PROPOSED: "contrapropuesta",
+    CONFIRMED: "confirmada",
+    ARRIVED: "has llegado",
+    COMPLETED: "completada",
+    CANCELLED: "cancelada",
+}
 
 type MeetupTimelineProps = {
     currentStatus: MeetupStatus | null
+}
+
+function getVisibleSteps(currentStatus: MeetupStatus | null): MeetupStatus[] {
+    return [...FLOW_STATUSES, currentStatus === "CANCELLED" ? "CANCELLED" : "COMPLETED"]
 }
 
 function getStepAppearance(
@@ -21,18 +34,22 @@ function getStepAppearance(
         return "pending"
     }
 
+    // Con la quedada cancelada no se puede afirmar hasta donde llego el flujo
+    // solo con el estado actual: los pasos intermedios quedan neutros.
+    if (currentStatus === "CANCELLED") {
+        return step === "CANCELLED" ? "terminal" : "pending"
+    }
+
     if (step === currentStatus) {
         if (step === "COMPLETED") {
             return "terminalSuccess"
         }
-        if (step === "CANCELLED") {
-            return "terminal"
-        }
         return "active"
     }
 
-    const stepIndex = ORDERED_STATUSES.indexOf(step)
-    const currentIndex = ORDERED_STATUSES.indexOf(currentStatus)
+    const order: MeetupStatus[] = [...FLOW_STATUSES, "COMPLETED"]
+    const stepIndex = order.indexOf(step)
+    const currentIndex = order.indexOf(currentStatus)
 
     if (stepIndex >= 0 && currentIndex >= 0 && stepIndex < currentIndex) {
         return "done"
@@ -69,8 +86,8 @@ const stepClassName: Record<
 
 function MeetupTimeline({ currentStatus }: MeetupTimelineProps) {
     return (
-        <ol className="grid grid-cols-1 gap-2 sm:grid-cols-2" aria-label="Meetup timeline">
-            {ORDERED_STATUSES.map((step) => {
+        <ol className="grid grid-cols-1 gap-2 sm:grid-cols-2" aria-label="Estado de la quedada">
+            {getVisibleSteps(currentStatus).map((step) => {
                 const appearance = getStepAppearance(step, currentStatus)
                 const styles = stepClassName[appearance]
                 return (
@@ -80,7 +97,7 @@ function MeetupTimeline({ currentStatus }: MeetupTimelineProps) {
                             className={`inline-block size-2.5 rounded-full ${styles.dot}`}
                         />
                         <span className={`font-wallie-fit text-[length:var(--wm-size-13)] leading-5 ${styles.text}`}>
-                            {step}
+                            {STEP_LABELS[step]}
                         </span>
                     </li>
                 )
@@ -90,5 +107,3 @@ function MeetupTimeline({ currentStatus }: MeetupTimelineProps) {
 }
 
 export { MeetupTimeline }
-
-
