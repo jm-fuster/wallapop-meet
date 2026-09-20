@@ -69,7 +69,7 @@ function ChatComposer({
   return (
     <div
       data-slot="chat-composer-wrapper"
-      className="w-full bg-white p-2 sm:p-3"
+      className="w-full bg-[color:var(--bg-base)] p-2 sm:p-3"
       role="group"
       aria-label="Composer de chat"
     >
@@ -82,7 +82,7 @@ function ChatComposer({
       >
         <div
           className={cn(
-            "flex min-w-0 flex-1 items-center gap-1.5 rounded-full border-[0.8px] bg-white p-1.5 transition-colors",
+            "flex min-w-0 flex-1 items-center gap-1.5 rounded-full border-[0.8px] bg-[color:var(--bg-base)] p-1.5 transition-colors",
             disabled
               ? "border-[color:var(--wm-color-border-default)]"
               : "border-[color:var(--wm-color-border-default)] focus-within:border-[color:var(--action-primary)]"
@@ -98,7 +98,7 @@ function ChatComposer({
             rows={1}
             placeholder={placeholder}
             className={cn(
-              "max-h-32 min-h-7 min-w-0 flex-1 resize-none border-none bg-transparent px-1 py-1.5 font-wallie text-[length:var(--wm-size-16)] leading-6 text-black outline-none",
+              "max-h-32 min-h-7 min-w-0 flex-1 resize-none border-none bg-transparent px-1 py-1.5 font-wallie text-[length:var(--wm-size-16)] leading-6 text-[color:var(--text-primary)] outline-none",
               "placeholder:text-[color:var(--text-meta)]"
             )}
             {...props}

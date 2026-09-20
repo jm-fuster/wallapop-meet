@@ -43,7 +43,7 @@ function InboxBottomNav({
       data-slot="inbox-bottom-nav"
       aria-label="Navegacion principal"
       className={cn(
-        "w-full border-t border-[color:var(--border-strong)] bg-white px-2 pt-1.5 pb-[max(6px,env(safe-area-inset-bottom))]",
+        "w-full border-t border-[color:var(--border-strong)] bg-[color:var(--bg-base)] px-2 pt-1.5 pb-[max(6px,env(safe-area-inset-bottom))]",
         className
       )}
       {...props}

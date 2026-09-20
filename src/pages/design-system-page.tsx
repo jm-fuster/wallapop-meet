@@ -658,7 +658,7 @@ function CatalogStoryCard({ entity }: { entity: CatalogEntity }) {
                             onClick={() => applyState(state)}
                             className={
                                 normalizeKey(selectedState) === normalizeKey(state)
-                                    ? "rounded-full border border-[color:var(--text-primary)] bg-[color:var(--text-primary)] px-2 py-0.5 font-wallie-fit text-[length:var(--wm-size-11)] text-[color:var(--text-inverse)]"
+                                    ? "rounded-full border border-[color:var(--text-primary)] bg-[color:var(--text-primary)] px-2 py-0.5 font-wallie-fit text-[length:var(--wm-size-11)] text-[color:var(--bg-base)]"
                                     : "rounded-full border border-[color:var(--border-divider)] bg-[color:var(--bg-surface)] px-2 py-0.5 font-wallie-fit text-[length:var(--wm-size-11)] text-[color:var(--text-primary)]"
                             }
                         >
@@ -683,7 +683,7 @@ function CatalogStoryCard({ entity }: { entity: CatalogEntity }) {
                                         [propName]: option,
                                     }))
                                 }}
-                                className="rounded-[var(--wm-size-8)] border border-[color:var(--border-divider)] bg-white px-2 py-1 font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-primary)]"
+                                className="rounded-[var(--wm-size-8)] border border-[color:var(--border-divider)] bg-[color:var(--bg-base)] px-2 py-1 font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-primary)]"
                             >
                                 {(config.options ?? []).map((option) => (
                                     <option key={`${propName}-${String(option)}`} value={String(option)}>
@@ -695,7 +695,7 @@ function CatalogStoryCard({ entity }: { entity: CatalogEntity }) {
                     ))}
                 </div>
             ) : null}
-            <div className="mt-3 rounded-[var(--wm-size-8)] border border-[color:var(--border-divider)] bg-white p-3">
+            <div className="mt-3 rounded-[var(--wm-size-8)] border border-[color:var(--border-divider)] bg-[color:var(--bg-base)] p-3">
                 <PreviewErrorBoundary
                     resetKey={`${entity.id}-${selectedState}-${JSON.stringify(argOverrides)}`}
                     fallback={
@@ -855,7 +855,7 @@ function DesignSystemPage() {
     return (
         <main className="min-h-dvh bg-[color:var(--bg-surface)] text-[color:var(--text-primary)]">
             <div className="mx-auto flex w-full max-w-[var(--wm-size-1400)] gap-8 px-6 py-8">
-                <aside className="sticky top-6 hidden h-[calc(100dvh-48px)] w-72 flex-col rounded-[var(--wm-size-12)] border border-[color:var(--border-strong)] bg-white p-4 lg:flex">
+                <aside className="sticky top-6 hidden h-[calc(100dvh-48px)] w-72 flex-col rounded-[var(--wm-size-12)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-4 lg:flex">
                     <div className="mb-4 border-b border-[color:var(--border-divider)] pb-3">
                         <div className="flex items-center gap-3">
                             <img
@@ -889,7 +889,7 @@ function DesignSystemPage() {
                 </aside>
 
                 <div className="min-w-0 flex-1 space-y-10">
-                    <header className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-white p-6">
+                    <header className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
                         <p className="font-wallie-fit text-[length:var(--wm-size-12)] uppercase tracking-[0.08em] text-[color:var(--text-secondary)]">
                             Documentacion viva
                         </p>
@@ -903,7 +903,7 @@ function DesignSystemPage() {
                         </p>
                     </header>
 
-                    <section id="foundations-color" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-white p-6">
+                    <section id="foundations-color" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
                         <h2 className="font-wallie-chunky text-[length:var(--wm-size-24)]">Color</h2>
                         <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                             Paletas oficiales en escala 50-900.
@@ -958,7 +958,7 @@ function DesignSystemPage() {
                         </div>
                     </section>
 
-                    <section id="foundations-semantic-colors" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-white p-6">
+                    <section id="foundations-semantic-colors" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
                         <h2 className="font-wallie-chunky text-[length:var(--wm-size-24)]">Semantic Colors</h2>
                         <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                             Inventario dinamico de <code>tokens.color.semantic.*</code>, sincronizado automaticamente desde <code>styles.json</code>.
@@ -987,7 +987,7 @@ function DesignSystemPage() {
                         ) : null}
                     </section>
 
-                    <section id="foundations-typography" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-white p-6">
+                    <section id="foundations-typography" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
                         <h2 className="font-wallie-chunky text-[length:var(--wm-size-24)]">Typography</h2>
                         <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                             Guia tipografica propuesta para Wallapop Meet basada en proporciones reales del producto. Familia principal: <code>{fontPrimary}</code>, fallbacks: <code>{fontFallback}</code>.
@@ -1096,7 +1096,7 @@ function DesignSystemPage() {
                         </div>
                     </section>
 
-                    <section id="foundations-spacing" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-white p-6">
+                    <section id="foundations-spacing" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
                         <h2 className="font-wallie-chunky text-[length:var(--wm-size-24)]">Spacing & Layout</h2>
                         <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                             Escala basada en incrementos de 4px y 8px, consumida desde tokens.
@@ -1112,7 +1112,7 @@ function DesignSystemPage() {
                         </div>
                     </section>
 
-                    <section id="foundations-radius" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-white p-6">
+                    <section id="foundations-radius" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
                         <h2 className="font-wallie-chunky text-[length:var(--wm-size-24)]">Corner Radius</h2>
                         <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                             Escala de radios para esquinas y pills.
@@ -1128,15 +1128,15 @@ function DesignSystemPage() {
                         </div>
                     </section>
 
-                    <section id="foundations-elevation" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-white p-6">
+                    <section id="foundations-elevation" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
                         <h2 className="font-wallie-chunky text-[length:var(--wm-size-24)]">Elevation</h2>
                         <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                             Niveles de sombra para separar superficies y jerarquia visual.
                         </p>
                         <div className="mt-5 grid gap-4 md:grid-cols-2">
                             {shadowTokens.map((item) => (
-                                <article key={item.tokenPath} className="rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] bg-white p-4">
-                                    <div className="h-20 rounded-[var(--wm-size-10)] bg-white" style={{ boxShadow: item.value }} />
+                                <article key={item.tokenPath} className="rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] bg-[color:var(--bg-base)] p-4">
+                                    <div className="h-20 rounded-[var(--wm-size-10)] bg-[color:var(--bg-base)]" style={{ boxShadow: item.value }} />
                                     <p className="mt-3 font-wallie-fit text-[length:var(--wm-size-12)]">{item.tokenPath}</p>
                                     <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">{item.value}</p>
                                 </article>
@@ -1144,7 +1144,7 @@ function DesignSystemPage() {
                         </div>
                     </section>
 
-                    <section id="components-playground" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-white p-6">
+                    <section id="components-playground" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
                         <h2 className="font-wallie-chunky text-[length:var(--wm-size-24)]">Components</h2>
                         <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                             Explora estados y propiedades de cada componente desde previews vivas.
@@ -1161,7 +1161,7 @@ function DesignSystemPage() {
                         </div>
                     </section>
 
-                    <section id="components-iconography" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-white p-6">
+                    <section id="components-iconography" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
                         <h2 className="font-wallie-chunky text-[length:var(--wm-size-24)]">Iconography</h2>
                         <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                             Catalogo operativo de iconos usados en Wallapop Meet con su accion principal.

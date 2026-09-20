@@ -34,7 +34,7 @@ function LocationSearchInput({
                 value={value}
                 onChange={(event) => onValueChange(event.target.value)}
                 placeholder={placeholder}
-                className="w-full bg-transparent font-wallie-fit text-[length:var(--wm-size-16)] text-[color:var(--text-tertiary)] outline-none placeholder:text-[color:var(--text-meta)]"
+                className="w-full bg-transparent font-wallie-fit text-[length:var(--wm-size-16)] text-[color:var(--wm-color-input-text)] outline-none placeholder:text-[color:var(--text-secondary)]"
             />
         </label>
     )

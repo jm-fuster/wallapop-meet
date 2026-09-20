@@ -1182,12 +1182,12 @@ function ProposalSelectionIndicator({ selected }: { selected: boolean }) {
         <span
             className={`inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border-2 transition-[background-color,border-color,transform] duration-150 ease-out motion-reduce:transition-none ${selected
                 ? "border-[color:var(--text-primary)] bg-[color:var(--text-primary)]"
-                : "border-[color:var(--text-secondary)] bg-white"
+                : "border-[color:var(--text-secondary)] bg-[color:var(--bg-base)]"
                 }`}
             aria-hidden
         >
             <span
-                className={`h-2.5 w-2.5 rounded-full bg-white transition-transform duration-150 ease-out motion-reduce:transition-none ${selected ? "scale-100" : "scale-0"
+                className={`h-2.5 w-2.5 rounded-full bg-[color:var(--bg-base)] transition-transform duration-150 ease-out motion-reduce:transition-none ${selected ? "scale-100" : "scale-0"
                     }`}
             />
         </span>
@@ -1297,7 +1297,7 @@ function MeetupMapPreviewModal({
 }) {
     return (
         <div className="fixed inset-0 z-[60] bg-[color:var(--text-primary)]/55 p-0 md:p-6">
-            <section className="flex h-full w-full flex-col bg-white md:mx-auto md:h-[88vh] md:max-w-[var(--wm-size-760)] md:rounded-[var(--wm-size-18)]">
+            <section className="flex h-full w-full flex-col bg-[color:var(--bg-base)] md:mx-auto md:h-[88vh] md:max-w-[var(--wm-size-760)] md:rounded-[var(--wm-size-18)]">
                 <header className="flex items-center justify-between border-b border-[color:var(--border-divider)] px-4 py-3">
                     <p className="font-wallie-chunky text-[length:var(--wm-size-18)] text-[color:var(--text-primary)]">Mapa de la quedada</p>
                     <IconButton
@@ -1518,7 +1518,7 @@ function MeetupProposalOverlay({
 
     return (
         <div className="fixed inset-0 z-50 flex items-end justify-center bg-[color:var(--text-primary)]/50 p-0 md:items-center md:p-6">
-            <section className="flex h-[94vh] w-full max-h-[94vh] flex-col rounded-t-[var(--wm-size-22)] bg-white shadow-[0_16px_48px_var(--wm-shadow-marker)] md:h-[88vh] md:max-h-[88vh] md:max-w-[var(--wm-size-760)] md:rounded-[var(--wm-size-20)]">
+            <section className="flex h-[94vh] w-full max-h-[94vh] flex-col rounded-t-[var(--wm-size-22)] bg-[color:var(--bg-base)] shadow-[0_16px_48px_var(--wm-shadow-marker)] md:h-[88vh] md:max-h-[88vh] md:max-w-[var(--wm-size-760)] md:rounded-[var(--wm-size-20)]">
                 {mapPickerOpen ? (
                     <div className="flex min-h-0 flex-1 flex-col">
                         <div className="border-b border-[color:var(--border-divider)] px-4 py-3">
@@ -1584,7 +1584,7 @@ function MeetupProposalOverlay({
                             </MapContainer>
 
                             {mapSelectedPoint || isCustomPointSelected ? (
-                                <div className="absolute inset-x-3 bottom-3 z-1200 rounded-[var(--wm-size-16)] bg-white p-4 shadow-[var(--wm-shadow-modal)]">
+                                <div className="absolute inset-x-3 bottom-3 z-1200 rounded-[var(--wm-size-16)] bg-[color:var(--bg-base)] p-4 shadow-[var(--wm-shadow-modal)]">
                                     <div className="flex items-start justify-between gap-3">
                                         <div className="min-w-0">
                                             <div className="flex items-center gap-2">
@@ -1701,7 +1701,7 @@ function MeetupProposalOverlay({
                                                     timeOption < minTimeValue,
                                             })),
                                         ]}
-                                        className="rounded-[var(--wm-size-10)] bg-white px-3 py-2 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-primary)] focus:border-[color:var(--action-primary)]"
+                                        className="rounded-[var(--wm-size-10)] bg-[color:var(--bg-base)] px-3 py-2 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-primary)] focus:border-[color:var(--action-primary)]"
                                     />
                                 </div>
                             ) : null}
@@ -1895,7 +1895,7 @@ function InboxPane({
     highlightSelectedConversation = true,
 }: InboxPaneProps) {
     return (
-        <section className="flex h-full min-h-0 flex-col bg-white">
+        <section className="flex h-full min-h-0 flex-col bg-[color:var(--bg-base)]">
             <div className="border-b border-[color:var(--border-divider)] px-4 py-4">
                 <div className="flex items-center">
                     <h1 className="font-wallie-chunky text-[length:var(--wm-size-22)] text-[color:var(--text-primary)]">Buzon</h1>
@@ -2055,7 +2055,7 @@ function ConversationPane({
     }, [conversation.id, timelineEntries.length])
 
     return (
-        <section className="flex h-full min-h-0 flex-col bg-white">
+        <section className="flex h-full min-h-0 flex-col bg-[color:var(--bg-base)]">
             {onBackToInbox ? (
                 <ChatConversationHeader
                     onBack={onBackToInbox}
@@ -2074,7 +2074,7 @@ function ConversationPane({
                     defaultExpanded={false}
                 />
             ) : (
-                <header className="flex items-center gap-3 border-b border-[color:var(--border-divider)] bg-white px-4 py-3">
+                <header className="flex items-center gap-3 border-b border-[color:var(--border-divider)] bg-[color:var(--bg-base)] px-4 py-3">
                     <img
                         src={conversation.listingImageSrc}
                         alt={conversation.itemTitle}
@@ -2215,7 +2215,7 @@ function ConversationPane({
                 ) : null}
             </div>
 
-            <div className="shrink-0 border-t border-[color:var(--border-divider)] bg-white">
+            <div className="shrink-0 border-t border-[color:var(--border-divider)] bg-[color:var(--bg-base)]">
                 <div className="px-3 pt-1 sm:px-4">
                     <ChatSecurityBanner
                         message="Quedate en Wallapop. Mas facil, mas seguro."
@@ -3236,7 +3236,7 @@ function WallapopChatWorkspace() {
     }
 
     return (
-        <main className="h-[100dvh] w-full overflow-hidden bg-white">
+        <main className="h-[100dvh] w-full overflow-hidden bg-[color:var(--bg-base)]">
             <section className="hidden h-full overflow-hidden border-x border-[color:var(--border-strong)] md:grid md:grid-cols-[360px_1fr] lg:grid-cols-[360px_1fr_320px]">
                 <div className="min-h-0 border-r border-[color:var(--border-divider)]">
                     <InboxPane

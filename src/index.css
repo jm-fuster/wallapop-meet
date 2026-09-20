@@ -192,6 +192,8 @@
   --wm-color-semantic-feedback-success: #0d907f;
   --wm-color-semantic-feedback-warning: #f4a000;
   --wm-color-semantic-feedback-warning-strong: #8a5a00;
+  --wm-color-semantic-feedback-success-strong: #038673;
+  --wm-color-semantic-feedback-error-strong: #ce3528;
   --wm-color-semantic-feedback-error: #d94b50;
   --wm-color-semantic-feedback-info: #4a5a63;
   --wm-color-semantic-label-pending-bg: #f8fafb;
@@ -263,6 +265,8 @@
   --feedback-success: var(--wm-color-semantic-feedback-success);
   --feedback-warning: var(--wm-color-semantic-feedback-warning);
   --feedback-warning-strong: var(--wm-color-semantic-feedback-warning-strong);
+  --feedback-success-strong: var(--wm-color-semantic-feedback-success-strong);
+  --feedback-error-strong: var(--wm-color-semantic-feedback-error-strong);
   --feedback-error: var(--wm-color-semantic-feedback-error);
   --feedback-info: var(--wm-color-semantic-feedback-info);
   --label-pending-bg: var(--wm-color-semantic-label-pending-bg);
@@ -301,6 +305,9 @@
   --toast-error-bg: var(--feedback-error);
   --toast-info-bg: var(--feedback-info);
   --toast-text: var(--wm-color-semantic-text-on-dark);
+  /* Invariante al modo: un QR necesita modulos oscuros sobre placa blanca
+     tambien en dark (par de color/bg/qr en Figma). */
+  --bg-qr: #ffffff;
   --wm-radius-200: 4px;
   --wm-radius-300: 8px;
   --wm-color-input-text: #29363d;
@@ -347,6 +354,7 @@
   --wm-size-42: 42px;
   --wm-size-44: 44px;
   --wm-size-47: 47px;
+  --wm-size-48: 48px;
   --wm-size-60: 60px;
   --wm-size-88: 88px;
   --wm-size-100: 100px;
@@ -439,6 +447,82 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* Modo Dark de Wallapop Meet. Espejo del modo Dark de las variables de Figma
+   (colecciones Semantic y Component): mismos remapeos de rampa. Se comparten
+   entre modos, igual que en Figma: la marca en botones (action-primary,
+   reserved, sold, sale-confirm), los blancos sobre color (text-inverse,
+   text-on-action, text-on-dark), los feedback-* base (fondos de toast),
+   las sombras, el scrim y la placa del QR (--bg-qr). */
+.dark {
+  --wm-color-text-primary: #f8fafb;
+  --wm-color-text-secondary: #d3dee2;
+  --wm-color-text-disabled: #6e7d86;
+  --wm-color-background-base: #212529;
+  --wm-color-background-surface: #253238;
+  --wm-color-border-default: #34444d;
+  --wm-color-border-focus: #59d4c1;
+  --wm-color-border-error: #ea5760;
+  --wm-color-semantic-background-base: #212529;
+  --wm-color-semantic-background-surface: #253238;
+  --wm-color-semantic-background-accent-subtle: #075b51;
+  --wm-color-semantic-background-soft: #29363d;
+  --wm-color-semantic-background-warning-subtle: #664200;
+  --wm-color-semantic-background-error-subtle: #6b2426;
+  --wm-color-semantic-background-date-chip: #29363d;
+  --wm-color-semantic-background-pending-sale-banner: #1e3a8a;
+  --wm-color-semantic-background-pending-sale-banner-hover: #2e4c9e;
+  --wm-color-semantic-text-primary: #f8fafb;
+  --wm-color-semantic-text-secondary: #d3dee2;
+  --wm-color-semantic-text-tertiary: #a3b8c1;
+  --wm-color-semantic-text-bubble-meta: #90a4ae;
+  --wm-color-semantic-text-security: #f3f6f8;
+  --wm-color-semantic-text-pending-sale-banner: #c8dcff;
+  --wm-color-semantic-action-link: #59d4c1;
+  --wm-color-semantic-action-disabled-bg: #34444d;
+  --wm-color-semantic-action-disabled-strong-bg: #4a5a63;
+  --wm-color-semantic-action-disabled-text: #6e7d86;
+  --wm-color-semantic-border-divider: #34444d;
+  --wm-color-semantic-border-strong: #4a5a63;
+  --wm-color-semantic-border-soft: #29363d;
+  --wm-color-semantic-border-success-subtle: #0fa896;
+  --wm-color-semantic-border-warning-subtle: #d18800;
+  --wm-color-semantic-border-focus: #59d4c1;
+  --wm-color-semantic-border-error: #ea5760;
+  --wm-color-semantic-feedback-success-strong: #8fe2d5;
+  --wm-color-semantic-feedback-warning-strong: #f6bf67;
+  --wm-color-semantic-feedback-error-strong: #f18389;
+  --wm-color-semantic-label-pending-bg: #34444d;
+  --wm-color-semantic-label-pending-border: #6e7d86;
+  --wm-color-semantic-label-pending-text: #d3dee2;
+  --wm-color-semantic-label-confirmed-bg: #075b51;
+  --wm-color-semantic-label-confirmed-border: #0fa896;
+  --wm-color-semantic-label-confirmed-text: #8fe2d5;
+  --wm-color-semantic-label-arrived-bg: #664200;
+  --wm-color-semantic-label-arrived-border: #d18800;
+  --wm-color-semantic-label-arrived-text: #f6bf67;
+  --wm-color-semantic-label-completed-bg: #560b2a;
+  --wm-color-semantic-label-completed-border: #b31a57;
+  --wm-color-semantic-label-completed-text: #ee83b6;
+  --wm-color-semantic-label-cancelled-bg: #6b2426;
+  --wm-color-semantic-label-cancelled-border: #d94b50;
+  --wm-color-semantic-label-cancelled-text: #f7b0b4;
+  --wm-color-semantic-meet-rating-prompt-background: #1b4146;
+  --wm-color-semantic-meet-rating-prompt-text: #d5f2f7;
+  --wm-color-semantic-meet-rating-prompt-icon-bg: #253238;
+  --wm-color-delivery-sent: #6e8792;
+  --wm-color-domain-status-reserved-subtle: #341735;
+  --wm-color-domain-status-reserved-subtle-strong: #451f48;
+  --wm-color-input-text: #f3f6f8;
+  --wm-color-input-label: #c9d3d8;
+  --wm-color-input-placeholder-focus: #90a4ae;
+  --wm-color-input-ring-default: #6e8792;
+  --wm-color-input-ring-hover: #a3b8c1;
+  --wm-color-input-ring-error: #ea5760;
+  --wm-color-input-ring-success: #59d4c1;
+  --wm-surface-overlay-hover: rgba(255, 255, 255, 0.06);
+  --wm-surface-overlay-pressed: rgba(255, 255, 255, 0.12);
 }
 
 @layer base {

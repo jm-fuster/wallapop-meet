@@ -10,7 +10,7 @@ const meta = {
     tags: ["autodocs"],
     decorators: [
         (Story) => (
-            <div className="mx-auto w-full max-w-[var(--wm-size-860)] bg-white">
+            <div className="mx-auto w-full max-w-[var(--wm-size-860)] bg-[color:var(--bg-base)]">
                 <Story />
             </div>
         ),

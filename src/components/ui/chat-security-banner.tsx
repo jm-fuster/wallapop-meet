@@ -22,7 +22,7 @@ function ChatSecurityBanner({
   return (
     <div
       data-slot="chat-security-banner"
-      className={cn("w-full bg-white px-4 pt-4 pb-2", className)}
+      className={cn("w-full bg-[color:var(--bg-base)] px-4 pt-4 pb-2", className)}
       {...props}
     >
       <div className="flex items-center gap-2">

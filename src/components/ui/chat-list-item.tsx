@@ -74,7 +74,7 @@ function ChatListItem({
               "absolute -top-2 -left-2 z-10 inline-flex size-8 items-center justify-center rounded-full",
               isPendingSaleIndicator
                 ? "bg-[color:var(--action-primary)]"
-                : "border border-[color:var(--border-divider)] bg-white",
+                : "border border-[color:var(--border-divider)] bg-[color:var(--bg-base)]",
               leadingIndicatorColorClass
             )}
             aria-hidden="true"

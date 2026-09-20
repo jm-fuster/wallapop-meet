@@ -12,7 +12,7 @@ const meta = {
     tags: ["autodocs"],
     decorators: [
         (Story) => (
-            <div className="w-full min-w-[var(--wm-size-320)] max-w-[var(--wm-size-560)] rounded-[var(--wm-size-12)] border border-[color:var(--border-strong)] bg-white p-4">
+            <div className="w-full min-w-[var(--wm-size-320)] max-w-[var(--wm-size-560)] rounded-[var(--wm-size-12)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-4">
                 <Story />
             </div>
         ),

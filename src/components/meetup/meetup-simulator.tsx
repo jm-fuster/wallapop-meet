@@ -53,7 +53,7 @@ function MeetupSimulator() {
     }
 
     return (
-        <section className="w-full rounded-[var(--wm-size-16)] border border-[color:var(--wm-color-border-default)] bg-white p-5 shadow-[var(--wm-shadow-100)]">
+        <section className="w-full rounded-[var(--wm-size-16)] border border-[color:var(--wm-color-border-default)] bg-[color:var(--bg-base)] p-5 shadow-[var(--wm-shadow-100)]">
             <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
                     <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">
