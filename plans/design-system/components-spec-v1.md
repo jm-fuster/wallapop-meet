@@ -532,9 +532,6 @@ Reglas:
 - `SelectableOption` (`src/components/ui/selectable-option.tsx`)
   - Patrùn reutilizable de opciùn seleccionable con estado visual `selected`.
   - Unifica bordes y estado activo en flujos de propuesta.
-- `OverlayHeader` (`src/components/ui/overlay-header.tsx`)
-  - Cabecera reutilizable de overlays con tùtulo y cierre.
-  - Evita variaciones ad-hoc en headers de modal/sheet.
 - `ChatMeetRatingPromptBubble` (`src/components/meetup/chat-meet-rating-prompt-bubble.tsx`)
   - Mensaje de invitacion a valorar tras venta completada en chat; presentacion como mensaje entrante (izquierda).
   - Icono `Bot` (Lucide) en circulo sobre fondo `tokens.color.meet_rating_prompt.icon_background`; CTA capsule con `cta_background` / `cta_hover`.
