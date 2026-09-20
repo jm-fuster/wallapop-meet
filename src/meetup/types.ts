@@ -17,6 +17,10 @@ export type MeetupCancelReason =
     | "COUNTER_REPLACED"
     | "NO_SHOW_BUYER"
     | "NO_SHOW_FINAL_CONTRADICTION"
+    /** La hora propuesta paso sin que la otra parte aceptase ni contraofertase. */
+    | "PROPOSAL_EXPIRED"
+    /** La ventana de llegada se cerro sin que el vendedor confirmase la venta. */
+    | "MEETUP_EXPIRED"
 
 export type MeetupArrivalCheckin = {
     occurredAt: Date
@@ -39,11 +43,18 @@ export type MeetupNoShowReport = {
     buyerWasMarkedArrived: boolean
 }
 
+export type MeetupReliabilityImpactType =
+    /** Cancelacion dentro de la ultima media hora antes de la quedada. */
+    | "RED_ZONE_CANCELLATION"
+    /** Cancelacion despues de la hora acordada, con la otra parte ya en camino o en el punto. */
+    | "POST_TIME_CANCELLATION"
+
 export type MeetupReliabilityImpact = {
-    type: "RED_ZONE_CANCELLATION"
+    type: MeetupReliabilityImpactType
     actorRole: ActorRole
-    occurredAt: Date
+    /** Negativo cuando la cancelacion ocurre despues de la hora acordada. */
     minutesBeforeScheduled: number
+    occurredAt: Date
 }
 
 export type MeetupLateNotice = {
@@ -122,6 +133,12 @@ export type MeetupEvent =
       }
     | { type: "REPORT_NO_SHOW"; actorRole: ActorRole; occurredAt: Date }
     | { type: "CONFIRM_NO_SHOW_FINAL"; actorRole: ActorRole; occurredAt: Date }
+    /**
+     * Cierre por tiempo. No lo dispara ninguna de las dos partes: lo dispara el sistema
+     * cuando la quedada ya no puede avanzar, para que ningun hilo se quede en un estado
+     * que dejo de ser verdad.
+     */
+    | { type: "EXPIRE"; occurredAt: Date }
 
 export type TransitionSuccess = {
     ok: true

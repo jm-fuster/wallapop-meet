@@ -797,6 +797,12 @@ function resolveMeetupTimelinePreview(meetup: MeetupMachine): string {
             if (meetup.cancelReason === "NO_SHOW_FINAL_CONTRADICTION") {
                 return "Quedada cancelada tras contradiccion de presencia."
             }
+            if (meetup.cancelReason === "PROPOSAL_EXPIRED") {
+                return "La propuesta caduco sin respuesta."
+            }
+            if (meetup.cancelReason === "MEETUP_EXPIRED") {
+                return "La quedada caduco al cerrarse la ventana de llegada."
+            }
             return "La quedada fue cancelada."
         default:
             return "Sin propuesta de quedada."

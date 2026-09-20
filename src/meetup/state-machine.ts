@@ -1,9 +1,10 @@
-import { isWithinArrivalWindow } from "@/meetup/arrival-window"
+import { getArrivalWindow, isWithinArrivalWindow } from "@/meetup/arrival-window"
 import type {
     CreateMeetupMachineInput,
     MeetupChatContext,
     MeetupEvent,
     MeetupMachine,
+    MeetupReliabilityImpactType,
     TransitionResult,
 } from "@/meetup/types"
 
@@ -31,6 +32,47 @@ function createMeetupId(): string {
 
 function isTerminalStatus(status: MeetupMachine["status"]): boolean {
     return status === "COMPLETED" || status === "CANCELLED"
+}
+
+/**
+ * Momento a partir del cual la quedada ya no puede avanzar y el sistema la cierra.
+ * Una propuesta caduca a la hora propuesta; una quedada confirmada o en curso caduca
+ * al cerrarse la ventana de llegada. Devuelve null si no aplica (sin propuesta o ya cerrada).
+ */
+export function getMeetupExpiryAt(meetup: MeetupMachine): Date | null {
+    if (meetup.status === null || isTerminalStatus(meetup.status)) {
+        return null
+    }
+
+    if (meetup.status === "PROPOSED" || meetup.status === "COUNTER_PROPOSED") {
+        return meetup.scheduledAt
+    }
+
+    return getArrivalWindow(meetup.scheduledAt).closesAt
+}
+
+export function isMeetupExpired(meetup: MeetupMachine, now: Date): boolean {
+    const expiresAt = getMeetupExpiryAt(meetup)
+    return expiresAt !== null && now.getTime() > expiresAt.getTime()
+}
+
+/**
+ * Una cancelacion tardia deja marca. Despues de la hora acordada pesa mas que en la
+ * zona roja, porque la otra parte ya esta en el punto. Las cancelaciones que dispara el
+ * propio sistema al sustituir una propuesta por una contraoferta no cuentan.
+ */
+function resolveCancellationImpactType(
+    minutesBeforeScheduled: number
+): MeetupReliabilityImpactType | null {
+    if (minutesBeforeScheduled < 0) {
+        return "POST_TIME_CANCELLATION"
+    }
+
+    if (minutesBeforeScheduled <= RED_ZONE_CANCELLATION_MINUTES) {
+        return "RED_ZONE_CANCELLATION"
+    }
+
+    return null
 }
 
 function isValidChatContextField(value: string): boolean {
@@ -230,8 +272,8 @@ export function transitionMeetup(
         }
 
         case "LATE_NOTICE": {
-            if (meetup.status !== "CONFIRMED") {
-                return fail("LATE_NOTICE solo es valido desde CONFIRMED.")
+            if (meetup.status !== "CONFIRMED" && meetup.status !== "ARRIVED") {
+                return fail("LATE_NOTICE solo es valido desde CONFIRMED o ARRIVED.")
             }
 
             const occurredAt = nowFallback(event.occurredAt)
@@ -271,27 +313,29 @@ export function transitionMeetup(
             }
 
             const cancelledAt = nowFallback(event.occurredAt)
+            const cancelReason = event.reason ?? "MANUAL_CANCEL"
             const minutesBeforeScheduled = Math.floor(
                 (meetup.scheduledAt.getTime() - cancelledAt.getTime()) / (60 * 1000)
             )
-            const inRedZone =
-                minutesBeforeScheduled >= 0 &&
-                minutesBeforeScheduled <= RED_ZONE_CANCELLATION_MINUTES
+            const impactType =
+                cancelReason === "COUNTER_REPLACED"
+                    ? null
+                    : resolveCancellationImpactType(minutesBeforeScheduled)
 
             return success({
                 ...meetup,
                 status: "CANCELLED",
                 cancelledAt,
-                cancelReason: event.reason ?? "MANUAL_CANCEL",
+                cancelReason,
                 walletHoldAmountEur: undefined,
-                reliabilityImpacts: inRedZone
+                reliabilityImpacts: impactType
                     ? [
                           ...(meetup.reliabilityImpacts ?? []),
                           {
-                              type: "RED_ZONE_CANCELLATION",
+                              type: impactType,
                               actorRole: event.actorRole,
-                              occurredAt: cancelledAt,
                               minutesBeforeScheduled,
+                              occurredAt: cancelledAt,
                           },
                       ]
                     : meetup.reliabilityImpacts,
@@ -305,6 +349,12 @@ export function transitionMeetup(
 
             if (meetup.status !== "ARRIVED") {
                 return fail("REPORT_NO_SHOW solo es valido desde ARRIVED.")
+            }
+
+            if (!meetup.arrivalCheckins?.SELLER) {
+                return fail(
+                    "Para reportar no-show tienes que haber marcado tu propia llegada al punto de encuentro."
+                )
             }
 
             const graceEndsAt = new Date(meetup.scheduledAt.getTime() + NO_SHOW_GRACE_MINUTES * 60 * 1000)
@@ -369,6 +419,33 @@ export function transitionMeetup(
                     ...meetup.noShowReport,
                     reportedAt: meetup.noShowReport.reportedAt,
                 },
+            })
+        }
+
+        case "EXPIRE": {
+            if (meetup.status === null) {
+                return fail("No existe una propuesta activa que pueda caducar.")
+            }
+
+            if (!isMeetupExpired(meetup, event.occurredAt)) {
+                return fail("La quedada todavia puede avanzar: aun no ha caducado.")
+            }
+
+            const expiredAsProposal =
+                meetup.status === "PROPOSED" || meetup.status === "COUNTER_PROPOSED"
+
+            /*
+             * Caducar no reparte culpa. Al cerrarse la ventana sin confirmacion no se
+             * puede saber si nadie aparecio o si se vieron y olvidaron cerrar la venta,
+             * asi que no se registra impacto de fiabilidad: para eso existe el no-show,
+             * que es una accion explicita y contrastable.
+             */
+            return success({
+                ...meetup,
+                status: "CANCELLED",
+                cancelledAt: event.occurredAt,
+                cancelReason: expiredAsProposal ? "PROPOSAL_EXPIRED" : "MEETUP_EXPIRED",
+                walletHoldAmountEur: undefined,
             })
         }
 
