@@ -16,17 +16,28 @@ flowchart TD
     PROPOSED -. opcional: Proponer cambios .-> COUNTER
     COUNTER[COUNTER_PROPOSED] --> sellerReview[Vendedor: Aceptar o reenviar propuesta]
     sellerReview --> CONFIRMED
+    PROPOSED -.->|Pasa scheduledAt sin respuesta| propExpired
+    COUNTER -.->|Pasa scheduledAt sin respuesta| propExpired
+    propExpired[CANCELLED: PROPOSAL_EXPIRED]
 
-    CONFIRMED --> window{Dentro de ventana -30m / +2h?}
-    window -->|Si| arrived[Cualquiera: Estoy aqui]
-    window -->|No| wait[Anadir a Calendar / esperar ventana]
+    CONFIRMED --> window{Ventana de llegada -30m / +2h?}
+    window -->|Abierta| arrived[Cualquiera: Estoy aqui]
+    window -->|Aun no abre| wait[Anadir a Calendar / esperar ventana]
     wait --> window
+    window -->|Ya cerro sin COMPLETE| meetupExpired
+    meetupExpired[CANCELLED: MEETUP_EXPIRED]
     arrived --> ARRIVED
-    ARRIVED --> complete[Solo vendedor: Confirmar venta]
+    ARRIVED --> paymentCheck{proposedPaymentMethod == WALLET?}
+    paymentCheck -->|No| complete[Solo vendedor: Confirmar venta]
+    paymentCheck -->|Si| buyerQr[Comprador ya llegado: Mostrar codigo QR]
+    buyerQr --> sellerScan[Solo vendedor: Escanear codigo QR]
     complete --> COMPLETED([COMPLETED: Vendido])
+    sellerScan --> COMPLETED
 
     classDef terminal fill:#DCEBFF,stroke:#4F7DB8,color:#1E3A5F;
     class COMPLETED terminal;
+    classDef expired fill:#FDEBEC,stroke:#B23D41,color:#6B2426;
+    class propExpired,meetupExpired expired;
 ```
 
 Reglas clave del happy path:
@@ -34,6 +45,9 @@ Reglas clave del happy path:
 - `ACCEPT` desde `PROPOSED` solo con rol comprador; desde `COUNTER_PROPOSED`, solo el vendedor acepta la contraoferta.
 - `MARK_ARRIVED` habilitado en ventana `scheduledAt - 30 min` hasta `scheduledAt + 2 h`.
 - `COMPLETE` solo desde `ARRIVED` y solo con rol vendedor.
+- `EXPIRE` cierra la quedada sin repartir culpa entre las partes (no genera `reliabilityImpacts`): desde `PROPOSED`/`COUNTER_PROPOSED` caduca en `scheduledAt` con motivo `PROPOSAL_EXPIRED`; desde `CONFIRMED`/`ARRIVED` caduca al cerrarse la ventana de llegada (`scheduledAt + 2h`) con motivo `MEETUP_EXPIRED`. No aplica desde `COMPLETED`/`CANCELLED` ni antes de la hora de caducidad (`isMeetupExpired`).
+- Pago con Wallapop Wallet: al `ACCEPT` una propuesta con `proposedPaymentMethod = WALLET` y precio > 0 se exige `buyerWalletAvailableEur >= finalPrice`; si falta saldo, la card bloquea la aceptacion y ofrece abrir `WalletTopUpSheet` para recargar el monedero antes de reintentar. Al aceptar con saldo suficiente se guarda el importe en `walletHoldAmountEur` (el hold), que se limpia al `COMPLETE`, `CANCEL` o `EXPIRE`.
+- El comprador solo ve el CTA "Mostrar codigo QR" en `ARRIVED` si ademas ha marcado su propia llegada (`arrivalCheckins.BUYER`); el vendedor ve "Escanear codigo QR" en vez de "Confirmar venta". Ambos CTA disparan el mismo evento `COMPLETE` con rol vendedor: Wallet no crea un estado nuevo, solo cambia la CTA visible.
 
 ## Diagrama historico (no-show y ramas)
 
