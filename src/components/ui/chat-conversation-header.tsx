@@ -116,7 +116,7 @@ function ProductImage({
                         "absolute inline-flex h-8 w-8 items-center justify-center rounded-full",
                         isPendingSaleStatusIcon
                             ? "bg-[color:var(--action-primary)]"
-                            : "border border-[color:var(--border-divider)] bg-[color:var(--bg-base)]",
+                            : "border border-[color:var(--border-divider)] bg-[color:var(--bg-status-badge)]",
                         statusIconColor,
                         statusIconPosition === "center" ? "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" : "left-2 top-2"
                     )}

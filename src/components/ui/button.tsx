@@ -20,7 +20,7 @@ const buttonVariants = cva(
         status_reserve_solid:
           "rounded-[var(--wm-size-25)] border-[color:var(--status-reserved)] bg-[color:var(--status-reserved)] font-wallie-chunky text-[length:var(--wm-size-13)] text-[color:var(--text-inverse)] hover:border-[color:var(--status-reserved-hover)] hover:bg-[color:var(--status-reserved-hover)] active:border-[color:var(--status-reserved-pressed)] active:bg-[color:var(--status-reserved-pressed)]",
         status_reserve_outline:
-          "rounded-[var(--wm-size-25)] border border-[color:var(--status-reserved)] bg-[color:var(--bg-base)] font-wallie-chunky text-[length:var(--wm-size-13)] text-[color:var(--status-reserved)] hover:bg-[color:var(--status-reserved-subtle)] active:bg-[color:var(--status-reserved-subtle-strong)]",
+          "rounded-[var(--wm-size-25)] border border-[color:var(--status-reserved)] bg-[color:var(--bg-status-badge)] font-wallie-chunky text-[length:var(--wm-size-13)] text-[color:var(--status-reserved)] hover:bg-[color:var(--status-reserved-subtle)] active:bg-[color:var(--status-reserved-subtle-strong)]",
         status_sold_solid:
           "rounded-[var(--wm-size-25)] border-[color:var(--status-sold)] bg-[color:var(--status-sold)] font-wallie-chunky text-[length:var(--wm-size-13)] text-[color:var(--text-inverse)] hover:border-[color:var(--status-sold-hover)] hover:bg-[color:var(--status-sold-hover)] active:border-[color:var(--status-sold-pressed)] active:bg-[color:var(--status-sold-pressed)]",
         icon: "rounded-full border-transparent bg-[color:var(--bg-surface)] text-[color:var(--text-primary)] shadow-[var(--wm-shadow-200)] hover:brightness-[0.98] active:brightness-95",
