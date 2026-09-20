@@ -1,5 +1,7 @@
 import type { MeetupStatus } from "@/meetup/types"
 
+import type { DesignSystemEntityMeta } from "@/design-system/catalog/types"
+
 const FLOW_STATUSES: MeetupStatus[] = [
     "PROPOSED",
     "COUNTER_PROPOSED",
@@ -106,4 +108,23 @@ function MeetupTimeline({ currentStatus }: MeetupTimelineProps) {
     )
 }
 
-export { MeetupTimeline }
+const designSystemMeta = {
+    id: "meetup-timeline",
+    entityType: "component",
+    title: "Meetup Timeline",
+    description: "Meetup Timeline del design system de Wallapop Meet.",
+    status: "ready",
+    states: ["PROPOSED", "COUNTER_PROPOSED", "CONFIRMED", "ARRIVED", "COMPLETED", "CANCELLED"],
+    storybookTitle: "Design System/Meetup Timeline",
+    tokensUsed: [
+        "tokens.color.semantic.border.strong",
+        "tokens.color.semantic.action.primary",
+        "tokens.color.semantic.text.primary",
+        "tokens.color.semantic.text.secondary",
+        "tokens.color.semantic.feedback.error",
+        "tokens.color.semantic.feedback.success",
+    ],
+} satisfies DesignSystemEntityMeta
+
+// eslint-disable-next-line react-refresh/only-export-components
+export { MeetupTimeline, designSystemMeta }
