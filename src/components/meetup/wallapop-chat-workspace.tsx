@@ -1874,7 +1874,6 @@ function MeetupProposalOverlay({
                             attendanceRate={conversation.counterpartAttendanceRate}
                             attendanceMeetups={conversation.counterpartAttendanceMeetups}
                             actionLabel={step < 3 ? "Siguiente" : "Enviar propuesta"}
-                            actionTextTone="dark"
                             actionDisabled={false}
                             onAction={step < 3 ? onNext : onSubmit}
                         />

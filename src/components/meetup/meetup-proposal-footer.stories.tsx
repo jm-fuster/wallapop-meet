@@ -33,7 +33,6 @@ export const Enabled: Story = {
   args: {
     ...baseArgs,
     actionLabel: "Siguiente",
-    actionTextTone: "dark",
     actionDisabled: false,
   },
 }
@@ -42,7 +41,6 @@ export const Disabled: Story = {
   args: {
     ...baseArgs,
     actionLabel: "Siguiente",
-    actionTextTone: "dark",
     actionDisabled: true,
   },
 }

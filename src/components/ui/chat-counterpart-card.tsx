@@ -1,5 +1,6 @@
 import * as React from "react"
-import { Star } from "lucide-react"
+import { CircleAlert, CircleCheck, Star, TriangleAlert } from "lucide-react"
+import type { LucideIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -79,7 +80,7 @@ function ChatCounterpartCard({
         ? Math.max(0, Math.min(100, Math.round(attendanceRate)))
         : null
 
-    const attendanceMessage =
+    const attendanceMessage: { text: string; className: string; Icon?: LucideIcon } | null =
         hasNoAttendanceHistory
             ? {
                   text: "Sin nivel de fiabilidad aun (0 quedadas)",
@@ -90,22 +91,25 @@ function ChatCounterpartCard({
             : resolvedAttendanceRate > 90
               ? {
                     text: `${resolvedAttendanceRate}% de asistencia (${attendanceMeetups})`,
-                    className: "text-[color:var(--wm-color-input-ring-success)]",
+                    className: "text-[color:var(--feedback-success-strong)]",
+                    Icon: CircleCheck,
                 }
               : resolvedAttendanceRate >= 70
                 ? {
                       text: `${resolvedAttendanceRate}% de asistencia (${attendanceMeetups})`,
-                      className: "text-[color:var(--feedback-warning)]",
+                      className: "text-[color:var(--feedback-warning-strong)]",
+                      Icon: TriangleAlert,
                   }
                 : {
                       text: "Baja asistencia a quedadas",
-                      className: "text-[color:var(--wm-color-semantic-error)]",
+                      className: "text-[color:var(--feedback-error-strong)]",
+                      Icon: CircleAlert,
                   }
 
     return (
         <article
             data-slot="chat-counterpart-card"
-            className={cn("rounded-[var(--wm-size-12)] bg-white p-4", className)}
+            className={cn("rounded-[var(--wm-size-12)] bg-[color:var(--bg-base)] p-4", className)}
             {...props}
         >
             <div className="flex items-start justify-between gap-3">
@@ -120,8 +124,11 @@ function ChatCounterpartCard({
                         {distanceLabel}
                     </p>
                     {attendanceMessage ? (
-                        <p className={`mt-1 font-wallie-fit text-[length:var(--wm-size-14)] ${attendanceMessage.className}`}>
-                            {attendanceMessage.text}
+                        <p className={`mt-1 flex items-center gap-1 font-wallie-fit text-[length:var(--wm-size-14)] ${attendanceMessage.className}`}>
+                            {attendanceMessage.Icon ? (
+                                <attendanceMessage.Icon size={14} className="shrink-0" aria-hidden />
+                            ) : null}
+                            <span>{attendanceMessage.text}</span>
                         </p>
                     ) : null}
                 </div>

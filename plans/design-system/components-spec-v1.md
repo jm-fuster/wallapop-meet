@@ -499,7 +499,6 @@ Propiedades visuales:
 - `listingImageSrc`, `itemTitle`, `userName`: contexto de la propuesta.
 - `actionLabel`: etiqueta de CTA final.
 - `actionDisabled`: estado deshabilitado.
-- `actionTextTone`: `dark | light` para ajustar contraste del CTA.
 - `onAction`: callback de CTA.
 
 Reglas:
