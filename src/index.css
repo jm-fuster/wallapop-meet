@@ -146,7 +146,7 @@
   --wm-color-brand-primary: #13c1ac;
   --wm-color-brand-primary-hover: #0fa896;
   --wm-color-brand-on-primary: #ffffff;
-  --wm-color-semantic-error: #ff5a5f;
+  --wm-color-semantic-error: #ce3528;
   --wm-color-text-primary: #253238;
   --wm-color-text-secondary: #4a5a63;
   --wm-color-text-disabled: #a8b2b8;
@@ -154,7 +154,7 @@
   --wm-color-background-surface: #f5f7f8;
   --wm-color-border-default: #e8ecef;
   --wm-color-border-focus: #13c1ac;
-  --wm-color-border-error: #ff5a5f;
+  --wm-color-border-error: #ce3528;
   --wm-color-semantic-background-base: #ffffff;
   --wm-color-semantic-background-surface: #f5f7f8;
   --wm-color-semantic-background-accent-subtle: #e9faf7;
@@ -190,7 +190,7 @@
   --wm-color-semantic-border-success-subtle: #59d4c1;
   --wm-color-semantic-border-warning-subtle: #f4a92f;
   --wm-color-semantic-border-focus: #13c1ac;
-  --wm-color-semantic-border-error: #ff5a5f;
+  --wm-color-semantic-border-error: #ce3528;
   --wm-color-semantic-feedback-success: #0d907f;
   --wm-color-semantic-feedback-warning: #f4a000;
   --wm-color-semantic-feedback-warning-strong: #8a5a00;
