@@ -16,7 +16,7 @@ const chatContext: MeetupChatContext = {
 function buildProposedSellerMachine(): MeetupMachine {
     const draft: MeetupMachine = {
         ...createMeetupMachine({ scheduledAt, chatContext }),
-        proposedLocation: "Estacion de Sants - Acceso principal",
+        proposedLocation: "Estación de Sants - Acceso principal",
         proposedLocationLat: 41.37906,
         proposedLocationLng: 2.14006,
         finalPrice: 500,
@@ -43,7 +43,7 @@ function buildConfirmedMachine(): MeetupMachine {
 function buildConfirmedWalletMachine(): MeetupMachine {
     const draft: MeetupMachine = {
         ...createMeetupMachine({ scheduledAt, chatContext }),
-        proposedLocation: "Estacion de Sants - Acceso principal",
+        proposedLocation: "Estación de Sants - Acceso principal",
         proposedLocationLat: 41.37906,
         proposedLocationLng: 2.14006,
         finalPrice: 500,

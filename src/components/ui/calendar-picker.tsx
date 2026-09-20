@@ -49,7 +49,7 @@ function CalendarPicker({
       ) : null}
       <div
         className={cn(
-          "rounded-[var(--wm-size-18)] border p-3",
+          "rounded-[var(--wm-size-20)] border p-3",
           state === "error"
             ? "border-2 border-[color:var(--wm-color-input-ring-error)]"
             : "border-[color:var(--wm-color-border-default)]",
@@ -69,7 +69,7 @@ function CalendarPicker({
         >
           <WallapopIcon name="chevron_right" size="small" className="rotate-180" />
         </button>
-        <p className="font-wallie-chunky text-[length:var(--wm-size-17)] capitalize text-[color:var(--text-primary)]">
+        <p className="font-wallie-chunky text-[length:var(--wm-size-18)] capitalize text-[color:var(--text-primary)]">
           {monthDate.toLocaleDateString(locale, {
             month: "long",
             year: "numeric",

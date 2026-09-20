@@ -15,7 +15,7 @@ type ChatMessageBubbleProps = React.ComponentProps<"div"> & {
 
 const bubbleVariantClass: Record<ChatMessageBubbleVariant, string> = {
   received:
-    "border-[0.8px] border-[color:var(--wm-color-border-default)] bg-transparent px-3 py-2",
+    "border-[0.8px] border-[color:var(--border-bubble)] bg-transparent px-3 py-2",
   sent: "border-[0.8px] border-[color:var(--wm-color-border-default)] bg-[color:var(--wm-color-border-default)] px-3 py-2",
 }
 

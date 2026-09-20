@@ -242,9 +242,11 @@ Propiedades visuales:
 
 Reglas:
 - Debe mantener orden fijo de estados para facilitar lectura del progreso.
+- Las etiquetas se muestran traducidas en minusculas (`propuesta`, `contrapropuesta`, `confirmada`, `has llegado`, `completada`, `cancelada`), nunca el enum crudo.
+- `COMPLETED` y `CANCELLED` son terminales mutuamente excluyentes: solo se renderiza el terminal que aplica (`cancelada` sustituye a `completada` cuando la quedada esta cancelada).
 - En estado `null`, todos los pasos se muestran como pendientes.
 - Estado actual resaltado visualmente.
-- Estados anteriores al actual se muestran como completados.
+- Estados anteriores al actual se muestran como completados; con la quedada cancelada, los pasos intermedios quedan neutros (el estado actual no permite afirmar hasta donde llego el flujo).
 - Estados finales (`COMPLETED`, `CANCELLED`) deben comunicarse tambien con texto, no solo color.
 
 ## 14. Simulador de flujo (`MeetupSimulator`)
@@ -295,7 +297,7 @@ Reglas:
   - `pendiente`: blanco/neutro
   - `COUNTER_PROPOSED`: reutiliza `pendiente` (sin variante visual adicional)
   - `confirmada`: success
-  - `has llegado`: info
+  - `has llegado`: warning (ambar; decision 2026-08-28: comunica mejor la accion en curso que el info azul que pedia la version anterior de esta seccion)
   - `completada`: acento de vendido (`#D32069`)
   - `cancelada`: error
 - El bloque informativo de la propuesta debe renderizar exactamente 3 filas con icono a la izquierda:
@@ -497,7 +499,6 @@ Propiedades visuales:
 - `listingImageSrc`, `itemTitle`, `userName`: contexto de la propuesta.
 - `actionLabel`: etiqueta de CTA final.
 - `actionDisabled`: estado deshabilitado.
-- `actionTextTone`: `dark | light` para ajustar contraste del CTA.
 - `onAction`: callback de CTA.
 
 Reglas:
@@ -531,9 +532,6 @@ Reglas:
 - `SelectableOption` (`src/components/ui/selectable-option.tsx`)
   - Patrùn reutilizable de opciùn seleccionable con estado visual `selected`.
   - Unifica bordes y estado activo en flujos de propuesta.
-- `OverlayHeader` (`src/components/ui/overlay-header.tsx`)
-  - Cabecera reutilizable de overlays con tùtulo y cierre.
-  - Evita variaciones ad-hoc en headers de modal/sheet.
 - `ChatMeetRatingPromptBubble` (`src/components/meetup/chat-meet-rating-prompt-bubble.tsx`)
   - Mensaje de invitacion a valorar tras venta completada en chat; presentacion como mensaje entrante (izquierda).
   - Icono `Bot` (Lucide) en circulo sobre fondo `tokens.color.meet_rating_prompt.icon_background`; CTA capsule con `cta_background` / `cta_hover`.

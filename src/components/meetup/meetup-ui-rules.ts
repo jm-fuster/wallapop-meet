@@ -1,7 +1,7 @@
 import { isWithinArrivalWindow } from "@/meetup/arrival-window"
 import type { ActorRole, MeetupMachine } from "@/meetup/types"
 
-/** Distancia maxima al punto de encuentro para habilitar "Estoy aqui" (mismo umbral que el mensaje de proximidad). */
+/** Distancia maxima al punto de encuentro para habilitar "Estoy aquí" (mismo umbral que el mensaje de proximidad). */
 export const MEETUP_ARRIVAL_NEAR_METERS = 100
 
 export type ArrivalActionState = {
@@ -131,19 +131,30 @@ export function resolveMeetupCardCtaIds(params: {
             actionIds.push("arrived")
         }
         if (actorRole === "SELLER") {
-            if (meetup.proposedPaymentMethod === "WALLET") {
-                actionIds.push("wallet-scan-sale", "no-show")
-            } else {
-                actionIds.push("complete", "no-show")
+            /** Reportar no-show exige haber marcado tu propia llegada: misma regla que la maquina. */
+            const canReportNoShow = Boolean(meetup.arrivalCheckins?.SELLER)
+            actionIds.push(
+                meetup.proposedPaymentMethod === "WALLET"
+                    ? "wallet-scan-sale"
+                    : "complete"
+            )
+            if (canReportNoShow) {
+                actionIds.push("no-show")
             }
         }
     }
 
+    /*
+     * El vendedor que ya ha marcado llegada TAMBIEN puede cancelar. Ocultarselo dejaba el
+     * no-show como su unica salida, asi que un vendedor que se marcha acababa acusando al
+     * comprador de no aparecer. Cancelar despues de la hora ya le deja su propia marca.
+     * En PROPOSED el comprador no ve "cancel" porque su version se llama "reject", que
+     * dispara el mismo evento.
+     */
     const canShowCancel =
         meetup.status !== "COMPLETED" &&
         meetup.status !== "CANCELLED" &&
         meetup.status !== null &&
-        !(meetup.status === "ARRIVED" && actorRole === "SELLER") &&
         !(meetup.status === "PROPOSED" && actorRole === "BUYER")
 
     if (canShowCancel) {

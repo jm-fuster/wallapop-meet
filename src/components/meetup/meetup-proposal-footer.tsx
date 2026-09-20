@@ -8,7 +8,6 @@ type MeetupProposalFooterProps = {
   actionLabel: string
   onAction: () => void
   actionDisabled?: boolean
-  actionTextTone?: "dark" | "light"
 }
 
 function MeetupProposalFooter({
@@ -20,7 +19,6 @@ function MeetupProposalFooter({
   actionLabel,
   onAction,
   actionDisabled = false,
-  actionTextTone = "dark",
 }: MeetupProposalFooterProps) {
   const hasAttendance =
     typeof attendanceRate === "number" &&
@@ -34,10 +32,10 @@ function MeetupProposalFooter({
     resolvedAttendanceRate === null
       ? "text-[color:var(--text-secondary)]"
       : resolvedAttendanceRate > 90
-        ? "text-[color:var(--feedback-success)]"
+        ? "text-[color:var(--feedback-success-strong)]"
         : resolvedAttendanceRate >= 70
-          ? "text-[color:var(--feedback-warning)]"
-          : "text-[color:var(--feedback-error)]"
+          ? "text-[color:var(--feedback-warning-strong)]"
+          : "text-[color:var(--feedback-error-strong)]"
   const attendanceLabel = hasAttendance
     ? resolvedAttendanceRate !== null && resolvedAttendanceRate < 70
       ? "Baja asistencia a quedadas"
@@ -52,7 +50,7 @@ function MeetupProposalFooter({
             <img
               src={listingImageSrc}
               alt={itemTitle}
-              className="h-[var(--wm-size-42)] w-[var(--wm-size-42)] shrink-0 rounded-[var(--wm-size-10)] object-cover"
+              className="h-[var(--wm-size-42)] w-[var(--wm-size-42)] shrink-0 rounded-[var(--wm-size-12)] object-cover"
             />
             <div className="min-w-0">
               <p className="truncate font-wallie-chunky text-[length:var(--wm-size-15)] leading-tight text-[color:var(--text-primary)]">
@@ -76,9 +74,7 @@ function MeetupProposalFooter({
             className={`rounded-full px-4 py-2 font-wallie-chunky text-[length:var(--wm-size-14)] ${
               actionDisabled
                 ? "cursor-not-allowed border border-[color:var(--border-strong)] bg-[color:var(--action-disabled-bg)] text-[color:var(--action-disabled-text)] shadow-none"
-                : actionTextTone === "light"
-                  ? "bg-[color:var(--action-primary)] text-[color:var(--text-inverse)]"
-                  : "bg-[color:var(--action-primary)] text-[color:var(--text-on-action)]"
+                : "bg-[color:var(--action-primary)] text-[color:var(--text-on-action)]"
             }`}
             onClick={onAction}
             disabled={actionDisabled}

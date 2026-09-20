@@ -4,7 +4,7 @@ import * as React from "react"
 import { MeetupLocationMap } from "@/components/meetup/meetup-location-map"
 
 const safePoints = [
-    { id: "station", name: "Estacion de Sants", lat: 41.37906, lng: 2.14006 },
+    { id: "station", name: "Estación de Sants", lat: 41.37906, lng: 2.14006 },
     { id: "mall", name: "Centro comercial Arenas", lat: 41.37617, lng: 2.14918 },
     { id: "police", name: "Comisaria Mossos - Les Corts", lat: 41.38762, lng: 2.13441 },
 ]
@@ -18,7 +18,7 @@ const meta = {
     tags: ["autodocs"],
     decorators: [
         (Story) => (
-            <div className="w-full min-w-[var(--wm-size-340)] max-w-[var(--wm-size-720)] bg-white p-4">
+            <div className="w-full min-w-[var(--wm-size-340)] max-w-[var(--wm-size-720)] bg-[color:var(--bg-base)] p-4">
                 <Story />
             </div>
         ),

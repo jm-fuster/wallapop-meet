@@ -217,6 +217,10 @@
                         "value": "{tokens.color.neutral.300}",
                         "type": "color"
                     },
+                    "bubble": {
+                        "value": "{tokens.color.neutral.300}",
+                        "type": "color"
+                    },
                     "focus": {
                         "value": "{tokens.color.palette.brand.500}",
                         "type": "color"

@@ -1,7 +1,12 @@
 import { describe, expect, it } from "vitest"
 
-import { createMeetupMachine, transitionMeetup } from "@/meetup/state-machine"
-import type { MeetupChatContext } from "@/meetup/types"
+import {
+    createMeetupMachine,
+    getMeetupExpiryAt,
+    isMeetupExpired,
+    transitionMeetup,
+} from "@/meetup/state-machine"
+import type { ActorRole, MeetupChatContext } from "@/meetup/types"
 
 describe("meetup state machine", () => {
     const scheduledAt = new Date("2026-02-20T18:00:00.000Z")
@@ -421,5 +426,196 @@ describe("meetup state machine", () => {
             expect(result.meetup.status).toBe("CONFIRMED")
             expect(result.meetup.walletHoldAmountEur).toBe(100)
         }
+    })
+
+    const buildProposed = () => {
+        const result = transitionMeetup(createMeetupMachine({ scheduledAt, chatContext }), {
+            type: "PROPOSE",
+            actorRole: "SELLER",
+        })
+        if (!result.ok) {
+            throw new Error("Se esperaba PROPOSE valido para el escenario.")
+        }
+        return result.meetup
+    }
+
+    const buildConfirmed = () => {
+        const result = transitionMeetup(buildProposed(), {
+            type: "ACCEPT",
+            actorRole: "BUYER",
+        })
+        if (!result.ok) {
+            throw new Error("Se esperaba ACCEPT valido para el escenario.")
+        }
+        return result.meetup
+    }
+
+    const buildArrived = (actorRole: ActorRole) => {
+        const result = transitionMeetup(buildConfirmed(), {
+            type: "MARK_ARRIVED",
+            actorRole,
+            occurredAt: new Date("2026-02-20T17:45:00.000Z"),
+            withinSafeRadius: true,
+        })
+        if (!result.ok) {
+            throw new Error("Se esperaba MARK_ARRIVED valido para el escenario.")
+        }
+        return result.meetup
+    }
+
+    it("permite registrar LATE_NOTICE tambien en ARRIVED", () => {
+        const result = transitionMeetup(buildArrived("SELLER"), {
+            type: "LATE_NOTICE",
+            actorRole: "BUYER",
+            etaMinutes: 10,
+            occurredAt: new Date("2026-02-20T17:50:00.000Z"),
+        })
+
+        expect(result.ok).toBe(true)
+        if (result.ok) {
+            expect(result.meetup.status).toBe("ARRIVED")
+            expect(result.meetup.lateNotices?.at(-1)?.etaMinutes).toBe(10)
+        }
+    })
+
+    it("penaliza la cancelacion posterior a la hora acordada", () => {
+        const result = transitionMeetup(buildConfirmed(), {
+            type: "CANCEL",
+            actorRole: "SELLER",
+            occurredAt: new Date("2026-02-20T18:10:00.000Z"),
+        })
+
+        expect(result.ok).toBe(true)
+        if (result.ok) {
+            const impact = result.meetup.reliabilityImpacts?.at(-1)
+            expect(impact?.type).toBe("POST_TIME_CANCELLATION")
+            expect(impact?.actorRole).toBe("SELLER")
+            expect(impact?.minutesBeforeScheduled).toBe(-10)
+        }
+    })
+
+    it("no penaliza la cancelacion con margen suficiente", () => {
+        const result = transitionMeetup(buildConfirmed(), {
+            type: "CANCEL",
+            actorRole: "BUYER",
+            occurredAt: new Date("2026-02-20T16:00:00.000Z"),
+        })
+
+        expect(result.ok).toBe(true)
+        if (result.ok) {
+            expect(result.meetup.reliabilityImpacts).toBeUndefined()
+        }
+    })
+
+    it("no penaliza la propuesta sustituida por contraoferta", () => {
+        const result = transitionMeetup(buildProposed(), {
+            type: "CANCEL",
+            actorRole: "BUYER",
+            occurredAt: new Date("2026-02-20T17:45:00.000Z"),
+            reason: "COUNTER_REPLACED",
+        })
+
+        expect(result.ok).toBe(true)
+        if (result.ok) {
+            expect(result.meetup.reliabilityImpacts).toBeUndefined()
+        }
+    })
+
+    it("deja que el vendedor que ha llegado cancele, y le deja a el la marca", () => {
+        const result = transitionMeetup(buildArrived("SELLER"), {
+            type: "CANCEL",
+            actorRole: "SELLER",
+            occurredAt: new Date("2026-02-20T18:10:00.000Z"),
+        })
+
+        expect(result.ok).toBe(true)
+        if (result.ok) {
+            expect(result.meetup.status).toBe("CANCELLED")
+            expect(result.meetup.cancelReason).toBe("MANUAL_CANCEL")
+            const impact = result.meetup.reliabilityImpacts?.at(-1)
+            expect(impact?.type).toBe("POST_TIME_CANCELLATION")
+            expect(impact?.actorRole).toBe("SELLER")
+        }
+    })
+
+    it("bloquea el no-show del vendedor que no ha marcado su llegada", () => {
+        const arrivedByBuyer = buildArrived("BUYER")
+        expect(arrivedByBuyer.arrivalCheckins?.SELLER).toBeUndefined()
+
+        const result = transitionMeetup(arrivedByBuyer, {
+            type: "REPORT_NO_SHOW",
+            actorRole: "SELLER",
+            occurredAt: new Date("2026-02-20T18:06:00.000Z"),
+        })
+
+        expect(result.ok).toBe(false)
+    })
+
+    it("calcula la caducidad segun el estado", () => {
+        expect(getMeetupExpiryAt(buildProposed())?.toISOString()).toBe(
+            "2026-02-20T18:00:00.000Z"
+        )
+        expect(getMeetupExpiryAt(buildConfirmed())?.toISOString()).toBe(
+            "2026-02-20T20:00:00.000Z"
+        )
+        expect(getMeetupExpiryAt(createMeetupMachine({ scheduledAt, chatContext }))).toBeNull()
+        expect(
+            isMeetupExpired(buildConfirmed(), new Date("2026-02-20T19:00:00.000Z"))
+        ).toBe(false)
+    })
+
+    it("caduca la propuesta que nadie contesto a su hora", () => {
+        const result = transitionMeetup(buildProposed(), {
+            type: "EXPIRE",
+            occurredAt: new Date("2026-02-20T18:01:00.000Z"),
+        })
+
+        expect(result.ok).toBe(true)
+        if (result.ok) {
+            expect(result.meetup.status).toBe("CANCELLED")
+            expect(result.meetup.cancelReason).toBe("PROPOSAL_EXPIRED")
+        }
+    })
+
+    it("bloquea la caducidad de una quedada que aun puede avanzar", () => {
+        const result = transitionMeetup(buildConfirmed(), {
+            type: "EXPIRE",
+            occurredAt: new Date("2026-02-20T19:00:00.000Z"),
+        })
+
+        expect(result.ok).toBe(false)
+    })
+
+    it("caduca la quedada al cerrarse la ventana de llegada, sin repartir culpa", () => {
+        const result = transitionMeetup(buildArrived("BUYER"), {
+            type: "EXPIRE",
+            occurredAt: new Date("2026-02-20T20:01:00.000Z"),
+        })
+
+        expect(result.ok).toBe(true)
+        if (result.ok) {
+            expect(result.meetup.status).toBe("CANCELLED")
+            expect(result.meetup.cancelReason).toBe("MEETUP_EXPIRED")
+            expect(result.meetup.reliabilityImpacts).toBeUndefined()
+            expect(result.meetup.walletHoldAmountEur).toBeUndefined()
+        }
+    })
+
+    it("bloquea la caducidad desde un estado final", () => {
+        const completed = transitionMeetup(buildArrived("SELLER"), {
+            type: "COMPLETE",
+            actorRole: "SELLER",
+            occurredAt: new Date("2026-02-20T18:20:00.000Z"),
+        })
+        if (!completed.ok) {
+            throw new Error("Se esperaba COMPLETE valido para el escenario.")
+        }
+
+        const result = transitionMeetup(completed.meetup, {
+            type: "EXPIRE",
+            occurredAt: new Date("2026-02-20T21:00:00.000Z"),
+        })
+
+        expect(result.ok).toBe(false)
     })
 })

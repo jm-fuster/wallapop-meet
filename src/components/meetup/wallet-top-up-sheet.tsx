@@ -51,7 +51,7 @@ function WalletTopUpSheet({ open, onClose, minSuggestedAmountEur, onConfirmTopUp
                     className="h-10 w-10 rounded-full bg-transparent p-0 text-[color:var(--text-primary)]"
                     onClick={onClose}
                 />
-                <h1 className="min-w-0 flex-1 text-center font-wallie-chunky text-[length:var(--wm-size-17)] text-[color:var(--text-primary)]">
+                <h1 className="min-w-0 flex-1 text-center font-wallie-chunky text-[length:var(--wm-size-18)] text-[color:var(--text-primary)]">
                     Recarga el monedero
                 </h1>
                 <a

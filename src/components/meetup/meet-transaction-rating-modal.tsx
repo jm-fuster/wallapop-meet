@@ -100,7 +100,7 @@ function MeetTransactionRatingModal({
                 </p>
 
                 <div
-                    className="mt-5 flex justify-center gap-1"
+                    className="mt-5 flex justify-center gap-2"
                     role="group"
                     aria-label="Puntuación de 1 a 5 estrellas"
                 >
@@ -117,7 +117,7 @@ function MeetTransactionRatingModal({
                             >
                                 <Star
                                     className={cn(
-                                        "size-[var(--wm-size-40)]",
+                                        "size-[var(--wm-size-48)]",
                                         filled
                                             ? "fill-[color:var(--meet-rating-prompt-cta)] text-[color:var(--meet-rating-prompt-cta)]"
                                             : "fill-none stroke-[color:var(--meet-rating-prompt-cta)] stroke-[1.75]"

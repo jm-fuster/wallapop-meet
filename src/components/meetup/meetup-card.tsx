@@ -41,7 +41,7 @@ type MeetupCardProps = {
     onOpenMapPreview?: () => void
     onRedZoneCancelConfirmed?: () => void
     useLiveMapThumbnail?: boolean
-    /** Distancia estimada al punto de encuentro; si es mayor a 100 m, se bloquea "Estoy aqui" y se muestra el aviso de proximidad. */
+    /** Distancia estimada al punto de encuentro; si es mayor a 100 m, se bloquea "Estoy aquí" y se muestra el aviso de proximidad. */
     distanceToMeetupMeters?: number | null
     /** Saldo disponible en Wallapop Wallet del comprador (para aceptar quedada con pago Wallet). */
     buyerWalletAvailableEur?: number
@@ -144,25 +144,19 @@ function formatIcsDate(value: Date): string {
     return iso.replace(/\.\d{3}Z$/, "Z")
 }
 
-function buildMeetupIcs(meetup: MeetupMachine): string {
+function buildGoogleCalendarUrl(meetup: MeetupMachine): string {
     const startAt = meetup.scheduledAt
     const endAt = new Date(startAt.getTime() + 60 * 60 * 1000)
     const location = meetup.proposedLocation ?? "Punto por confirmar"
 
-    return [
-        "BEGIN:VCALENDAR",
-        "VERSION:2.0",
-        "PRODID:-//Wallapop Meet//ES",
-        "BEGIN:VEVENT",
-        `UID:wallapop-meet-${startAt.getTime()}@wallapop.local`,
-        `DTSTAMP:${formatIcsDate(new Date())}`,
-        `DTSTART:${formatIcsDate(startAt)}`,
-        `DTEND:${formatIcsDate(endAt)}`,
-        "SUMMARY:Quedada Wallapop Meet",
-        `LOCATION:${location}`,
-        "END:VEVENT",
-        "END:VCALENDAR",
-    ].join("\r\n")
+    const params = new URLSearchParams({
+        action: "TEMPLATE",
+        text: "Quedada Wallapop Meet",
+        dates: `${formatIcsDate(startAt)}/${formatIcsDate(endAt)}`,
+        location,
+    })
+
+    return `https://calendar.google.com/calendar/render?${params.toString()}`
 }
 
 function createMiniMapMarkerIcon(): L.DivIcon {
@@ -232,14 +226,14 @@ function WalletInPersonQr({ value }: { value: string }) {
     return (
         <div
             ref={containerRef}
-            className="mx-auto aspect-square w-full max-w-[var(--wm-size-180)]"
+            className="mx-auto aspect-square w-full max-w-[var(--wm-size-180)] rounded-[var(--wm-size-8)] bg-[color:var(--bg-qr)] p-2"
         >
             {dimension > 0 ? (
                 <QRCode
                     value={value}
                     size={dimension}
                     level="M"
-                    title="Codigo QR de pago con Wallapop Wallet"
+                    title="Código QR de pago con Wallapop Wallet"
                     className="h-full w-full"
                 />
             ) : null}
@@ -393,21 +387,12 @@ function MeetupCard({
     }
 
     const addToCalendar = () => {
-        if (typeof window === "undefined" || typeof document === "undefined") {
+        if (typeof window === "undefined") {
             onError("No se pudo abrir el calendario en este entorno.")
             return
         }
 
-        const icsContent = buildMeetupIcs(meetup)
-        const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" })
-        const url = URL.createObjectURL(blob)
-        const anchor = document.createElement("a")
-        anchor.href = url
-        anchor.download = "wallapop-meet.ics"
-        document.body.appendChild(anchor)
-        anchor.click()
-        document.body.removeChild(anchor)
-        URL.revokeObjectURL(url)
+        window.open(buildGoogleCalendarUrl(meetup), "_blank", "noopener")
     }
 
     const ctaIds = resolveMeetupCardCtaIds({
@@ -533,7 +518,7 @@ function MeetupCard({
             case "arrived":
                 return {
                     id: "arrived",
-                    label: "Estoy aqui",
+                    label: "Estoy aquí",
                     variant: "primary",
                     run: () =>
                         applyEvent({
@@ -548,14 +533,14 @@ function MeetupCard({
             case "calendar":
                 return {
                     id: "calendar",
-                    label: "Anadir a Calendar",
+                    label: "Añadir a Calendar",
                     variant: "outline",
                     run: addToCalendar,
                     className: OUTLINE_ACTION_CLASS,
                     fullWidth: true,
                 }
             case "wallet-scan-sale": {
-                const scanLabel = `Escanear codigo QR de ${counterpartName ?? "el comprador"}`
+                const scanLabel = `Escanear código QR de ${counterpartName ?? "el comprador"}`
                 return {
                     id: "wallet-scan-sale",
                     label: (
@@ -594,7 +579,7 @@ function MeetupCard({
             case "no-show":
                 return {
                     id: "no-show",
-                    label: hasContradictionAlert ? "Definitivamente no esta" : "El comprador no ha aparecido",
+                    label: hasContradictionAlert ? "Definitivamente no está" : "El comprador no ha aparecido",
                     variant: "ghost",
                     run: openNoShowFlow,
                     className: TEXT_ACTION_CLASS,
@@ -658,10 +643,10 @@ function MeetupCard({
         (meetup.status === "PROPOSED" || meetup.status === "COUNTER_PROPOSED")
     return (
         <>
-            <section className="relative w-full max-w-[var(--wm-size-360)] rounded-[var(--wm-size-20)] border border-[color:var(--border-divider)] bg-[color:var(--bg-base)] px-4 pb-3 pt-3">
+            <section className="relative w-full max-w-[var(--wm-size-360)] rounded-[var(--wm-size-20)] border border-[color:var(--border-bubble)] bg-[color:var(--bg-base)] px-4 pb-3 pt-3">
             <button
                 type="button"
-                className="wm-mini-map relative mb-3 h-[var(--wm-size-88)] w-full overflow-hidden rounded-[var(--wm-size-14)] border border-[color:var(--border-strong)] bg-[color:var(--bg-accent-subtle)] text-left [contain:paint]"
+                className="wm-mini-map relative mb-3 h-[var(--wm-size-88)] w-full overflow-hidden rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-accent-subtle)] text-left [contain:paint]"
                 onClick={onOpenMapPreview}
             >
                 {shouldRenderLiveMapThumbnail ? (
@@ -695,7 +680,7 @@ function MeetupCard({
             </button>
 
             <div className="flex items-center gap-2.5">
-                <p className="font-wallie-chunky text-[length:var(--wm-size-17)] leading-[1.1] text-[color:var(--text-primary)]">
+                <p className="font-wallie-chunky text-[length:var(--wm-size-18)] leading-[1.1] text-[color:var(--text-primary)]">
                     {title}
                 </p>
                 <Label
@@ -876,7 +861,7 @@ function MeetupCard({
                                     className={PRIMARY_ACTION_CLASS}
                                     onClick={confirmNoShowFlow}
                                 >
-                                    {hasContradictionAlert ? "Definitivamente no esta" : "Confirmar no-show"}
+                                    {hasContradictionAlert ? "Definitivamente no está" : "Confirmar no-show"}
                                 </Button>
                                 <Button
                                     variant="outline"

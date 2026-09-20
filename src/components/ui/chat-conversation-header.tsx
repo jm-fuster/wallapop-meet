@@ -168,7 +168,7 @@ function ChatConversationHeader({
     return (
         <header
             className={cn(
-                "border-b border-[color:var(--border-divider)] bg-white px-4 pt-3 pb-3",
+                "border-b border-[color:var(--border-divider)] bg-[color:var(--bg-base)] px-4 pt-3 pb-3",
                 className
             )}
             {...props}
@@ -229,7 +229,7 @@ function ChatConversationHeader({
                     </button>
 
                     <IconButton
-                        label={menuLabel ?? `Mas opciones de la conversacion con ${userName}`}
+                        label={menuLabel ?? `Mas opciones de la conversación con ${userName}`}
                         icon={<WallapopIcon name="ellipsis_horizontal" size={20} strokeWidth={1.8} />}
                         variant="menu_close"
                         onClick={onMenuClick}
@@ -258,7 +258,7 @@ function ChatConversationHeader({
                     )}
 
                     <IconButton
-                        label={menuLabel ?? `Mas opciones de la conversacion con ${userName}`}
+                        label={menuLabel ?? `Mas opciones de la conversación con ${userName}`}
                         icon={<WallapopIcon name="ellipsis_horizontal" size={20} strokeWidth={1.8} />}
                         variant="menu_close"
                         onClick={onMenuClick}

@@ -1,5 +1,5 @@
 {
-    "generatedAt": "2026-04-06T19:11:08.965Z",
+    "generatedAt": "2026-09-20T18:42:33.329Z",
     "entryFile": "src/App.tsx",
     "entities": [
         {
@@ -633,6 +633,36 @@
             ]
         },
         {
+            "file": "src/components/meetup/meetup-location-map.tsx",
+            "storyFile": "src/components/meetup/meetup-location-map.stories.tsx",
+            "storyTitle": "Design System/Meetup Location Map",
+            "id": "meetup-location-map",
+            "entityType": "component",
+            "title": "Meetup Location Map",
+            "description": "Meetup Location Map del design system de Wallapop Meet.",
+            "status": "ready",
+            "states": [
+                "default",
+                "selected"
+            ],
+            "storybookTitle": "Design System/Meetup Location Map",
+            "tokensUsed": [
+                "tokens.color.semantic.action.primary",
+                "tokens.color.semantic.text.primary",
+                "tokens.color.semantic.border.divider"
+            ],
+            "stateCoverage": [
+                {
+                    "state": "default",
+                    "covered": true
+                },
+                {
+                    "state": "selected",
+                    "covered": true
+                }
+            ]
+        },
+        {
             "file": "src/components/meetup/meetup-pending-sale-banner.tsx",
             "storyFile": "src/components/meetup/meetup-pending-sale-banner.stories.tsx",
             "storyTitle": "Design System/Meetup Pending Sale Banner",
@@ -718,6 +748,59 @@
                 },
                 {
                     "state": "step_three",
+                    "covered": true
+                }
+            ]
+        },
+        {
+            "file": "src/components/meetup/meetup-timeline.tsx",
+            "storyFile": "src/components/meetup/meetup-timeline.stories.tsx",
+            "storyTitle": "Design System/Meetup Timeline",
+            "id": "meetup-timeline",
+            "entityType": "component",
+            "title": "Meetup Timeline",
+            "description": "Meetup Timeline del design system de Wallapop Meet.",
+            "status": "ready",
+            "states": [
+                "PROPOSED",
+                "COUNTER_PROPOSED",
+                "CONFIRMED",
+                "ARRIVED",
+                "COMPLETED",
+                "CANCELLED"
+            ],
+            "storybookTitle": "Design System/Meetup Timeline",
+            "tokensUsed": [
+                "tokens.color.semantic.border.strong",
+                "tokens.color.semantic.action.primary",
+                "tokens.color.semantic.text.primary",
+                "tokens.color.semantic.text.secondary",
+                "tokens.color.semantic.feedback.error",
+                "tokens.color.semantic.feedback.success"
+            ],
+            "stateCoverage": [
+                {
+                    "state": "PROPOSED",
+                    "covered": true
+                },
+                {
+                    "state": "COUNTER_PROPOSED",
+                    "covered": true
+                },
+                {
+                    "state": "CONFIRMED",
+                    "covered": true
+                },
+                {
+                    "state": "ARRIVED",
+                    "covered": true
+                },
+                {
+                    "state": "COMPLETED",
+                    "covered": true
+                },
+                {
+                    "state": "CANCELLED",
                     "covered": true
                 }
             ]
@@ -849,6 +932,41 @@
                 },
                 {
                     "state": "disabled",
+                    "covered": true
+                }
+            ]
+        },
+        {
+            "file": "src/components/ui/toast.tsx",
+            "storyFile": "src/components/ui/toast.stories.tsx",
+            "storyTitle": "Design System/Toast",
+            "id": "toast",
+            "entityType": "component",
+            "title": "Toast",
+            "description": "Toast del design system de Wallapop Meet.",
+            "status": "ready",
+            "states": [
+                "success",
+                "error",
+                "info"
+            ],
+            "storybookTitle": "Design System/Toast",
+            "tokensUsed": [
+                "tokens.color.semantic.action.primary",
+                "tokens.color.semantic.text.primary",
+                "tokens.color.semantic.border.divider"
+            ],
+            "stateCoverage": [
+                {
+                    "state": "success",
+                    "covered": true
+                },
+                {
+                    "state": "error",
+                    "covered": true
+                },
+                {
+                    "state": "info",
                     "covered": true
                 }
             ]

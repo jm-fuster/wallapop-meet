@@ -11,7 +11,7 @@ const meta = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <div className="w-[var(--wm-size-380)] overflow-hidden rounded-[var(--wm-size-18)] border border-[color:var(--border-divider)] bg-white">
+      <div className="w-[var(--wm-size-380)] overflow-hidden rounded-[var(--wm-size-20)] border border-[color:var(--border-divider)] bg-[color:var(--bg-base)]">
         <Story />
       </div>
     ),
@@ -33,7 +33,6 @@ export const Enabled: Story = {
   args: {
     ...baseArgs,
     actionLabel: "Siguiente",
-    actionTextTone: "dark",
     actionDisabled: false,
   },
 }
@@ -42,7 +41,6 @@ export const Disabled: Story = {
   args: {
     ...baseArgs,
     actionLabel: "Siguiente",
-    actionTextTone: "dark",
     actionDisabled: true,
   },
 }

@@ -231,8 +231,29 @@ describe("meetup ui rules", () => {
             hasEditProposalAction: false,
         })
 
-        expect(sellerCtas).toEqual(["complete", "no-show"])
+        expect(sellerCtas).toEqual(["complete", "no-show", "cancel"])
         expect(buyerCtas).toEqual(["arrived", "cancel"])
+    })
+
+    it("oculta el no-show al vendedor que no ha marcado su llegada", () => {
+        const buyerArrived = transitionMeetup(buildConfirmedMeetup(), {
+            type: "MARK_ARRIVED",
+            actorRole: "BUYER",
+            occurredAt: new Date("2026-02-20T17:45:00.000Z"),
+            withinSafeRadius: true,
+        })
+        if (!buyerArrived.ok) {
+            throw new Error("Se esperaba meetup ARRIVED para la prueba.")
+        }
+
+        const sellerCtas = resolveMeetupCardCtaIds({
+            meetup: buyerArrived.meetup,
+            currentTime: new Date("2026-02-20T17:50:00.000Z"),
+            actorRole: "SELLER",
+            hasEditProposalAction: false,
+        })
+
+        expect(sellerCtas).toEqual(["arrived", "complete", "cancel"])
     })
 
     it("sustituye confirmar venta por escaneo Wallet para vendedor en ARRIVED", () => {
@@ -258,7 +279,7 @@ describe("meetup ui rules", () => {
             hasEditProposalAction: false,
         })
 
-        expect(sellerCtas).toEqual(["wallet-scan-sale", "no-show"])
+        expect(sellerCtas).toEqual(["wallet-scan-sale", "no-show", "cancel"])
     })
 
     it("oculta CTA de llegada para BUYER en ARRIVED cuando ya marco llegada", () => {

@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from "node:fs"
+import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync, readdirSync } from "node:fs"
 import path from "node:path"
 
 const rootDir = process.cwd()
@@ -7,6 +7,51 @@ const generatedCatalogPath = "src/design-system/generated/design-system-catalog.
 const isCheckMode = process.argv.includes("--check")
 
 const importRegex = /from\s+["']([^"']+)["']/g
+const globImportRegex = /import\.meta\.glob\(\s*["']([^"']+)["']/g
+
+/**
+ * Vite resolves `import.meta.glob(...)` at build time, so files only reachable through
+ * it (e.g. design-system-page.tsx globbing every *.stories.tsx) are genuinely bundled
+ * even though they never appear as a literal `from "..."` import. Without expanding the
+ * pattern here, any component wired into the live catalog only via its own story file
+ * looks unreachable and silently drops out of the generated catalog.
+ */
+function expandGlobPattern(pattern, fromAbsoluteDir) {
+    const segments = pattern.split("/")
+    const wildcardIndex = segments.findIndex((segment) => segment.includes("*"))
+    const baseSegments = wildcardIndex === -1 ? segments : segments.slice(0, wildcardIndex)
+    const patternSegments = wildcardIndex === -1 ? [] : segments.slice(wildcardIndex)
+    const baseDir = path.resolve(fromAbsoluteDir, baseSegments.join("/"))
+
+    if (patternSegments.length === 0) {
+        return existsSync(baseDir) && statSync(baseDir).isFile() ? [baseDir] : []
+    }
+    if (!existsSync(baseDir)) {
+        return []
+    }
+
+    const regexSource = patternSegments
+        .join("/")
+        .replace(/[.+^${}()|[\]\\]/g, "\\$&")
+        .replace(/\*\*/g, "@@GLOBSTAR@@")
+        .replace(/\*/g, "[^/]*")
+        .replace(/@@GLOBSTAR@@/g, ".*")
+    const matcher = new RegExp(`^${regexSource}$`)
+
+    const matches = []
+    const walk = (dir) => {
+        for (const entry of readdirSync(dir, { withFileTypes: true })) {
+            const absolute = path.join(dir, entry.name)
+            if (entry.isDirectory()) {
+                walk(absolute)
+            } else if (entry.isFile() && matcher.test(toPosix(path.relative(baseDir, absolute)))) {
+                matches.push(absolute)
+            }
+        }
+    }
+    walk(baseDir)
+    return matches
+}
 
 function toPosix(projectPath) {
     return projectPath.replaceAll("\\", "/")
@@ -70,6 +115,16 @@ function collectReachableFiles(entryProjectPath) {
                 queue.push(resolved)
             }
         }
+
+        globImportRegex.lastIndex = 0
+        let globMatch
+        while ((globMatch = globImportRegex.exec(content))) {
+            for (const resolved of expandGlobPattern(globMatch[1], path.dirname(current))) {
+                if (!visited.has(resolved)) {
+                    queue.push(resolved)
+                }
+            }
+        }
     }
 
     return [...visited].map(projectPathFromAbsolute)
@@ -109,7 +164,7 @@ function parseDesignSystemMeta(componentPath) {
     if (!content.includes("designSystemMeta")) {
         return {
             ok: false,
-            error: "No exporta designSystemMeta.",
+            skip: true,
         }
     }
 
@@ -177,6 +232,7 @@ function run() {
     const componentFiles = reachableFiles.filter(
         (projectPath) =>
             projectPath.endsWith(".tsx") &&
+            !projectPath.endsWith(".stories.tsx") &&
             (projectPath.startsWith("src/components/ui/") || projectPath.startsWith("src/components/meetup/"))
     )
 
@@ -187,7 +243,9 @@ function run() {
     for (const componentPath of componentFiles) {
         const parsed = parseDesignSystemMeta(componentPath)
         if (!parsed.ok) {
-            errors.push(`[${componentPath}] ${parsed.error}`)
+            if (!parsed.skip) {
+                errors.push(`[${componentPath}] ${parsed.error}`)
+            }
             continue
         }
 
