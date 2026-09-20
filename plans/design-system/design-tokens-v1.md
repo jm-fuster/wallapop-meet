@@ -220,6 +220,7 @@ components
 2. Escala final de grises neutros.
 3. Duraciones finales de motion en iOS y Android.
 4. Reglas de elevación por plataforma (si divergen).
+5. `color/text/inverse` en Dark (`--text-inverse`, `--wm-color-semantic-text-inverse`): en Figma pasa de `#ffffff` (Light) a `#253238` (Dark). El bloque `.dark` de `src/index.css` lo deja fijo en `#ffffff` y lo agrupa en su comentario junto a los valores que sí son invariantes entre modos (`action-primary`, `text-on-action`, `text-on-dark`, `feedback-*` base, sombras, scrim, `--bg-qr`) — pero para `text-inverse` esa nota no es correcta: Figma sí lo remapea. No se ha tocado el código porque los 11 usos de `--text-inverse` en producción (badges, tabs seleccionados, botones `reserved`/`sold`/`critical`, CTA del composer) son siempre texto sobre un fill de marca o de estado, y esos fills son ellos mismos invariantes entre modos; seguir el valor `#253238` de Figma dejaría texto casi negro sobre esos mismos fondos saturados en Dark. Pendiente de que Jorge decida si el remapeo de Figma aplica solo a otros usos de `text-inverse` que el código todavía no tiene, o si es un desajuste en el propio archivo de Figma.
 
 
 
