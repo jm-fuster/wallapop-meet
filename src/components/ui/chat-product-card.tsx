@@ -110,7 +110,7 @@ function ChatProductCard({
                 {statusLabel ? (
                     <span
                         className={cn(
-                            "absolute right-4 bottom-4 inline-flex items-center gap-1 rounded-full bg-[color:var(--bg-base)] px-3 py-1 font-wallie-chunky text-[length:var(--wm-size-14)]",
+                            "absolute right-4 bottom-4 inline-flex items-center gap-1 rounded-full bg-[color:var(--bg-status-badge)] px-3 py-1 font-wallie-chunky text-[length:var(--wm-size-14)]",
                             statusBadgeConfig.toneClassName
                         )}
                     >
