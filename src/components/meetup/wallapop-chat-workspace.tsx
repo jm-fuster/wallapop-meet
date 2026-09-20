@@ -1303,7 +1303,7 @@ function MeetupMapPreviewModal({
 }) {
     return (
         <div className="fixed inset-0 z-[60] bg-[color:var(--text-primary)]/55 p-0 md:p-6">
-            <section className="flex h-full w-full flex-col bg-[color:var(--bg-base)] md:mx-auto md:h-[88vh] md:max-w-[var(--wm-size-760)] md:rounded-[var(--wm-size-18)]">
+            <section className="flex h-full w-full flex-col bg-[color:var(--bg-base)] md:mx-auto md:h-[88vh] md:max-w-[var(--wm-size-760)] md:rounded-[var(--wm-size-20)]">
                 <header className="flex items-center justify-between border-b border-[color:var(--border-divider)] px-4 py-3">
                     <p className="font-wallie-chunky text-[length:var(--wm-size-18)] text-[color:var(--text-primary)]">Mapa de la quedada</p>
                     <IconButton
@@ -1634,7 +1634,7 @@ function MeetupProposalOverlay({
                                     <Button
                                         type="button"
                                         variant="primary"
-                                        className="mt-4 h-auto w-full rounded-full py-3 text-[length:var(--wm-size-17)] text-[color:var(--text-primary)]"
+                                        className="mt-4 h-auto w-full rounded-full py-3 text-[length:var(--wm-size-18)] text-[color:var(--text-primary)]"
                                         onClick={onConfirmMapPickerPoint}
                                     >
                                         Seleccionar
@@ -1707,7 +1707,7 @@ function MeetupProposalOverlay({
                                                     timeOption < minTimeValue,
                                             })),
                                         ]}
-                                        className="rounded-[var(--wm-size-10)] bg-[color:var(--bg-base)] px-3 py-2 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-primary)] focus:border-[color:var(--action-primary)]"
+                                        className="rounded-[var(--wm-size-12)] bg-[color:var(--bg-base)] px-3 py-2 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-primary)] focus:border-[color:var(--action-primary)]"
                                     />
                                 </div>
                             ) : null}

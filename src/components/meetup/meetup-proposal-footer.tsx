@@ -50,7 +50,7 @@ function MeetupProposalFooter({
             <img
               src={listingImageSrc}
               alt={itemTitle}
-              className="h-[var(--wm-size-42)] w-[var(--wm-size-42)] shrink-0 rounded-[var(--wm-size-10)] object-cover"
+              className="h-[var(--wm-size-42)] w-[var(--wm-size-42)] shrink-0 rounded-[var(--wm-size-12)] object-cover"
             />
             <div className="min-w-0">
               <p className="truncate font-wallie-chunky text-[length:var(--wm-size-15)] leading-tight text-[color:var(--text-primary)]">

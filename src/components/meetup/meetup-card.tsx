@@ -646,7 +646,7 @@ function MeetupCard({
             <section className="relative w-full max-w-[var(--wm-size-360)] rounded-[var(--wm-size-20)] border border-[color:var(--border-bubble)] bg-[color:var(--bg-base)] px-4 pb-3 pt-3">
             <button
                 type="button"
-                className="wm-mini-map relative mb-3 h-[var(--wm-size-88)] w-full overflow-hidden rounded-[var(--wm-size-14)] border border-[color:var(--border-strong)] bg-[color:var(--bg-accent-subtle)] text-left [contain:paint]"
+                className="wm-mini-map relative mb-3 h-[var(--wm-size-88)] w-full overflow-hidden rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-accent-subtle)] text-left [contain:paint]"
                 onClick={onOpenMapPreview}
             >
                 {shouldRenderLiveMapThumbnail ? (
@@ -680,7 +680,7 @@ function MeetupCard({
             </button>
 
             <div className="flex items-center gap-2.5">
-                <p className="font-wallie-chunky text-[length:var(--wm-size-17)] leading-[1.1] text-[color:var(--text-primary)]">
+                <p className="font-wallie-chunky text-[length:var(--wm-size-18)] leading-[1.1] text-[color:var(--text-primary)]">
                     {title}
                 </p>
                 <Label

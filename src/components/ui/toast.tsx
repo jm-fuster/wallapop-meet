@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 
 import type { DesignSystemEntityMeta } from "@/design-system/catalog/types"
 const toastVariants = cva(
-    "w-full rounded-[var(--wm-size-10)] border px-3 py-2.5 shadow-[var(--wm-shadow-200)]",
+    "w-full rounded-[var(--wm-size-12)] border px-3 py-2.5 shadow-[var(--wm-shadow-200)]",
     {
         variants: {
             variant: {

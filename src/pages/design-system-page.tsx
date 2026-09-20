@@ -492,7 +492,7 @@ function CatalogStoryCard({ entity }: { entity: CatalogEntity }) {
 
     if (!module) {
         return (
-            <article className="rounded-[var(--wm-size-10)] border border-[color:var(--border-divider)] p-3">
+            <article className="rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] p-3">
                 <p className="font-wallie-chunky text-[length:var(--wm-size-16)] text-[color:var(--text-primary)]">{entity.title}</p>
                 <p className="mt-2 font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--feedback-error)]">
                     No hay story disponible para {entity.storybookTitle}.
@@ -646,7 +646,7 @@ function CatalogStoryCard({ entity }: { entity: CatalogEntity }) {
     }
 
     return (
-        <article className="rounded-[var(--wm-size-10)] border border-[color:var(--border-divider)] p-3">
+        <article className="rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] p-3">
             <p className="font-wallie-chunky text-[length:var(--wm-size-16)] text-[color:var(--text-primary)]">{entity.title}</p>
             <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">{entity.storybookTitle}</p>
             {entity.states.length > 1 ? (
@@ -918,8 +918,8 @@ function DesignSystemPage() {
                                 { title: "Neutral Scale", items: neutralScale },
                             ].map((group) => (
                                 <div key={group.title}>
-                                    <h4 className="mb-3 font-wallie-chunky text-[length:var(--wm-size-17)]">{group.title}</h4>
-                                    <div className="overflow-x-auto rounded-[var(--wm-size-10)] border border-[color:var(--border-divider)] p-2">
+                                    <h4 className="mb-3 font-wallie-chunky text-[length:var(--wm-size-18)]">{group.title}</h4>
+                                    <div className="overflow-x-auto rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] p-2">
                                         <div className="flex min-w-max gap-2">
                                             {group.items.map((item) => {
                                                 const contrastHint = getContrastTextHint(item.value)
@@ -965,7 +965,7 @@ function DesignSystemPage() {
                         </p>
                         <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
                             {visibleSemanticColors.map((item) => (
-                                <article key={item.tokenPath} className="rounded-[var(--wm-size-10)] border border-[color:var(--border-divider)] p-3">
+                                <article key={item.tokenPath} className="rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] p-3">
                                     <div className="h-12 rounded-[var(--wm-size-8)] border border-[color:var(--border-divider)]" style={{ backgroundColor: item.value }} />
                                     <p className="mt-2 font-wallie-chunky text-[length:var(--wm-size-14)] text-[color:var(--text-primary)]">{item.name}</p>
                                     <p className="mt-1 font-mono text-[length:var(--wm-size-11)] text-[color:var(--text-secondary)]">{item.tokenPath}</p>
@@ -1103,7 +1103,7 @@ function DesignSystemPage() {
                         </p>
                         <div className="mt-5 grid gap-3">
                             {spacingTokens.map((item) => (
-                                <div key={item.tokenPath} className="flex items-center gap-3 rounded-[var(--wm-size-10)] border border-[color:var(--border-divider)] p-3">
+                                <div key={item.tokenPath} className="flex items-center gap-3 rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] p-3">
                                     <div className="h-3 rounded-[var(--wm-size-999)] bg-[color:var(--action-primary)]" style={{ width: `${Math.max(item.pixels, 2)}px` }} />
                                     <p className="w-[var(--wm-size-190)] font-wallie-fit text-[length:var(--wm-size-12)]">{item.tokenPath}</p>
                                     <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">{item.value}</p>
@@ -1136,7 +1136,7 @@ function DesignSystemPage() {
                         <div className="mt-5 grid gap-4 md:grid-cols-2">
                             {shadowTokens.map((item) => (
                                 <article key={item.tokenPath} className="rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] bg-[color:var(--bg-base)] p-4">
-                                    <div className="h-20 rounded-[var(--wm-size-10)] bg-[color:var(--bg-base)]" style={{ boxShadow: item.value }} />
+                                    <div className="h-20 rounded-[var(--wm-size-12)] bg-[color:var(--bg-base)]" style={{ boxShadow: item.value }} />
                                     <p className="mt-3 font-wallie-fit text-[length:var(--wm-size-12)]">{item.tokenPath}</p>
                                     <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">{item.value}</p>
                                 </article>

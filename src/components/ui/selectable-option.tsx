@@ -56,11 +56,11 @@ function SelectableOption({
             aria-pressed={selected}
             aria-disabled={disabled}
             className={cn(
-                "w-full rounded-[var(--wm-size-18)] border px-4 py-4 text-left transition-shadow",
+                "w-full rounded-[var(--wm-size-20)] border px-4 py-4 text-left transition-shadow",
                 selected
                     ? "border-[color:var(--text-primary)] shadow-[inset_0_0_0_1px_var(--text-primary)]"
                     : "border-[color:var(--border-strong)]",
-                disabled ? "cursor-not-allowed opacity-60" : "cursor-pointer",
+                disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
                 className
             )}
         >

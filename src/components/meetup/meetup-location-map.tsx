@@ -107,7 +107,7 @@ function MeetupLocationMap({
     )
 
     return (
-        <div className="h-[var(--wm-size-280)] w-full overflow-hidden rounded-[var(--wm-size-14)] border border-[color:var(--border-strong)]">
+        <div className="h-[var(--wm-size-280)] w-full overflow-hidden rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)]">
             <MapContainer
                 center={[center.lat, center.lng]}
                 zoom={14}
