@@ -144,25 +144,19 @@ function formatIcsDate(value: Date): string {
     return iso.replace(/\.\d{3}Z$/, "Z")
 }
 
-function buildMeetupIcs(meetup: MeetupMachine): string {
+function buildGoogleCalendarUrl(meetup: MeetupMachine): string {
     const startAt = meetup.scheduledAt
     const endAt = new Date(startAt.getTime() + 60 * 60 * 1000)
     const location = meetup.proposedLocation ?? "Punto por confirmar"
 
-    return [
-        "BEGIN:VCALENDAR",
-        "VERSION:2.0",
-        "PRODID:-//Wallapop Meet//ES",
-        "BEGIN:VEVENT",
-        `UID:wallapop-meet-${startAt.getTime()}@wallapop.local`,
-        `DTSTAMP:${formatIcsDate(new Date())}`,
-        `DTSTART:${formatIcsDate(startAt)}`,
-        `DTEND:${formatIcsDate(endAt)}`,
-        "SUMMARY:Quedada Wallapop Meet",
-        `LOCATION:${location}`,
-        "END:VEVENT",
-        "END:VCALENDAR",
-    ].join("\r\n")
+    const params = new URLSearchParams({
+        action: "TEMPLATE",
+        text: "Quedada Wallapop Meet",
+        dates: `${formatIcsDate(startAt)}/${formatIcsDate(endAt)}`,
+        location,
+    })
+
+    return `https://calendar.google.com/calendar/render?${params.toString()}`
 }
 
 function createMiniMapMarkerIcon(): L.DivIcon {
@@ -232,7 +226,7 @@ function WalletInPersonQr({ value }: { value: string }) {
     return (
         <div
             ref={containerRef}
-            className="mx-auto aspect-square w-full max-w-[var(--wm-size-180)]"
+            className="mx-auto aspect-square w-full max-w-[var(--wm-size-180)] rounded-[var(--wm-size-8)] bg-[color:var(--bg-qr)] p-2"
         >
             {dimension > 0 ? (
                 <QRCode
@@ -393,21 +387,12 @@ function MeetupCard({
     }
 
     const addToCalendar = () => {
-        if (typeof window === "undefined" || typeof document === "undefined") {
+        if (typeof window === "undefined") {
             onError("No se pudo abrir el calendario en este entorno.")
             return
         }
 
-        const icsContent = buildMeetupIcs(meetup)
-        const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" })
-        const url = URL.createObjectURL(blob)
-        const anchor = document.createElement("a")
-        anchor.href = url
-        anchor.download = "wallapop-meet.ics"
-        document.body.appendChild(anchor)
-        anchor.click()
-        document.body.removeChild(anchor)
-        URL.revokeObjectURL(url)
+        window.open(buildGoogleCalendarUrl(meetup), "_blank", "noopener")
     }
 
     const ctaIds = resolveMeetupCardCtaIds({

@@ -297,7 +297,7 @@ Reglas:
   - `pendiente`: blanco/neutro
   - `COUNTER_PROPOSED`: reutiliza `pendiente` (sin variante visual adicional)
   - `confirmada`: success
-  - `has llegado`: info
+  - `has llegado`: warning (ambar; decision 2026-08-28: comunica mejor la accion en curso que el info azul que pedia la version anterior de esta seccion)
   - `completada`: acento de vendido (`#D32069`)
   - `cancelada`: error
 - El bloque informativo de la propuesta debe renderizar exactamente 3 filas con icono a la izquierda:

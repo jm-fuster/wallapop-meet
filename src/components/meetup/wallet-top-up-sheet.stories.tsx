@@ -40,5 +40,11 @@ function OpenSheetHarness({
 }
 
 export const Default: Story = {
+    args: {
+        open: true,
+        onClose: () => undefined,
+        minSuggestedAmountEur: 50,
+        onConfirmTopUp: () => undefined,
+    },
     render: () => <OpenSheetHarness minSuggestedAmountEur={50} />,
 }
