@@ -54,9 +54,9 @@ Objetivos:
   - El boton `Siguiente` no se deshabilita; al pulsar sin completar, muestra error global y marca en error los campos faltantes.
 - Reglas actuales del paso 3 (importe y pago):
   - El importe usa el componente `Input` del design system.
-  - El copy de moneda en UI usa simbolo `€` (no `EUR`).
-  - El importe admite formato decimal (`hasta 2 decimales`) y limita la entrada a un maximo de `99999 €`.
-  - Si el usuario supera `2000 €`, se muestra una alerta destacada de normativa DAC7 con enlace externo de ayuda (`Mas informacion`).
+  - El copy de moneda en UI usa simbolo `â‚¬` (no `EUR`).
+  - El importe admite formato decimal (`hasta 2 decimales`) y limita la entrada a un maximo de `99999 â‚¬`.
+  - Si el usuario supera `2000 â‚¬`, se muestra una alerta destacada de normativa DAC7 con enlace externo de ayuda (`Mas informacion`).
   - Los metodos de pago usan cards seleccionables con iconografia contextual (`CASH`, `WALLET`).
   - En metodo de pago, los iconos se muestran sin circunferencia/capsula de fondo.
   - El CTA final usa el texto `Enviar propuesta`.
@@ -79,7 +79,7 @@ Objetivos:
   - Cada card muestra indicador visual `selected` / `unselected` a la derecha:
     - `unselected`: aro fino con centro blanco.
     - `selected`: aro oscuro grueso con centro blanco reducido.
-  - Los puntos seguros muestran un unico label: `Punto seguro · N ventas completadas`.
+  - Los puntos seguros muestran un unico label: `Punto seguro Â· N ventas completadas`.
   - Los puntos personalizados no muestran label `Personalizado` en la card de opcion.
 - Mapa en selector de punto:
   - Implementado sobre OpenStreetMap (`react-leaflet`).
@@ -259,9 +259,9 @@ No se introducen nuevos estados terminales en esta iteracion.
   - Sustituir `EXPIRE` por `REPORT_NO_SHOW` y `CONFIRM_NO_SHOW_FINAL` (seller).
   - `LATE_NOTICE` se mantiene como capacidad de dominio no expuesta en UI por ahora.
 - `MeetupMachine`:
-  - Añadir metadata de check-in por rol (timestamp y resultado de proximidad).
-  - Añadir metadata de resolucion de no-show (reportante, ausente inferido, fuente de evidencia).
-  - Añadir metadata de impacto de fiabilidad para cancelaciones en zona roja.
+  - AÃ±adir metadata de check-in por rol (timestamp y resultado de proximidad).
+  - AÃ±adir metadata de resolucion de no-show (reportante, ausente inferido, fuente de evidencia).
+  - AÃ±adir metadata de impacto de fiabilidad para cancelaciones en zona roja.
 
 ---
 
