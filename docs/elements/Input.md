@@ -1,13 +1,13 @@
 # Inventario de Input observado en Wallapop Upload
 
-## Fuente de analisis
+## Fuente de análisis
 - URL: `https://es.wallapop.com/app/catalog/upload/consumer-goods`
 - Fecha de captura: 2026-02-18
-- Metodo: inspeccion con MCP Chrome DevTools + `getComputedStyle` + lectura de reglas CSS runtime
+- Método: inspección con MCP Chrome DevTools + `getComputedStyle` + lectura de reglas CSS runtime
 - Viewport de referencia: `1536x678` (`devicePixelRatio: 1.25`)
-- Contexto: sesion iniciada, flujo `Sube tu anuncio`, campo `Resumen del producto`
+- Contexto: sesión iniciada, flujo `Sube tu anuncio`, campo `Resumen del producto`
 
-## Especificacion visual del componente
+## Especificación visual del componente
 
 ### 1) `input.text` (walla-text-input)
 - Ejemplo: `Resumen del producto`
@@ -24,7 +24,7 @@
   - `padding: 20px 16px`
   - `min-height: 24px`
   - `box-sizing: content-box`
-- Tipografia (input):
+- Tipografía (input):
   - Font family: `WallieFit`
   - Font size: `16px`
   - Font weight: `400`
@@ -34,11 +34,11 @@
   - Label/subtext/counter base: `rgb(92, 122, 137)` (`#5C7A89`)
   - Placeholder en foco: `rgb(163, 184, 193)` (`#A3B8C1`)
 - Borde:
-  - Sin `border` fisico; se representa con `box-shadow` inset
+  - Sin `border` físico; se representa con `box-shadow` inset
 - Cursor:
-  - Base en input: `pointer` (segun CSS del componente)
+  - Base en input: `pointer` (según CSS del componente)
 
-## Estados del Input (extraidos de reglas y validacion en vivo)
+## Estados del Input (extraidos de reglas y validación en vivo)
 
 ### `default`
 - Clase wrapper: `.inputWrapper.sc-walla-text-input`
@@ -75,7 +75,7 @@
   - `box-shadow: rgb(206, 53, 40) 0 0 0 2px inset` (`#CE3528`)
   - Label en color `rgb(206, 53, 40)`
   - En hover mantiene el mismo borde rojo (sin cambio)
-  - Referencia visual de producto: icono de exclamacion rojo en la derecha del campo
+  - Referencia visual de producto: icono de exclamación rojo en la derecha del campo
 
 ### `success`
 - Clase wrapper: `.inputWrapper--success.sc-walla-text-input`
@@ -100,10 +100,10 @@
 - `span.charCounter.sc-walla-text-input`
   - `12px/16px`, color `#5C7A89`, alineado a la derecha, `padding-inline: 16px`
 - `right-section` (icono limpiar)
-  - Se muestra en estado con contenido/foco; posicion absoluta (`right: 16px; top: 2px; bottom: 2px`)
-- `error-indicator` (implementacion Wallapop Meet)
+  - Se muestra en estado con contenido/foco; posición absoluta (`right: 16px; top: 2px; bottom: 2px`)
+- `error-indicator` (implementación Wallapop Meet)
   - Indicador circular con `!` en blanco sobre fondo rojo
-  - Posicion: derecha del campo, centrado verticalmente
+  - Posición: derecha del campo, centrado verticalmente
   - Objetivo: reforzar visibilidad de error en estado `error`
 
 ## Tokens candidatos (extraidos de Input)
@@ -126,4 +126,4 @@
 
 ## Limitaciones de captura
 - El estado `disabled` no se encontro activo en un nodo de este flujo; se documento desde reglas CSS cargadas en runtime.
-- No se forzo simulacion de `:active`/`focus-visible`; se documento `focused` real via interaccion.
+- No se forzo simulación de `:active`/`focus-visible`; se documento `focused` real vía interacción.

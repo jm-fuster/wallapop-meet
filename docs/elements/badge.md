@@ -1,17 +1,17 @@
 # Inventario de `Badge` observado en Wallapop Chat
 
-## Fuente de analisis
+## Fuente de análisis
 - URL: `https://es.wallapop.com/app/chat`
 - Fecha de captura: 2026-02-19
-- Metodo: inspeccion con MCP Chrome DevTools + `getComputedStyle`
+- Método: inspección con MCP Chrome DevTools + `getComputedStyle`
 - Viewport de referencia: `1536x678` (`devicePixelRatio: 1.25`)
 - Contexto: bandeja de conversaciones y tabs de chat
 
-## Especificacion visual observada
+## Especificación visual observada
 
 ### 1) `badge.unread.conversation`
 - Elemento/clase: `div.InboxConversation__badge.InboxConversation__badge--rounded`
-- Tipografia base:
+- Tipografía base:
   - `12px/18px`, `400`, `Wallie, Helvetica`
 - Color texto: `#FFFFFF`
 - Fondo: `#D32069`
@@ -22,7 +22,7 @@ Estado en captura:
 
 ### 2) `badge.notification.host` (host de web component)
 - Elemento: `walla-notification-badge.hydrated`
-- Dimensiones observadas segun contexto:
+- Dimensiones observadas según contexto:
   - `32x32px` (acciones de navbar superior)
   - `24x24px` (algunas entradas de menu lateral)
 - Nota: el visual final se pinta internamente en el web component.
@@ -34,5 +34,5 @@ Estado en captura:
 - `tokens.radius.badge.round = 50%`
 
 ## Limitaciones de captura
-- No habia contador visible (`>0`) en las conversaciones en esta sesion.
+- No había contador visible (`>0`) en las conversaciones en esta sesión.
 - En `walla-notification-badge` no se extrajo el detalle interno del Shadow DOM en esta pasada; se documenta host y dimensiones de uso.

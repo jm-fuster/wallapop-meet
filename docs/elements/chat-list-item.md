@@ -1,20 +1,20 @@
 # Inventario de `List Item` observado en Wallapop Chat
 
-## Fuente de analisis
+## Fuente de análisis
 - URL: `https://es.wallapop.com/app/chat`
 - Fecha de captura: 2026-02-19
-- Metodo: inspeccion con MCP Chrome DevTools + `getComputedStyle`
+- Método: inspección con MCP Chrome DevTools + `getComputedStyle`
 - Viewport de referencia: `1536x678` (`devicePixelRatio: 1.25`)
-- Contexto: sesion iniciada, bandeja de conversaciones visible
+- Contexto: sesión iniciada, bandeja de conversaciones visible
 
-## Validacion movil (responsive)
-- Fecha de validacion: 2026-02-19
+## Validación móvil (responsive)
+- Fecha de validación: 2026-02-19
 - Viewport: `390x844` (`devicePixelRatio: 1`)
 - `InboxConversation`: `384x100px`
 - Padding: `20px 12px 20px 20px`
-- Se mantiene altura de fila `100px` con contenido truncado en una linea para `itemTitle` y `messagePreview`.
+- Se mantiene altura de fila `100px` con contenido truncado en una línea para `itemTitle` y `messagePreview`.
 
-## Especificacion visual del componente
+## Especificación visual del componente
 
 ### 1) `list_item.conversation` (`InboxConversation`)
 - Elemento/clase: `div.InboxConversation`
@@ -45,7 +45,7 @@
 - Radio: `50%`
 - Estado observado en la captura: oculto (`display: none`, contador `0`)
 
-## Elementos adicionales observados en movil
+## Elementos adicionales observados en móvil
 - Indicador sobre miniatura (esquina superior izquierda):
   - Variante `deal` (icono de trato/handshake)
   - Variante `bookmark` (icono de guardado)
@@ -53,14 +53,14 @@
     - `bookmark` (reservado): `#86418A`
     - `deal` (vendido): `#D32069`
 - Estado de entrega en preview:
-  - Doble check al inicio del texto (`messagePreview`) cuando el ultimo mensaje es del usuario
+  - Doble check al inicio del texto (`messagePreview`) cuando el último mensaje es del usuario
   - En Wallapop Meet se renderiza con `WallapopIcon(name="double_check")` para mantener consistencia con burbuja de mensaje
   - Color:
     - `read`: verde/turquesa (`#13C1AC`)
     - `sent`: gris claro (`#C2CDD3`)
-- Accion de tres puntos:
+- Acción de tres puntos:
   - En Wallapop Meet no se renderiza en cada fila de preview.
-  - Se muestra en el header de la conversacion abierta (`ConversationPane`), alineada a la derecha.
+  - Se muestra en el header de la conversación abierta (`ConversationPane`), alineada a la derecha.
 
 ## Tokens candidatos
 - `tokens.color.list_item.title = #253238`
@@ -77,13 +77,13 @@
 ## Limitaciones de captura
 - No se detecto en pantalla una fila con badge visible (`>0`), pero se extrajeron sus estilos base desde el nodo runtime.
 
-## Implementacion actual en el repositorio (2026-02-21)
+## Implementación actual en el repositorio (2026-02-21)
 - Componente: `src/components/ui/chat-list-item.tsx`.
 - Storybook: `Design System/Chat List Item`.
-- En `InboxPane`, `avatarSrc` se alimenta con `listingImageSrc` para mantener la miniatura del articulo en cada conversacion.
+- En `InboxPane`, `avatarSrc` se alimenta con `listingImageSrc` para mantener la miniatura del artículo en cada conversación.
 - Separador entre filas:
   - Se aplica `border-b` por defecto (`showDivider = true`) con color `var(--wm-color-border-default)` para replicar el stroke de inbox entre items.
-  - La base del boton usa `border-0` (en lugar de `border-none`) para permitir que el borde inferior sea visible.
+  - La base del botón usa `border-0` (en lugar de `border-none`) para permitir que el borde inferior sea visible.
 - Estado visual `selected` en inbox:
-  - Desktop: mantiene resaltado del item seleccionado para conservar el contexto de conversacion abierta.
-  - Movil: al volver desde una conversacion a la bandeja (`mobileView = "inbox"`), el item deja de mostrarse como pulsado para volver al estado inicial de lista.
+  - Desktop: mantiene resaltado del item seleccionado para conservar el contexto de conversación abierta.
+  - Móvil: al volver desde una conversación a la bandeja (`mobileView = "inbox"`), el item deja de mostrarse como pulsado para volver al estado inicial de lista.

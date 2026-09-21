@@ -2,34 +2,34 @@
 
 ## 1. Proposito y alcance
 
-Este documento define la **Fuente de la Verdad** del sistema de diseno de Wallapop Meet para asegurar consistencia visual, escalabilidad y gobernanza tecnica.
+Este documento define la **Fuente de la Verdad** del sistema de diseño de Wallapop Meet para asegurar consistencia visual, escalabilidad y gobernanza técnica.
 
 Alcance v1:
 - Canon de tokens y reglas de consumo.
 - Precedencia de fuentes cuando hay conflictos.
-- Reglas estrictas para codigo nuevo.
-- Patrones base de UI (sin duplicar documentacion detallada ya existente).
-- Reglas minimas de accesibilidad.
+- Reglas estrictas para código nuevo.
+- Patrones base de UI (sin duplicar documentación detallada ya existente).
+- Reglas mínimas de accesibilidad.
 
 Fuera de alcance v1:
 - Redefinir componentes ya especificados en detalle en `docs/elements/*` y `plans/design-system/*`.
-- Introducir nuevos tokens sin proceso de aprobacion.
+- Introducir nuevos tokens sin proceso de aprobación.
 
 ## 2. Fuente de verdad y precedencia
 
 Orden oficial de precedencia:
 1. `styles.json` (canon de tokens y contratos base de componentes).
 2. `src/index.css` (capa runtime de variables CSS y aliases de tema).
-3. `src/design-system/tokens.ts` (contrato tipado de consumo de tokens semanticos en TS/TSX).
-4. Implementacion de componentes en `src/components/*` (referencia de estado actual, no canon si contradice tokens).
+3. `src/design-system/tokens.ts` (contrato tipado de consumo de tokens semánticos en TS/TSX).
+4. Implementación de componentes en `src/components/*` (referencia de estado actual, no canon si contradice tokens).
 
 Regla de conflicto:
-- Si existe diferencia entre implementacion y token, **prevalece el token**.
-- Cualquier hardcode actual se registra como deuda de migracion (seccion 9).
+- Si existe diferencia entre implementación y token, **prevalece el token**.
+- Cualquier hardcode actual se registra como deuda de migración (sección 9).
 
 ## 3. Design Tokens (catalogo normativo)
 
-Fuente canonica: `styles.json`.
+Fuente canónica: `styles.json`.
 
 ### 3.1 Color
 
@@ -57,7 +57,7 @@ Namespaces oficiales:
 - Extensiones de dominio UI: `tokens.color.bottom_nav.*`, `tokens.color.list_item.*`, `tokens.color.card.action.*`
 - Estados de labels en meetup card: `tokens.color.meetup_status.*` (`pending`, `confirmed`, `arrived`, `completed`, `expired`, `cancelled`) con `background`, `border`, `text`.
 
-### 3.2 Tipografia
+### 3.2 Tipografía
 
 Namespaces oficiales:
 - `tokens.typography.family.primary`
@@ -97,10 +97,10 @@ Regla:
 - Si hay conflicto visual entre una story y tokens, prevalece token y la story se actualiza.
 - En componentes documentados en Storybook no se aceptan nuevos hex hardcodeados para color.
 
-### 4.1 Semantica de color
+### 4.1 Semántica de color
 
 - `semantic.error`: fallos bloqueantes, acciones destructivas, invalidaciones.
-- `semantic.warning`: riesgo o atencion requerida sin bloqueo.
+- `semantic.warning`: riesgo o atención requerida sin bloqueo.
 - `success`: usar `brand` (Wallapop no usa familia de success separada).
 
 ### 4.2 Fondos y superficies
@@ -113,37 +113,37 @@ Regla:
 
 Todo componente interactivo nuevo debe cubrir explicitamente:
 - `disabled`
-- `loading` (si aplica accion asincrona)
-- `error` (si maneja validacion o fallo)
+- `loading` (si aplica acción asincrona)
+- `error` (si maneja validación o fallo)
 
 ### 4.4 Regla absoluta de hardcoding
 
-En codigo nuevo esta prohibido:
+En código nuevo esta prohibido:
 - Colores hex directos (`#xxxxxx`)
-- Espaciados/radios/tamanos no tokenizados (ej. `13px`, `22px`)
+- Espaciados/radios/tamaños no tokenizados (ej. `13px`, `22px`)
 - Sombras y opacidades fuera del sistema
 
 Excepciones:
-- Solo en capa canonica de token (`styles.json`, `src/index.css`) y casos tecnicos documentados.
-- Cualquier excepcion debe registrarse en baseline del auditor DS.
+- Solo en capa canónica de token (`styles.json`, `src/index.css`) y casos técnicos documentados.
+- Cualquier excepción debe registrarse en baseline del auditor DS.
 
 ### 4.5 Guardrails automáticos (obligatorio)
 
-- Script de auditoria: `scripts/audit-design-system.mjs`.
-- Sincronizacion DS (inventario + metadata + stories + tokens): `scripts/sync-design-system.mjs`.
-- Configuracion de excepciones: `.design-system-audit.config.json`.
+- Script de auditoría: `scripts/audit-design-system.mjs`.
+- Sincronización DS (inventario + metadata + stories + tokens): `scripts/sync-design-system.mjs`.
+- Configuración de excepciones: `.design-system-audit.config.json`.
 - Baseline versionado: `.design-system-audit-baseline.json`.
-- Integracion obligatoria en lint: `npm run lint` ejecuta auditoria DS antes de ESLint.
+- Integración obligatoria en lint: `npm run lint` ejecuta auditoría DS antes de ESLint.
 - Regla operativa: no se aceptan nuevas incidencias fuera del baseline.
 - Regla operativa adicional: no se acepta componente/pattern alcanzable desde `App` sin `designSystemMeta` y story `Design System/*` sincronizada.
 
 ## 5. Patrones de componentes (resumen operacional)
 
-Nota: la especificacion detallada vive en `docs/elements/*` y `plans/design-system/*`.
+Nota: la especificación detallada vive en `docs/elements/*` y `plans/design-system/*`.
 
 ### 5.1 Button
 
-Anatomia minima:
+Anatomía mínima:
 - Contenedor interactivo
 - Label
 - Slot de icono (leading/trailing/only)
@@ -152,28 +152,28 @@ Anatomia minima:
 Regla:
 - Si un flujo necesita CTA, se reutiliza `<Button />` base.
 - Variantes de uso operativo:
-  - `primary`: accion principal.
+  - `primary`: acción principal.
   - `secondary`: outline (ejemplo: `Anadir a Calendar`).
   - `ghost`: texto sin borde/fondo.
   - `link`: enlace textual contextual.
 
 ### 5.2 Card (incluye MeetupCard)
 
-Anatomia recomendada:
-- Header (titulo + chip de estado: `Label` con texto en minusculas e icono a la izquierda segun mapeo de `components-spec-v1` seccion 15)
+Anatomía recomendada:
+- Header (título + chip de estado: `Label` con texto en minusculas e icono a la izquierda según mapeo de `components-spec-v1` sección 15)
 - Bloque de contenido estructurado
 - Stack de acciones (primaria/secundaria/destructiva)
 - Metadata secundaria (ej. hora)
 
 Regla:
-- Mantener jerarquia de lectura y consistencia de spacing por escala.
+- Mantener jerarquía de lectura y consistencia de spacing por escala.
 
 ### 5.3 Modal
 
-Anatomia minima:
+Anatomía mínima:
 - Scrim/overlay
 - Contenedor
-- Titulo + cuerpo
+- Título + cuerpo
 - Footer de acciones
 
 Regla:
@@ -191,19 +191,19 @@ Reglas:
 - Helper/error bajo campo
 - `error` prevalece sobre `hint`
 
-## 6. Accesibilidad minima (a11y)
+## 6. Accesibilidad mínima (a11y)
 
-- Contraste minimo AA para texto y CTAs.
+- Contraste mínimo AA para texto y CTAs.
 - Focus visible en cualquier elemento interactivo.
-- Area tactil minima de `44x44` en controles accionables en movil.
+- Área táctil mínima de `44x44` en controles accionables en móvil.
 - Inputs con `aria-invalid` y `aria-describedby` cuando aplique.
-- Contadores y feedback dinamico con `aria-live` cuando aplique.
+- Contadores y feedback dinámico con `aria-live` cuando aplique.
 - Estados no comunicados unicamente por color.
 - Botones icon-only con nombre accesible (`aria-label` o `aria-labelledby`).
 
 ## 7. System Guidelines (reglas estrictas) + ejemplos Tailwind
 
-### 7.1 Reglas obligatorias para codigo nuevo
+### 7.1 Reglas obligatorias para código nuevo
 
 - No hardcodear tokens visuales.
 - Reusar componentes base antes de crear equivalentes nativos.
@@ -262,7 +262,7 @@ Permitido:
 <Button variant="primary" size="sm">Aceptar</Button>
 ```
 
-## 8. Mapa de documentacion existente (enlaces, sin duplicacion)
+## 8. Mapa de documentación existente (enlaces, sin duplicación)
 
 ### 8.1 Especificaciones de sistema
 
@@ -287,11 +287,11 @@ Permitido:
 - `docs/elements/inbox-bottom-nav.md`
 - `docs/elements/meetup-proposal-overlay.md`
 
-## 9. Deuda de migracion y checklist
+## 9. Deuda de migración y checklist
 
-### 9.1 Deuda de migracion detectada (inicial)
+### 9.1 Deuda de migración detectada (inicial)
 
-| Archivo | Situacion actual | Token/contrato objetivo | Prioridad |
+| Archivo | Situación actual | Token/contrato objetivo | Prioridad |
 | --- | --- | --- | --- |
 | `src/components/ui/button.tsx` | Migrado a aliases semánticos en variantes principales (`primary`, `secondary`, `ghost`, `critical`, `link`) | Completar migración de variantes de nicho restantes y normalizar tamaños/radios | Media |
 | `src/components/ui/badge.tsx` | Migrado a aliases semánticos (`feedback.*`, `text.inverse`) y dominio (`status-sold`) | Mantener sincronizado con `styles.json` si cambia semántica de estados | Baja |
@@ -302,7 +302,7 @@ Permitido:
 | `src/components/meetup/meetup-proposal-footer.tsx` | Migrado a aliases semánticos en estados, textos y CTA | Revisar token específico para warning surface si diseño lo exige | Baja |
 | `src/components/meetup/meetup-wizard-step-heading.tsx` | Migrado a aliases semánticos en icon-button y tipografía | Sin acciones pendientes de color | Baja |
 | `src/components/meetup/meetup-location-map.tsx` | Migrado a colores resueltos desde aliases semánticos para marcadores y bordes | Mantener fallback hex solo como respaldo runtime | Baja |
-| `src/components/ui/input.tsx` | Usa tokens para color/ring, pero mezcla tamanos tipograficos y espaciados literales | Completar tokenizacion de tamanos/spacing tipografico | Media |
+| `src/components/ui/input.tsx` | Usa tokens para color/ring, pero mezcla tamaños tipográficos y espaciados literales | Completar tokenización de tamaños/spacing tipográfico | Media |
 | `src/index.css` | Capa de aliases semánticos ampliada (action/text/border/feedback + estados de dominio de listing) | Mantener cobertura completa cuando se añadan tokens nuevos | Baja |
 
 ### 9.2 Checklist obligatorio para PRs UI
@@ -311,8 +311,8 @@ Permitido:
 - [ ] `npm run audit:design-system` sin incidencias nuevas.
 - [ ] Se reutilizan componentes base (`Button`, `Input`, etc.).
 - [ ] Se cubren estados `disabled`, `loading`, `error`.
-- [ ] Contraste y foco cumplen reglas minimas de a11y.
-- [ ] Area tactil minima `44x44` en acciones moviles.
+- [ ] Contraste y foco cumplen reglas mínimas de a11y.
+- [ ] Área táctil mínima `44x44` en acciones móviles.
 - [ ] Layout alineado a grid 4px/8px.
 - [ ] Stories ubicadas en `Design System/*` cuando aplique.
 - [ ] Se verifica `npx convex dev` antes de cerrar la tarea.
@@ -323,4 +323,4 @@ Permitido:
 
 - `styles.json` queda fijado como canon del DS.
 - `DESIGN_SYSTEM.md` es documento maestro de gobernanza.
-- La especificacion detallada por componente permanece en su documentacion actual enlazada en la seccion 8.
+- La especificación detallada por componente permanece en su documentación actual enlazada en la sección 8.

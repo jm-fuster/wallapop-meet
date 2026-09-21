@@ -1,30 +1,30 @@
 # Inventario de `Chat Counterpart Card` observado en Wallapop Chat
 
-## Fuente de analisis
+## Fuente de análisis
 - URL: `https://es.wallapop.com/app/chat`
 - Fecha de captura: 2026-02-21
-- Metodo: inspeccion con MCP Chrome DevTools
+- Método: inspección con MCP Chrome DevTools
 - Viewport de referencia: `1920x1080`
-- Contexto: columna derecha de conversacion en desktop
+- Contexto: columna derecha de conversación en desktop
 
-## Especificacion visual del componente
+## Especificación visual del componente
 
 ### 1) Contenedor
 - Card de fondo blanco sobre panel lateral gris claro.
-- Radio redondeado suave (`~12px` en implementacion DS).
+- Radio redondeado suave (`~12px` en implementación DS).
 - Padding interno uniforme.
 
 ### 2) Bloque principal
-- Distribucion horizontal:
-  - Columna izquierda: nombre + rating + distancia + ubicacion.
+- Distribución horizontal:
+  - Columna izquierda: nombre + rating + distancia + ubicación.
   - Columna derecha: avatar circular.
 
-### 3) Tipografia
+### 3) Tipografía
 - Nombre:
   - Estilo destacado (negrita).
-  - En DS actual: mismo tamano que metadatos (`16px`) y mayor peso.
+  - En DS actual: mismo tamaño que metadatos (`16px`) y mayor peso.
 - Metadatos:
-  - Distancia (`N km de ti`) y ubicacion (`Desconocido`).
+  - Distancia (`N km de ti`) y ubicación (`Desconocido`).
   - Menor contraste que el nombre.
 
 ### 4) Rating
@@ -33,22 +33,22 @@
 
 ### 5) Avatar
 - Imagen circular en el extremo derecho.
-- Tamaño compacto para no competir con la informacion textual.
+- Tamaño compacto para no competir con la información textual.
 
 ## Reglas de uso
 - Solo se muestra en desktop dentro del sidebar derecho del workspace de chat.
-- Debe aceptar tanto comprador como vendedor como contraparte de la conversacion.
-- Debe mantener lectura rapida: nombre primero, contexto de distancia/ubicacion despues.
+- Debe aceptar tanto comprador como vendedor como contraparte de la conversación.
+- Debe mantener lectura rápida: nombre primero, contexto de distancia/ubicación después.
 
 ---
 
-## Actualizacion v2 (2026-02-23)
+## Actualización v2 (2026-02-23)
 
-Esta seccion refleja la implementacion actual del componente.
-Si hay conflicto con la descripcion original, prevalece v2.
+Esta sección refleja la implementación actual del componente.
+Si hay conflicto con la descripción original, prevalece v2.
 
-### 1) Cambio de metrica secundaria
-- Se reemplaza la linea de ubicacion por metrica de asistencia a quedadas.
+### 1) Cambio de métrica secundaria
+- Se reemplaza la línea de ubicación por métrica de asistencia a quedadas.
 - Formato actual:
   - Alta/media asistencia: `X% de asistencia (N)`.
   - Baja asistencia (`<70`): `Baja asistencia a quedadas`.
@@ -65,7 +65,7 @@ Si hay conflicto con la descripcion original, prevalece v2.
 - Ejemplo: `(110)`.
 - Si `ratingCount` es `0`, no se renderiza el contador y el perfil se considera sin historial de valoraciones.
 
-### 4) Jerarquia tipografica actual
+### 4) Jerarquía tipográfica actual
 - Nombre: `16px` destacado.
 - Distancia (`N km de ti`): `14px`.
 - Asistencia: `14px`.
@@ -81,8 +81,8 @@ Si hay conflicto con la descripcion original, prevalece v2.
 - `profileImageSrc?: string`
 - `profileImageAlt?: string`
 
-## Referencias de implementacion
+## Referencias de implementación
 - Componente: `src/components/ui/chat-counterpart-card.tsx`
 - Storybook: `src/components/ui/chat-counterpart-card.stories.tsx`
-- Integracion desktop: `src/components/meetup/wallapop-chat-workspace.tsx`
+- Integración desktop: `src/components/meetup/wallapop-chat-workspace.tsx`
 - Design System vivo: `src/pages/design-system-page.tsx` (renderizado desde stories `Design System/*`).

@@ -9,7 +9,7 @@ Definir la API visual mínima de componentes para implementar los flujos de Wall
 - En código nuevo de componentes documentados en Storybook (`Design System/*`), no se permite color hardcodeado en hex.
 - Para color semántico usar copia directa: `var(--alias-corto)` y/o raíz Tailwind `text-/bg-/border-<raiz>`.
 - Todo componente alcanzable desde `src/App.tsx` debe exportar `designSystemMeta` y tener story sincronizada en `Design System/*`.
-- Siempre que cambie un componente, actualizar tambien el Design System vivo (`src/pages/design-system-page.tsx`) para reflejar el nuevo estado/caso (de forma directa o consumiendo su story).
+- Siempre que cambie un componente, actualizar también el Design System vivo (`src/pages/design-system-page.tsx`) para reflejar el nuevo estado/caso (de forma directa o consumiendo su story).
 ## 1. Botón (`Button`)
 Propiedades visuales:
 - `variant`: `primary | secondary | ghost | link | nav_expandable | tab | inline_action | icon | menu_close`
@@ -22,12 +22,12 @@ Tokens base:
   - Fondo: `tokens.color.button.primary.background`
   - Texto: `tokens.color.button.primary.text`
   - Radio: `tokens.radius.button.pill`
-  - Tipografia: `tokens.typography.button.primary`
+  - Tipografía: `tokens.typography.button.primary`
 - `nav_expandable`:
   - Fondo: `tokens.color.button.nav.background`
   - Texto: `tokens.color.button.nav.text`
   - Radio: `tokens.radius.none`
-  - Tipografia: `tokens.typography.button.nav`
+  - Tipografía: `tokens.typography.button.nav`
 - `tab`:
   - Fondo: `tokens.color.button.tab.background`
   - Texto: `tokens.color.button.tab.text`
@@ -35,12 +35,12 @@ Tokens base:
   - Texto (`selected`): `tokens.color.button.tab.text_selected`
   - Texto (`disabled`): `tokens.color.button.tab.text_disabled`
   - Radio: `tokens.radius.button.pill`
-  - Tipografia: `tokens.typography.button.tab`
+  - Tipografía: `tokens.typography.button.tab`
 - `inline_action`:
   - Fondo: `tokens.color.button.inline_action.background`
   - Texto: `tokens.color.button.inline_action.text`
   - Radio: `tokens.radius.button.inline_pill`
-  - Tipografia: `tokens.typography.button.inline_action`
+  - Tipografía: `tokens.typography.button.inline_action`
 - `icon`:
   - Fondo: `tokens.color.button.icon.background`
   - Icono: `tokens.color.button.icon.foreground`
@@ -53,7 +53,7 @@ Tokens base:
 - `secondary`:
   - Tipo: outline para continuidad de flujo (`Anadir a Calendar`, `Reenviar propuesta`).
 - `ghost`:
-  - Tipo: accion textual sin borde ni fondo.
+  - Tipo: acción textual sin borde ni fondo.
 - `link`:
   - Tipo: enlace textual contextual para acciones inline.
 
@@ -91,7 +91,7 @@ Reglas:
 - Mostrar ayuda/error siempre debajo del campo, nunca en placeholder.
 - Si existe `error`, prevalece sobre `hint`.
 - `counter` se muestra con formato `actual/max` cuando existe `maxLength`.
-- En estado `error`, mostrar indicador visual a la derecha (`error-indicator`) con exclamacion sobre fondo rojo.
+- En estado `error`, mostrar indicador visual a la derecha (`error-indicator`) con exclamación sobre fondo rojo.
 
 ## 3. Selector (`Select`)
 Propiedades visuales:
@@ -206,7 +206,7 @@ Propiedades visuales:
 Uso:
 - Estado compacto en chat o línea temporal.
 
-## 11. Iconografia (`WallapopIcon`)
+## 11. Iconografía (`WallapopIcon`)
 Propiedades visuales:
 - `name`: naming Wallapop (`arrow_left`, `cross`, `chevron_right`, `shield`, `paper_plane`, etc.)
 - `size`: `small | medium | large`
@@ -214,14 +214,14 @@ Propiedades visuales:
 
 Reglas:
 - Fuente de verdad de nombres: `docs/elements/icons.md`.
-- El wrapper de implementacion en app es `src/components/ui/wallapop-icon.tsx`.
-- Mientras no exista libreria publica oficial, mapear a iconos equivalentes en `lucide-react` manteniendo naming Wallapop en la API.
-- En movil, mantener escala `16px` (`small`) y `24px` (`medium`) con area tactil minima de `44x44` en controles accionables.
+- El wrapper de implementación en app es `src/components/ui/wallapop-icon.tsx`.
+- Mientras no exista librería pública oficial, mapear a iconos equivalentes en `lucide-react` manteniendo naming Wallapop en la API.
+- En móvil, mantener escala `16px` (`small`) y `24px` (`medium`) con área táctil mínima de `44x44` en controles accionables.
 - Para estado de entrega de mensajes, `double_check` debe verse compacto y de bajo protagonismo visual frente al texto/hora.
-- Para acciones contextuales de conversacion, usar `ellipsis_horizontal` en cabecera de `ConversationPane` y evitar su uso en preview de lista.
+- Para acciones contextuales de conversación, usar `ellipsis_horizontal` en cabecera de `ConversationPane` y evitar su uso en preview de lista.
 - `bot` (Lucide `Bot`): mensajes de asistente o sistema; uso referenciado en `ChatMeetRatingPromptBubble` y catalogado en Design System (Iconography).
 
-## 12. Navegacion inferior de inbox (`InboxBottomNav`)
+## 12. Navegación inferior de inbox (`InboxBottomNav`)
 Propiedades visuales:
 - `items`: lista de 5 acciones de primer nivel (`Inicio`, `Favoritos`, `Vender`, `Buzon`, `Tu`)
 - `activeItemId`: item activo (`aria-current="page"`)
@@ -229,14 +229,14 @@ Propiedades visuales:
 - `state`: `default | active | focused`
 
 Reglas:
-- Altura visual objetivo similar a runtime movil de Wallapop Chat (footer fijo con borde superior).
-- Cada accion mantiene layout vertical (icono arriba, etiqueta abajo).
-- En `active`, usar mayor contraste de color y peso tipografico en etiqueta.
-- Todos los items usan el mismo ancho, altura y separacion horizontal para evitar solapamientos.
-- En etiquetas de item, garantizar legibilidad sin corte de texto en viewport movil de referencia.
+- Altura visual objetivo similar a runtime móvil de Wallapop Chat (footer fijo con borde superior).
+- Cada acción mantiene layout vertical (icono arriba, etiqueta abajo).
+- En `active`, usar mayor contraste de color y peso tipográfico en etiqueta.
+- Todos los items usan el mismo ancho, altura y separación horizontal para evitar solapamientos.
+- En etiquetas de item, garantizar legibilidad sin corte de texto en viewport móvil de referencia.
 - Todos los items deben ser navegables por teclado y exponer nombre accesible.
 
-## 13. Linea temporal de meetup (`MeetupTimeline`)
+## 13. Línea temporal de meetup (`MeetupTimeline`)
 Propiedades visuales:
 - `currentStatus`: `null | PROPOSED | COUNTER_PROPOSED | CONFIRMED | ARRIVED | COMPLETED | CANCELLED`
 
@@ -247,28 +247,28 @@ Reglas:
 - En estado `null`, todos los pasos se muestran como pendientes.
 - Estado actual resaltado visualmente.
 - Estados anteriores al actual se muestran como completados; con la quedada cancelada, los pasos intermedios quedan neutros (el estado actual no permite afirmar hasta donde llego el flujo).
-- Estados finales (`COMPLETED`, `CANCELLED`) deben comunicarse tambien con texto, no solo color.
+- Estados finales (`COMPLETED`, `CANCELLED`) deben comunicarse también con texto, no solo color.
 
 ## 14. Simulador de flujo (`MeetupSimulator`)
 Propiedades visuales:
-- Composicion de `Button`, `MeetupTimeline` y bloque de contexto temporal.
+- Composición de `Button`, `MeetupTimeline` y bloque de contexto temporal.
 - Selector de rol activo (`SELLER` / `BUYER`) con `Button.variant=tab`.
-- Acciones contextuales segun estado y reglas de negocio.
+- Acciones contextuales según estado y reglas de negocio.
 
 Reglas:
-- Debe exponer errores de transicion para QA funcional.
+- Debe exponer errores de transición para QA funcional.
 - Debe permitir simular hora para validar ventana de llegada (`-30m` a `+2h`).
-- Se considera herramienta de validacion interna, no UI final de produccion.
+- Se considera herramienta de validación interna, no UI final de producción.
 
 ## 15. Tarjeta de meetup (`MeetupCard`)
 Propiedades visuales:
 - `meetup`: estado actual de la entidad.
 - `actorRole`: `SELLER | BUYER`.
 - `currentTime`: hora de referencia para reglas temporales.
-- `onMeetupChange`: callback de transicion valida.
-- `onError`: callback de error de transicion.
-- `onEditProposal`: callback para reabrir el wizard en modo edicion.
-- `onOpenMapPreview`: callback para abrir previsualizacion de mapa en grande.
+- `onMeetupChange`: callback de transición valida.
+- `onError`: callback de error de transición.
+- `onEditProposal`: callback para reabrir el wizard en modo edición.
+- `onOpenMapPreview`: callback para abrir previsualización de mapa en grande.
 - `buyerWalletAvailableEur?: number`: saldo disponible del comprador para validar pago en Wallapop Wallet (workspace de demo).
 - `onWalletTopUp?: (amountEur: number) => void`: callback al confirmar recarga desde `WalletTopUpSheet` cuando falta saldo al aceptar.
 - `distanceToMeetupMeters?: number | null`: distancia al punto acordado (metros); determina aviso de proximidad y desbloqueo de `Estoy aqui` en conjunto con la ventana temporal.
@@ -277,7 +277,7 @@ Reglas:
 - Debe renderizar acciones contextuales por estado de negocio y por rol visible en chat.
 - En `SELLER`, la card se alinea en el lado derecho del hilo cuando existe propuesta activa.
 - En `BUYER`, la card se alinea en el lado izquierdo del hilo cuando recibe una propuesta en `PROPOSED`.
-- Titulo fijo en card para todos los estados: `Quedada con <counterpartName>`.
+- Título fijo en card para todos los estados: `Quedada con <counterpartName>`.
 - Debe mostrar label de estado traducida en minusculas:
   - `PROPOSED` -> `pendiente`
   - `COUNTER_PROPOSED` -> `pendiente`
@@ -289,7 +289,7 @@ Reglas:
   - `pendiente` / `COUNTER_PROPOSED`: `Clock`
   - `confirmada`: `CheckCircle2`
   - `has llegado`: `MapPin`
-  - `completada`: `Handshake` (misma semantica visual que `WallapopIcon` `deal` / venta completada)
+  - `completada`: `Handshake` (misma semántica visual que `WallapopIcon` `deal` / venta completada)
   - `cancelada`: `XCircle`
   - Sin estado de propuesta: `CircleDashed`
 - El chip compone `Label` con `className` que alinea icono y texto (`items-center gap-1`).
@@ -297,14 +297,14 @@ Reglas:
   - `pendiente`: blanco/neutro
   - `COUNTER_PROPOSED`: reutiliza `pendiente` (sin variante visual adicional)
   - `confirmada`: success
-  - `has llegado`: warning (ambar; decision 2026-08-28: comunica mejor la accion en curso que el info azul que pedia la version anterior de esta seccion)
+  - `has llegado`: warning (ambar; decisión 2026-08-28: comunica mejor la acción en curso que el info azul que pedía la versión anterior de esta sección)
   - `completada`: acento de vendido (`#D32069`)
   - `cancelada`: error
 - El bloque informativo de la propuesta debe renderizar exactamente 3 filas con icono a la izquierda:
-  - Calendario: dia y hora.
-  - Mapa: direccion.
-  - Billete: metodo de pago y precio.
-- El copy de la accion critica en card debe usar sufijo de contexto: `Cancelar quedada` o `Rechazar quedada`.
+  - Calendario: día y hora.
+  - Mapa: dirección.
+  - Billete: método de pago y precio.
+- El copy de la acción crítica en card debe usar sufijo de contexto: `Cancelar quedada` o `Rechazar quedada`.
 - El separador visual de las filas de contenido usa `\u00B7`:
   - `dia \u00B7 hora`
   - `metodo \u00B7 precio`
@@ -319,50 +319,50 @@ Reglas:
   - `Aceptar`
   - `Rechazar quedada`
   - `Proponer cambios`
-- Tipologia de botones en `MeetupCard`:
-  - `principal`: accion primaria del estado (`Aceptar`, `Estoy aqui`, `Confirmar venta`, etc.).
-  - `outline`: accion secundaria de continuidad (`Editar`, `Proponer cambios`, `Anadir a Calendar`, `Reenviar propuesta`).
-  - `texto`: accion destructiva suave (`Cancelar quedada`, `Rechazar quedada`).
-- Al ejecutar accion `Cancelar quedada` o `Rechazar quedada`, siempre abrir modal de confirmacion:
+- Tipología de botones en `MeetupCard`:
+  - `principal`: acción primaria del estado (`Aceptar`, `Estoy aqui`, `Confirmar venta`, etc.).
+  - `outline`: acción secundaria de continuidad (`Editar`, `Proponer cambios`, `Anadir a Calendar`, `Reenviar propuesta`).
+  - `texto`: acción destructiva suave (`Cancelar quedada`, `Rechazar quedada`).
+- Al ejecutar acción `Cancelar quedada` o `Rechazar quedada`, siempre abrir modal de confirmación:
   - CTA principal: `Si`.
   - CTA secundaria outline: `No`.
-- Tipografia de botones en `MeetupCard`:
-  - Todos los botones de accion (`principal`, `outline`, `texto`) usan `16px`.
+- Tipografía de botones en `MeetupCard`:
+  - Todos los botones de acción (`principal`, `outline`, `texto`) usan `16px`.
 - Hora de envio en card:
   - Se muestra en esquina inferior derecha.
-  - Debe quedar alineada verticalmente con el ultimo elemento visible de la card.
+  - Debe quedar alineada verticalmente con el último elemento visible de la card.
   - No debe crear un bloque extra de espacio en blanco al final del componente.
-- Metodos de pago en overlay de propuesta: `EFECTIVO` (Cash) y `WALLAPOP WALLET` (Wallet); no `Bizum`.
+- Métodos de pago en overlay de propuesta: `EFECTIVO` (Cash) y `WALLAPOP WALLET` (Wallet); no `Bizum`.
 - Con `proposedPaymentMethod === WALLET` y rol `BUYER` solo en `PROPOSED` o `COUNTER_PROPOSED`: `NoticeBanner` con `tone=success` (fondo verde Wallapop / acento) y copy educativo sobre Wallet. No se muestra ese bloque en `CONFIRMED` ni estados posteriores.
 - No se muestra en la card el aviso de importe apartado en monedero (`walletHoldAmountEur`); el hold sigue existiendo en dominio pero sin banner dedicado en UI.
-- El boton `Aceptar` con Wallet no se deshabilita por falta de saldo: al pulsar, si el saldo es insuficiente, se invoca `onWalletTopUp` para abrir `WalletTopUpSheet` (`src/components/meetup/wallet-top-up-sheet.tsx`).
-- En `CONFIRMED`, dentro de ventana y con distancia aun mayor a la minima de proximidad, puede mostrarse un aviso para acercarse; si `Estoy aqui` ya esta habilitado por proximidad, no se muestra ese aviso redundante.
+- El botón `Aceptar` con Wallet no se deshabilita por falta de saldo: al pulsar, si el saldo es insuficiente, se invoca `onWalletTopUp` para abrir `WalletTopUpSheet` (`src/components/meetup/wallet-top-up-sheet.tsx`).
+- En `CONFIRMED`, dentro de ventana y con distancia aun mayor a la mínima de proximidad, puede mostrarse un aviso para acercarse; si `Estoy aqui` ya esta habilitado por proximidad, no se muestra ese aviso redundante.
 - En `ARRIVED` con Wallet, el vendedor ve CTA principal de escaneo de QR del comprador (`Escanear codigo QR de <nombre>`); con Efectivo se mantiene `Confirmar venta`.
-- En `ARRIVED` con Wallet y comprador que ya marco llegada (`arrivalCheckins.BUYER`): CTA principal `Mostrar codigo QR` (`Button.variant=status_sold_solid`, icono `QrCode`, pildora ancha). Abre un dialog modal (patron scrim + panel centrado, mismo familia que confirmacion de cancelacion) con titulo `Pago con Wallapop Wallet`, cuerpo instructivo, `WalletInPersonQr` (payload `buildWalletInPersonPayPayload` en `src/meetup/wallet-payment-qr.ts`), codigo numerico de 6 digitos bajo el QR (`deriveWalletDisplayCode`), etiqueta `Codigo de verificacion`, CTA `Cerrar` y cierre al pulsar fuera del panel. El QR no se muestra inline en la card.
+- En `ARRIVED` con Wallet y comprador que ya marco llegada (`arrivalCheckins.BUYER`): CTA principal `Mostrar codigo QR` (`Button.variant=status_sold_solid`, icono `QrCode`, pildora ancha). Abre un dialog modal (patrón scrim + panel centrado, mismo familia que confirmación de cancelación) con título `Pago con Wallapop Wallet`, cuerpo instructivo, `WalletInPersonQr` (payload `buildWalletInPersonPayPayload` en `src/meetup/wallet-payment-qr.ts`), código numérico de 6 digitos bajo el QR (`deriveWalletDisplayCode`), etiqueta `Codigo de verificacion`, CTA `Cerrar` y cierre al pulsar fuera del panel. El QR no se muestra inline en la card.
 
 ## 16. Composer de chat (`ChatComposer`)
 Propiedades visuales:
 - `onSubmit`: envio de mensaje.
-- `submitLabel` / `submitAriaLabel`: accesibilidad del boton de envio.
-- `secondaryActionLabel`: etiqueta accesible para accion secundaria.
+- `submitLabel` / `submitAriaLabel`: accesibilidad del botón de envio.
+- `secondaryActionLabel`: etiqueta accesible para acción secundaria.
 - `secondaryActionAriaLabel`: alternativa accesible.
-- `secondaryActionIconName`: icono de accion secundaria (`WallapopIconName`).
+- `secondaryActionIconName`: icono de acción secundaria (`WallapopIconName`).
 - `onSecondaryAction`: apertura de flujo contextual (meetup).
-- `secondaryActionDisabled`: bloqueo de accion secundaria.
+- `secondaryActionDisabled`: bloqueo de acción secundaria.
 
 Reglas:
-- El footer usa padding simetrico para mantener equilibrio visual entre botones izquierdo/derecho.
-- El boton de envio y el secundario son circulares y mantienen area tactil minima de `40x40` (`sm`) y `44x44` (movil).
-- La accion secundaria se usa para iniciar `Proponer quedar` sin ocupar ancho con texto.
-- En workspace de meetup, la accion secundaria se ubica a la derecha, justo antes de `paper_plane`.
-- El icono por defecto para esta accion en meetup es `calendar`.
-- La accion secundaria debe ocultarse cuando el actor no es `SELLER`; para `BUYER` solo se renderiza el boton de envio.
-- Para `SELLER`, la accion secundaria se muestra cuando no hay meetup activo o cuando el ultimo estado fue `CANCELLED`.
+- El footer usa padding simétrico para mantener equilibrio visual entre botones izquierdo/derecho.
+- El botón de envio y el secundario son circulares y mantienen área táctil mínima de `40x40` (`sm`) y `44x44` (móvil).
+- La acción secundaria se usa para iniciar `Proponer quedar` sin ocupar ancho con texto.
+- En workspace de meetup, la acción secundaria se ubica a la derecha, justo antes de `paper_plane`.
+- El icono por defecto para esta acción en meetup es `calendar`.
+- La acción secundaria debe ocultarse cuando el actor no es `SELLER`; para `BUYER` solo se renderiza el botón de envio.
+- Para `SELLER`, la acción secundaria se muestra cuando no hay meetup activo o cuando el último estado fue `CANCELLED`.
 
 ## 17. Banner de seguridad de chat (`ChatSecurityBanner`)
 Propiedades visuales:
 - `message`: mensaje principal.
-- `linkText`: accion secundaria contextual.
+- `linkText`: acción secundaria contextual.
 - `onLinkClick`: callback opcional.
 - `showIcon`: muestra/oculta escudo.
 
@@ -371,80 +371,80 @@ Reglas:
 - En footer fijo se usa variante compacta (menos alto) para no desplazar demasiado los mensajes.
 - No reemplaza errores bloqueantes ni toast; es aviso contextual persistente.
 
-## 18. Mapa de ubicacion de meetup (`MeetupLocationMap`)
+## 18. Mapa de ubicación de meetup (`MeetupLocationMap`)
 Propiedades visuales:
 - `center`: centro actual del mapa (`lat`, `lng`).
 - `safePoints`: puntos seguros sugeridos.
 - `selectedPointId`: punto seleccionado.
-- `selectedCustomPoint`: marcador de seleccion manual.
+- `selectedCustomPoint`: marcador de selección manual.
 - `onMapClick`: callback al pulsar en mapa.
 - `onSafePointClick`: callback al pulsar en marcador seguro.
 
 Reglas:
 - Implementado con `react-leaflet` + teselas OpenStreetMap.
-- Debe permitir seleccionar ubicacion custom con click en mapa.
-- Debe mostrar marcadores con estilo Wallapop tipo capsula + mini triangulo unido:
+- Debe permitir seleccionar ubicación custom con click en mapa.
+- Debe mostrar marcadores con estilo Wallapop tipo cápsula + mini triangulo unido:
   - Punto seguro: icono `shield`.
   - Punto personalizado: icono `deal` (manos).
 - Al seleccionar un punto seguro, mostrar tooltip persistente con formato `<nombre> - Punto seguro`.
-- Debe poder convivir dentro de un overlay con alto maximo y scroll interno sin desbordar viewport.
-- En contexto del wizard movil, ocultar controles de zoom `+/-` y mantener zoom por gesto tactil.
+- Debe poder convivir dentro de un overlay con alto máximo y scroll interno sin desbordar viewport.
+- En contexto del wizard móvil, ocultar controles de zoom `+/-` y mantener zoom por gesto táctil.
 
 ## 19. Overlay de propuesta meetup (`MeetupProposalOverlay`)
 Propiedades visuales:
 - `step`: `1 | 2 | 3`
-- `selectedOptionId`: opcion actualmente seleccionada para propuesta.
+- `selectedOptionId`: opción actualmente seleccionada para propuesta.
 - `selectableOptions`: cola visual de 2 opciones seleccionables en paso 1.
-- `mapPickerOpen`: estado de vista de mapa para seleccion.
-- `errorMessage`: validacion contextual del wizard.
+- `mapPickerOpen`: estado de vista de mapa para selección.
+- `errorMessage`: validación contextual del wizard.
 
 Reglas:
 - Wizard en 3 pasos: fecha/hora, punto, preferencia de pago.
 - Paso 2 siempre muestra exactamente 2 opciones seleccionables.
-- El modelo de paso 2 es una cola de las 2 ultimas selecciones:
-  - Una seleccion nueva entra en primera posicion.
-  - La anterior pasa a segunda posicion.
-  - Si habia una tercera, se descarta.
+- El modelo de paso 2 es una cola de las 2 últimas selecciones:
+  - Una selección nueva entra en primera posición.
+  - La anterior pasa a segunda posición.
+  - Si había una tercera, se descarta.
 - Las cards de punto seguro muestran:
   - Nombre
-  - Direccion
-  - Label unico `Punto seguro · <N> ventas completadas`.
+  - Dirección
+  - Label único `Punto seguro · <N> ventas completadas`.
 - Las cards de punto personalizado muestran:
   - Icono `deal` (manos) en el pin del mapa
-  - Direccion seleccionada
+  - Dirección seleccionada
   - Sin label `Personalizado`.
-- No existe boton `Cancelar` en el footer del wizard; cierre mediante boton `X` de cabecera.
-- Footer del wizard en movil:
-  - Bloque contextual de articulo/comprador alineado a la izquierda.
+- No existe botón `Cancelar` en el footer del wizard; cierre mediante botón `X` de cabecera.
+- Footer del wizard en móvil:
+  - Bloque contextual de artículo/comprador alineado a la izquierda.
   - CTA principal (`Siguiente` o `Enviar propuesta`) alineado a la derecha.
-  - Texto de articulo truncado con elipsis para no desplazar la CTA.
+  - Texto de artículo truncado con elipsis para no desplazar la CTA.
 - Validaciones del wizard:
   - El CTA no se deshabilita por campos incompletos.
   - Mensaje global unificado: `Faltan campos por rellenar`.
   - Cada bloque incompleto debe mostrar helper/error debajo del propio componente o grupo.
   - El estado de error debe usar mismo color y grosor que `Input` (`tokens.color.input.ring.error`, `2px`).
-  - En paso 3, el importe admite hasta `99999 €` con maximo `2` decimales.
+  - En paso 3, el importe admite hasta `99999 €` con máximo `2` decimales.
   - En paso 3, si el importe supera `2000 €`, mostrar alerta destacada de normativa DAC7 con enlace de ayuda (`Más información`).
-- En paso 3, los iconos de metodos de pago se muestran sin capsula/circunferencia de fondo.
+- En paso 3, los iconos de métodos de pago se muestran sin cápsula/circunferencia de fondo.
 - En vista de mapa:
-  - Permitir seleccion de punto seguro y punto personalizado (tap libre sobre mapa).
+  - Permitir selección de punto seguro y punto personalizado (tap libre sobre mapa).
   - Al seleccionar personalizado, no mostrar aviso de punto no verificado en el panel inferior.
-  - Al seleccionar punto seguro, mostrar bloque de ventas con el mismo patron visual del aviso de no verificado, usando variante verde Wallapop.
-  - Mostrar distancia `m/km` en chip de una sola linea (`no-wrap`).
-  - Bottom sheet de seleccion debe renderizarse por encima del mapa (`z-index` superior).
+  - Al seleccionar punto seguro, mostrar bloque de ventas con el mismo patrón visual del aviso de no verificado, usando variante verde Wallapop.
+  - Mostrar distancia `m/km` en chip de una sola línea (`no-wrap`).
+  - Bottom sheet de selección debe renderizarse por encima del mapa (`z-index` superior).
 
 ## 20. Card de contraparte en chat (`ChatCounterpartCard`)
 Propiedades visuales:
 - `name`: nombre del usuario contraparte.
-- `rating`: puntuacion en estrellas (soporta media estrella).
+- `rating`: puntuación en estrellas (soporta media estrella).
 - `distanceLabel`: texto de distancia relativa (`N km de ti`).
-- `locationLabel`: texto de ubicacion o estado (`Desconocido`).
+- `locationLabel`: texto de ubicación o estado (`Desconocido`).
 - `profileImageSrc`: avatar circular opcional.
 
 Reglas:
 - Uso previsto en desktop dentro del sidebar derecho del workspace de chat.
-- Debe mantener jerarquia de lectura: nombre > rating > distancia/ubicacion.
-- El nombre comparte tamaño base con metadatos y se diferencia por peso tipografico.
+- Debe mantener jerarquía de lectura: nombre > rating > distancia/ubicación.
+- El nombre comparte tamaño base con metadatos y se diferencia por peso tipográfico.
 
 ## 21. Card de producto en chat (`ChatProductCard`)
 Propiedades visuales:
@@ -455,8 +455,8 @@ Propiedades visuales:
 - `onEdit`, `onReserve`, `onSold` (acciones solo `seller`).
 
 Reglas:
-- `seller`: mostrar lapiz sobre imagen, CTAs de publicacion y metricas (ojo/corazon) junto al precio.
-- `buyer`: ocultar lapiz, ocultar CTAs y ocultar metricas de publicacion.
+- `seller`: mostrar lapiz sobre imagen, CTAs de publicación y métricas (ojo/corazón) junto al precio.
+- `buyer`: ocultar lapiz, ocultar CTAs y ocultar métricas de publicación.
 - Debe ser reutilizable en la columna lateral desktop del chat.
 - Color de acciones comerciales:
   - `Reservar`: `tokens.color.card.action.reserve` (`#86418A`).
@@ -533,9 +533,9 @@ Reglas:
   - Patrón reutilizable de opción seleccionable con estado visual `selected`.
   - Unifica bordes y estado activo en flujos de propuesta.
 - `ChatMeetRatingPromptBubble` (`src/components/meetup/chat-meet-rating-prompt-bubble.tsx`)
-  - Mensaje de invitacion a valorar tras venta completada en chat; presentacion como mensaje entrante (izquierda).
+  - Mensaje de invitación a valorar tras venta completada en chat; presentación como mensaje entrante (izquierda).
   - Icono `Bot` (Lucide) en circulo sobre fondo `tokens.color.meet_rating_prompt.icon_background`; CTA capsule con `cta_background` / `cta_hover`.
-  - Story: `Design System/Chat Meet Rating Prompt Bubble`; preview en Design System vivo (`/design-system`, seccion Components).
+  - Story: `Design System/Chat Meet Rating Prompt Bubble`; preview en Design System vivo (`/design-system`, sección Components).
 
 ---
 
@@ -549,7 +549,7 @@ Reglas funcionales actualizadas:
 - El CTA manual `Expirar meetup` queda fuera del contrato UI.
 - No existe estado `EXPIRED`; los cierres no exitosos usan `CANCELLED` con `cancelReason`.
 - En `CONFIRMED`, ambos roles muestran:
-  - `Estoy aqui` (segun ventana de llegada).
+  - `Estoy aqui` (según ventana de llegada).
   - `Anadir a Calendar` (fuera de ventana).
   - `Cancelar quedada`.
 - En `ARRIVED`, `COMPLETE` (`Confirmar venta`) solo para `SELLER`.
@@ -558,10 +558,10 @@ Estados y disponibilidad:
 - `Estoy aqui`: solo dentro de `-30 min` a `+2 h`.
 - `Cancelar quedada`: permitido siempre en estados no terminales, con comportamiento especial en zona roja.
 
-## B. Nuevo patron de accion de retraso (`LATE_NOTICE`)
+## B. Nuevo patrón de acción de retraso (`LATE_NOTICE`)
 
 Componente recomendado:
-- Reusar `Button.variant=inline_action` para activar selector rapido.
+- Reusar `Button.variant=inline_action` para activar selector rápido.
 - Usar `Modal.variant=confirmation` o `List Item.selectable` en bottom sheet para seleccionar ETA.
 
 API funcional esperada:
@@ -569,34 +569,34 @@ API funcional esperada:
 - Payload: `etaMinutes: 10 | 20`.
 - Efecto en UI:
   - No cambia estado de meetup.
-  - Muestra confirmacion local y dispara notificacion a contraparte.
+  - Muestra confirmación local y dispara notificación a contraparte.
 
 Estado actual:
-- El patron `LATE_NOTICE` no esta expuesto como CTA en la UI actual.
-- Si se retoma en una version futura, debe documentarse en un addendum nuevo.
+- El patrón `LATE_NOTICE` no esta expuesto como CTA en la UI actual.
+- Si se retoma en una versión futura, debe documentarse en un addendum nuevo.
 
-## C. Modal de cancelacion en zona roja (`< 30 min`)
+## C. Modal de cancelación en zona roja (`< 30 min`)
 
 Componente:
 - `Modal.variant=destructive`.
 - `size=md`.
 
-Props minimas:
+Props mínimas:
 - `isRedZone: boolean`
 - `minutesToMeetup: number`
 - `onConfirmCancel`
 
 Comportamiento:
-- Fuera de zona roja: confirmacion de cancelacion estandar.
+- Fuera de zona roja: confirmación de cancelación estandar.
 - En zona roja:
   - Mensaje de impacto en fiabilidad.
-  - Confirmacion explicita para continuar con cancelacion.
+  - Confirmación explicita para continuar con cancelación.
 
 Copy base en zona roja:
-- Titulo: `Faltan menos de 30 min para la quedada`.
+- Título: `Faltan menos de 30 min para la quedada`.
 - Cuerpo: `Cancelar ahora afectara a tu fiabilidad.`
 - CTA primario: `Cerrar`
-- CTA critico: `Cancelar igualmente`
+- CTA crítico: `Cancelar igualmente`
 
 ## D. Feedback visual de fiabilidad
 
@@ -604,7 +604,7 @@ Objetivo:
 - Comunicar impacto reputacional sin lenguaje punitivo.
 
 Componente sugerido:
-- `Banner.variant=warning` en modal/confirmacion de cancelacion en zona roja.
+- `Banner.variant=warning` en modal/confirmación de cancelación en zona roja.
 - `Chip/Tag.variant=info` o `Badge.neutral` para representar indicador de asistencia en perfil.
 
 Contrato de contenido:
@@ -612,19 +612,19 @@ Contrato de contenido:
   - `Tu porcentaje de asistencia ayuda a generar confianza en futuras quedadas.`
 - Evitar copy de castigo directo.
 
-## E. Metadata funcional requerida (para siguiente fase de implementacion)
+## E. Metadata funcional requerida (para siguiente fase de implementación)
 
-Aunque esta iteracion es documental, se fija el contrato que debera soportar el dominio:
+Aunque esta iteración es documental, se fija el contrato que debera soportar el dominio:
 - Check-in por rol:
   - timestamp por actor (`SELLER`/`BUYER`).
-  - resultado de geovalidacion.
+  - resultado de geovalidación.
   - distancia al punto acordado.
-- Resolucion no-show:
+- Resolución no-show:
   - actor reportante.
   - actor ausente inferido.
   - fuente de evidencia.
 - Impacto de fiabilidad:
-  - indicador de cancelacion en zona roja.
+  - indicador de cancelación en zona roja.
   - fecha/hora del evento reputacional.
 
 ## F. Escenarios de QA vinculados a componentes
@@ -632,8 +632,8 @@ Aunque esta iteracion es documental, se fija el contrato que debera soportar el 
 Los siguientes escenarios deben tener story de estado o caso de prueba visual:
 1. `MeetupCard` en `CONFIRMED` sin CTA de expirar.
 2. `MeetupCard` en `CONFIRMED` con `Anadir a Calendar` fuera de ventana.
-3. Modal de cancelacion fuera de zona roja.
-4. Modal de cancelacion en zona roja con warning de fiabilidad.
+3. Modal de cancelación fuera de zona roja.
+4. Modal de cancelación en zona roja con warning de fiabilidad.
 5. `MeetupCard` con `Cancelar quedada` en estilo texto.
 6. `MeetupCard` en `ARRIVED` con `Confirmar venta` solo para `SELLER`.
 
@@ -646,9 +646,9 @@ Si hay conflicto entre addendum v2 y v3, prevalece v3.
 ## A. `MeetupCard` (contrato vigente)
 
 Ajustes de props:
-- Añadido `counterpartName?: string` para titulado contextual tras confirmacion.
+- Añadido `counterpartName?: string` para titulado contextual tras confirmación.
 
-Titulos:
+Títulos:
 - Todos los estados:
   - `Quedada con <counterpartName>`.
 
@@ -657,24 +657,24 @@ Acciones en `CONFIRMED`:
 - Fuera de ventana: `Anadir a Calendar` + `Cancelar quedada`.
 - `Anadir a Calendar` genera descarga local de archivo `.ics`.
 
-Tipologia de botones en `MeetupCard`:
-- `principal`: accion principal del estado.
-- `outline`: accion secundaria no destructiva.
-- `texto`: accion destructiva suave.
-- Tamano tipografico unificado en acciones: `16px`.
+Tipología de botones en `MeetupCard`:
+- `principal`: acción principal del estado.
+- `outline`: acción secundaria no destructiva.
+- `texto`: acción destructiva suave.
+- Tamaño tipográfico unificado en acciones: `16px`.
 
 Hora en card:
 - Hora de envio visible en esquina inferior derecha.
-- Debe quedar alineada con el ultimo elemento visible de la card.
+- Debe quedar alineada con el último elemento visible de la card.
 - No se reserva un bloque de altura adicional solo para la hora.
 
 Etiqueta de estado:
 - `COUNTER_PROPOSED` se muestra como `pendiente`.
 - `ARRIVED` se muestra como `has llegado` con icono `MapPin` a la izquierda del texto.
-- `COMPLETED` usa icono `Handshake` en chip (misma semantica que `WallapopIcon` `deal`).
+- `COMPLETED` usa icono `Handshake` en chip (misma semántica que `WallapopIcon` `deal`).
 
 Flujo de cambios comprador:
-- `Proponer cambios` en propuesta recibida abre overlay de edicion (reusa `onEditProposal`).
+- `Proponer cambios` en propuesta recibida abre overlay de edición (reusa `onEditProposal`).
 
 ## B. `ChatCounterpartCard` (contrato vigente)
 
@@ -700,24 +700,24 @@ Reglas de contenido:
 
 Reglas de color:
 - Solo usar colores/tokens ya existentes del sistema.
-- Warning de asistencia media: `semantic.warning.base` (en implementacion actual: `#F4A000`).
+- Warning de asistencia media: `semantic.warning.base` (en implementación actual: `#F4A000`).
 
-## C. QA minimo actualizado
+## C. QA mínimo actualizado
 
 Casos que deben seguir cubiertos en story/test visual:
-0. Estados oficiales de `MeetupCard` en Design System: `pendiente`, `confirmada`, `30 mins antes`, `has llegado`, `cancelada`, `completada` (chip con icono + texto segun mapeo de seccion 15).
+0. Estados oficiales de `MeetupCard` en Design System: `pendiente`, `confirmada`, `30 mins antes`, `has llegado`, `cancelada`, `completada` (chip con icono + texto según mapeo de sección 15).
 1. `MeetupCard` en `CONFIRMED` dentro de ventana (mensaje de proximidad + `Estoy aqui`).
 2. `MeetupCard` en `CONFIRMED` fuera de ventana (solo `Anadir a Calendar` + `Cancelar quedada`).
-3. `MeetupCard` con titulo post-confirmacion `Quedada con <nombre>`.
+3. `MeetupCard` con título post-confirmación `Quedada con <nombre>`.
 4. `COUNTER_PROPOSED` renderizado como `pendiente`.
 5. `ChatCounterpartCard` asistencia alta (`>90`).
 6. `ChatCounterpartCard` asistencia media (`70-89`, warning).
 7. `ChatCounterpartCard` asistencia baja (`<70`, mensaje rojo sin porcentaje).
-8. `ChatConversationHeader` en viewport movil con controles de cabecera compactos (flecha/menu) y espaciado lateral consistente.
+8. `ChatConversationHeader` en viewport móvil con controles de cabecera compactos (flecha/menu) y espaciado lateral consistente.
 9. `ChatConversationHeader` con `productStatusIcon="deal"` en color de vendido (`--status-sold`), nunca color de reservado.
 10. `ChatListItem` con preview larga y `lastMessageDeliveryState`, truncando con elipsis sin desplazar badge ni icono de entrega.
 11. `MeetupCard` comprador Wallet: banner educativo solo en `pendiente` (no en `confirmada`).
-12. `MeetupCard` comprador Wallet en `ARRIVED` con llegada marcada: boton `Mostrar codigo QR` y dialog con QR + 6 digitos.
+12. `MeetupCard` comprador Wallet en `ARRIVED` con llegada marcada: botón `Mostrar codigo QR` y dialog con QR + 6 digitos.
 
 ---
 
@@ -727,16 +727,16 @@ Si hay conflicto entre addendum v3 y este documento, prevalece v4.
 
 ### A. `MeetupCard` y dominio Wallet
 
-- `walletHoldAmountEur` en entidad de meetup: importe reservado al confirmar con Wallet (`ACCEPT`); se libera al completar o cancelar segun reglas de `src/meetup/state-machine.ts`.
-- `buyerWalletAvailableEur` opcional en evento `ACCEPT` para validar saldo suficiente en transicion.
+- `walletHoldAmountEur` en entidad de meetup: importe reservado al confirmar con Wallet (`ACCEPT`); se libera al completar o cancelar según reglas de `src/meetup/state-machine.ts`.
+- `buyerWalletAvailableEur` opcional en evento `ACCEPT` para validar saldo suficiente en transición.
 - Componente `WalletTopUpSheet`: pantalla de recarga alineada a referencia app Wallapop; se abre desde `MeetupCard` cuando el comprador acepta sin saldo suficiente (si existe `onWalletTopUp`).
-- Comprador con Wallet: el QR de pago presencial no va en la card; tras marcar llegada (`ARRIVED` + check-in comprador), CTA `Mostrar codigo QR` abre dialog con QR + codigo de 6 digitos (ver addendum v5).
+- Comprador con Wallet: el QR de pago presencial no va en la card; tras marcar llegada (`ARRIVED` + check-in comprador), CTA `Mostrar codigo QR` abre dialog con QR + código de 6 digitos (ver addendum v5).
 - Vendedor en `ARRIVED` con Wallet: CTA principal tipo pildora en color vendido (`sold`) para escanear QR del comprador; sustituye `Confirmar venta` en ese flujo.
 
 ### B. Proximidad y `Estoy aqui`
 
 - Umbral de proximidad para desbloquear check-in (demo): `100 m` (constante `MEETUP_ARRIVAL_NEAR_METERS` en `src/meetup/meetup-ui-rules.ts`).
-- Mensaje de acercarse solo cuando el boton `Estoy aqui` sigue bloqueado por distancia; cuando ya esta habilitado por proximidad, no se muestra el aviso redundante.
+- Mensaje de acercarse solo cuando el botón `Estoy aqui` sigue bloqueado por distancia; cuando ya esta habilitado por proximidad, no se muestra el aviso redundante.
 
 ### C. Matriz de CTAs (ajuste `ARRIVED` con Wallet)
 
@@ -746,12 +746,12 @@ Si hay conflicto entre addendum v3 y este documento, prevalece v4.
 
 El resto de filas de la matriz del addendum v2 se mantiene sin cambio salvo donde se contradiga este cuadro.
 
-### D. Referencia de implementacion
+### D. Referencia de implementación
 
 - `src/components/meetup/meetup-card.tsx`
 - `src/components/meetup/wallet-top-up-sheet.tsx`
 - `src/meetup/wallet-payment-qr.ts` (`buildWalletInPersonPayPayload`, `deriveWalletDisplayCode`)
-- `src/components/meetup/wallapop-chat-workspace.tsx` (saldo demo, conversacion seed por defecto)
+- `src/components/meetup/wallapop-chat-workspace.tsx` (saldo demo, conversación seed por defecto)
 
 ---
 
@@ -761,11 +761,11 @@ Si hay conflicto entre addendum v4 y este bloque, prevalece v5.
 
 ### A. Contenido del dialog
 
-- Titulo: `Pago con Wallapop Wallet`.
-- Parrafo de apoyo: instruccion para que el vendedor escanee y complete el cobro.
-- Area del QR: componente `WalletInPersonQr` (render proporcional al ancho del contenedor).
-- Codigo numerico de 6 digitos en tipografia destacada (`font-wallie-chunky`, tracking amplio), estable por meetup via `deriveWalletDisplayCode`.
-- Subtitulo bajo el numero: `Código de verificación`.
+- Título: `Pago con Wallapop Wallet`.
+- Párrafo de apoyo: instrucción para que el vendedor escanee y complete el cobro.
+- Área del QR: componente `WalletInPersonQr` (render proporcional al ancho del contenedor).
+- Código numérico de 6 digitos en tipografía destacada (`font-wallie-chunky`, tracking amplio), estable por meetup vía `deriveWalletDisplayCode`.
+- Subtitulo bajo el número: `Código de verificación`.
 - CTA primaria al pie: `Cerrar`. Cierre adicional: tap en scrim fuera del panel.
 
 ### B. Acceso
@@ -804,9 +804,9 @@ Notas:
 - Fuente runtime de chat: `https://es.wallapop.com/app/chat`.
 - Fecha de captura de los nuevos inventarios: `2026-02-19`.
 - Cuando se actualice cualquier inventario de `docs/elements/`, revisar impacto en tokens (`styles.json`) antes de implementar componentes.
-- Regla de implementacion para nuevas secciones:
+- Regla de implementación para nuevas secciones:
   - Reutilizar primero componentes existentes del DS.
-  - Si falta un componente, crearlo y documentarlo siguiendo tokens/estados del DS antes de usarlo en una nueva seccion.
+  - Si falta un componente, crearlo y documentarlo siguiendo tokens/estados del DS antes de usarlo en una nueva sección.
 
 
 

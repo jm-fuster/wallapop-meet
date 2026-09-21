@@ -156,7 +156,7 @@ components
   - Estado activo: `color.brand.primary`
   - Estado completado: `color.brand.primary`
   - Estado cancelado: `color.semantic.error.base`
-- Acción "Estoy aqui":
+- Acción "Estoy aquí":
   - Botón principal: `components.button.primary`
   - Estado deshabilitado fuera de ventana: `components.button.primary.disabled`
 - Chips/labels de estado en `MeetupCard` (fuente de verdad):
@@ -165,17 +165,17 @@ components
   - `tokens.color.meetup_status.arrived.{background,border,text}`
   - `tokens.color.meetup_status.completed.{background,border,text}`
   - `tokens.color.meetup_status.cancelled.{background,border,text}`
-- El chip usa componente `Label` y, en `MeetupCard`, icono Lucide a la izquierda; tamaño de icono `var(--wm-size-12)` (ver `components-spec-v1.md` seccion 15).
-- Mensaje de valoracion post-venta (`ChatMeetRatingPromptBubble`):
+- El chip usa componente `Label` y, en `MeetupCard`, icono Lucide a la izquierda; tamaño de icono `var(--wm-size-12)` (ver `components-spec-v1.md` sección 15).
+- Mensaje de valoración post-venta (`ChatMeetRatingPromptBubble`):
   - `tokens.color.meet_rating_prompt.{background,text,cta_background,cta_hover,cta_text,meta,icon_background}`
 - Campos de formulario de meetup:
   - Input base: `components.input`
   - Estado error: `components.input.ring_color_error`
   - Estado success: `components.input.ring_color_success`
-- Botones de acciones criticas en card:
+- Botones de acciones críticas en card:
   - `components.button.critical` debe usar radio tipo pill alineado con `components.button.inline_action`.
 
-## Mapeo de inbox movil (2026-02-19)
+## Mapeo de inbox móvil (2026-02-19)
 
 ### Color (`tokens.color.bottom_nav`)
 - `background`: `#FFFFFF`
@@ -209,9 +209,9 @@ components
 ## Contrato tipado de consumo (implementado)
 
 - Archivo: `src/design-system/tokens.ts`.
-- Objetivo: exponer nombres de token semantico tipados para evitar strings sueltos en componentes.
+- Objetivo: exponer nombres de token semántico tipados para evitar strings sueltos en componentes.
 - API base:
-  - `TokenName`: union de keys semanticas soportadas.
+  - `TokenName`: union de keys semánticas soportadas.
   - `tokenVar(token)`: retorna `var(--alias)`.
   - `tokenVarArbitrary(token)`: retorna formato Tailwind arbitrario `[var(--alias)]`.
 
