@@ -16,6 +16,8 @@
 <p align="center">
   <a href="https://wallapop-meet.vercel.app"><strong>Ver la demo</strong></a>
   ·
+  <a href="https://wallapop-meet-storybook.vercel.app"><strong>Storybook</strong></a>
+  ·
   <a href="https://www.figma.com/community/file/1678855760007300709"><strong>Archivo en Figma Community</strong></a>
   ·
   <a href="https://www.figma.com/design/SV6DFkzoEbfCtGnj2xZtgt/Wallapop-Meet-%C2%B7-Case-Study---Concept-Design-System?node-id=50-6878"><strong>Caso de estudio</strong></a>
@@ -175,6 +177,8 @@ styles.json              Fuente canónica de tokens
 
 La app incluye un **visor del design system** en `/design-system` que consume `styles.json` y documenta foundations y componentes sobre el producto real, no sobre una página aparte.
 
+Cada componente por separado, con sus variantes, sus controles y su código, está en el **[Storybook publicado](https://wallapop-meet-storybook.vercel.app)**.
+
 ---
 
 ## Puesta en marcha
@@ -225,7 +229,7 @@ npx convex dev
 | `npm run build` | Compila TypeScript y build de Vite. |
 | `npm run preview` | Sirve el build de producción en local. |
 | `npm test` | Ejecuta las pruebas con Vitest. |
-| `npm run storybook` | Levanta Storybook. |
+| `npm run storybook` | Levanta Storybook en local (la versión publicada está en [wallapop-meet-storybook.vercel.app](https://wallapop-meet-storybook.vercel.app)). |
 | `npm run build-storybook` | Genera el build estático de Storybook. |
 | `npm run ds:sync` | Sincroniza el catálogo del Design System. |
 | `npm run ds:check` | Valida la sincronización DS (componentes/stories/tokens). |
