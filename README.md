@@ -87,26 +87,33 @@ El recorrido completo son **cuatro momentos, todos dentro de la misma conversaci
 
 ### La máquina de estados
 
-Seis estados y solo movimientos legales entre ellos. Cualquier transición que no esté dibujada aquí, el dominio la rechaza:
+Seis estados y solo movimientos legales entre ellos. El camino feliz es una línea recta con un único desvío, la contraoferta:
 
 ```mermaid
 stateDiagram-v2
+    direction LR
     [*] --> PROPOSED: Vendedor propone
     PROPOSED --> COUNTER_PROPOSED: Comprador contraoferta
     COUNTER_PROPOSED --> PROPOSED: Vendedor vuelve a proponer
     PROPOSED --> CONFIRMED: Comprador acepta
     COUNTER_PROPOSED --> CONFIRMED: Vendedor acepta
-    CONFIRMED --> CONFIRMED: Aviso de retraso · 10 o 20 min
-    CONFIRMED --> ARRIVED: Check-in dentro de la ventana
-    ARRIVED --> COMPLETED: Solo el vendedor cierra la venta
-    PROPOSED --> CANCELLED: Cancelación o caducidad
-    CONFIRMED --> CANCELLED: Cancelación, no-show o caducidad
-    ARRIVED --> CANCELLED: Cancelación, no-show o caducidad
-    CANCELLED --> PROPOSED: Segunda oportunidad
+    CONFIRMED --> ARRIVED: Check-in en ventana
+    ARRIVED --> COMPLETED: Solo el vendedor cierra
     COMPLETED --> [*]
 ```
 
-`COMPLETED` es el único estado terminal que significa que la transacción ocurrió. `CANCELLED` guarda siempre un motivo explícito: `MANUAL_CANCEL`, `COUNTER_REPLACED`, `NO_SHOW_BUYER`, `NO_SHOW_FINAL_CONTRADICTION`, `PROPOSAL_EXPIRED` o `MEETUP_EXPIRED`.
+Dentro de `CONFIRMED` y `ARRIVED` caben además dos movimientos que no cambian de estado: el aviso de retraso (10 o 20 minutos) y el check-in de la segunda persona.
+
+Todo lo demás son salidas hacia `CANCELLED`, que guarda siempre un motivo explícito. Cualquier transición que no esté en el diagrama ni en esta tabla, el dominio la rechaza:
+
+| Desde | Motivo en `CANCELLED` | Quién |
+| --- | --- | --- |
+| `PROPOSED`, `COUNTER_PROPOSED` | `MANUAL_CANCEL`, `COUNTER_REPLACED`, `PROPOSAL_EXPIRED` | Cualquiera de los dos, o el reloj |
+| `CONFIRMED` | `MANUAL_CANCEL`, `MEETUP_EXPIRED` | Cualquiera de los dos, o el reloj |
+| `ARRIVED` | `MANUAL_CANCEL`, `NO_SHOW_BUYER`, `NO_SHOW_FINAL_CONTRADICTION`, `MEETUP_EXPIRED` | Cualquiera cancela; solo el vendedor reporta no-show |
+| `CANCELLED` | Vuelve a `PROPOSED` como segunda oportunidad | Solo el vendedor |
+
+`COMPLETED` es el único estado terminal que significa que la transacción ocurrió. Caducar no reparte culpa: sin confirmación no se sabe si nadie apareció o si se vieron y olvidaron cerrar, así que la fiabilidad solo se toca con un no-show explícito.
 
 ### Quién puede hacer qué
 
