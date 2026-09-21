@@ -225,6 +225,7 @@ npx convex dev
 | `npm run ds:check` | Valida la sincronización DS (componentes/stories/tokens). |
 | `npm run audit:design-system` | Detecta hardcodes visuales prohibidos en `src`. |
 | `npm run audit:design-system:baseline` | Actualiza el baseline del auditor DS. |
+| `npm run social:preview` | Regenera `docs/assets/social-preview.png` desde los tokens, y falla si algún texto baja de 4,5:1. |
 | `npm run lint` | Auditoría DS + validación + ESLint. |
 
 </details>

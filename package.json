@@ -13,6 +13,7 @@
     "ds:check": "node scripts/sync-design-system.mjs --check",
     "audit:design-system": "node scripts/audit-design-system.mjs",
     "audit:design-system:baseline": "node scripts/audit-design-system.mjs --update-baseline",
+    "social:preview": "node scripts/render-social-preview.mjs",
     "lint": "npm run audit:design-system && npm run ds:check && eslint .",
     "preview": "vite preview",
     "test": "vitest --passWithNoTests",
