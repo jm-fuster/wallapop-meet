@@ -1,6 +1,8 @@
 # Guía del Repositorio
 
-Wallapop Meet formaliza encuentros presenciales de compraventa dentro de Wallapop. Convierte acuerdos de chat en un evento estructurado con estados claros, notificaciones interactivas y seguimiento posterior.
+> Proyecto no oficial, sin afiliación con Wallapop S.L. Es un ejercicio de diseño de producto independiente; no describe funcionalidad real, planificada ni interna de Wallapop. Ver [NOTICE](NOTICE).
+
+Wallapop Meet formaliza encuentros presenciales de compraventa dentro de la app de compraventa que sirve de caso de estudio. Convierte acuerdos de chat en un evento estructurado con estados claros, notificaciones interactivas y seguimiento posterior.
 
 ## Idioma de trabajo
 
