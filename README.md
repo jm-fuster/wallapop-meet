@@ -92,6 +92,31 @@ npm install
 npm run dev
 ```
 
+La app arranca sin configuración adicional: el flujo completo de meetup funciona
+en memoria con datos de ejemplo.
+
+### Variables de entorno (opcional)
+
+Convex solo se usa para persistir mensajes y meetups entre recargas. Si no
+configuras nada, `getConvexHttpClient()` devuelve `null` y la app sigue
+funcionando sin persistencia.
+
+Para habilitarla, copia el fichero de ejemplo y rellena los valores de tu propio
+despliegue:
+
+```bash
+cp .env.example .env.local
+npx convex dev
+```
+
+| Variable | Uso |
+| --- | --- |
+| `CONVEX_DEPLOYMENT` | Despliegue que usa `npx convex dev`. |
+| `VITE_CONVEX_URL` | Endpoint que consume el cliente (`src/lib/convex-client.ts`). |
+| `VITE_CONVEX_SITE_URL` | HTTP actions del mismo despliegue. |
+
+`.env.local` está ignorado por git; no se publica ninguna credencial en este repositorio.
+
 ## Scripts disponibles
 
 - `npm run dev`: arranca entorno local.
