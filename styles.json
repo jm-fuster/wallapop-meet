@@ -4,7 +4,7 @@
         "system": "Wally",
         "typography": {
             "family": {
-                "primary": "Wallie",
+                "primary": "WM Sans",
                 "fallback": "system-ui, sans-serif"
             }
         }

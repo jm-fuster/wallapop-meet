@@ -69,7 +69,7 @@ function CalendarPicker({
         >
           <WallapopIcon name="chevron_right" size="small" className="rotate-180" />
         </button>
-        <p className="font-wallie-chunky text-[length:var(--wm-size-18)] capitalize text-[color:var(--text-primary)]">
+        <p className="font-brand-strong text-[length:var(--wm-size-18)] capitalize text-[color:var(--text-primary)]">
           {monthDate.toLocaleDateString(locale, {
             month: "long",
             year: "numeric",
@@ -92,7 +92,7 @@ function CalendarPicker({
         {dayLabels.map((label) => (
           <p
             key={label}
-            className="pb-0.5 text-center font-wallie-fit text-[length:var(--wm-size-11)] text-[color:var(--text-secondary)]"
+            className="pb-0.5 text-center font-brand-text text-[length:var(--wm-size-11)] text-[color:var(--text-secondary)]"
           >
             {label}
           </p>
@@ -114,8 +114,8 @@ function CalendarPicker({
               onClick={() => onSelectDate(cell.dateValue)}
               className={`h-8 rounded-[var(--wm-size-8)] border text-center text-[length:var(--wm-size-13)] ${
                 isSelected
-                  ? "border-[color:var(--action-primary-pressed)] bg-[color:var(--bg-accent-subtle)] font-wallie-chunky text-[color:var(--text-primary)] shadow-[inset_0_0_0_1px_var(--action-primary)]"
-                  : `border-transparent bg-[color:var(--bg-surface)] font-wallie-fit hover:bg-[color:var(--bg-surface)] ${
+                  ? "border-[color:var(--action-primary-pressed)] bg-[color:var(--bg-accent-subtle)] font-brand-strong text-[color:var(--text-primary)] shadow-[inset_0_0_0_1px_var(--action-primary)]"
+                  : `border-transparent bg-[color:var(--bg-surface)] font-brand-text hover:bg-[color:var(--bg-surface)] ${
                       cell.inCurrentMonth ? "text-[color:var(--text-primary)]" : "text-[color:var(--action-disabled-text)]"
                     }`
               } ${

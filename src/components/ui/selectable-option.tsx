@@ -73,12 +73,12 @@ function SelectableOption({
                     ) : null}
                     <div className="min-w-0 flex-1">
                         {title ? (
-                            <p className="font-wallie-chunky text-[length:var(--wm-size-16)] leading-tight text-[color:var(--text-primary)]">
+                            <p className="font-brand-strong text-[length:var(--wm-size-16)] leading-tight text-[color:var(--text-primary)]">
                                 {title}
                             </p>
                         ) : null}
                         {subtitle ? (
-                            <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-13)] leading-[1.3] text-[color:var(--text-tertiary)]">
+                            <p className="mt-1 font-brand-text text-[length:var(--wm-size-13)] leading-[1.3] text-[color:var(--text-tertiary)]">
                                 {subtitle}
                             </p>
                         ) : null}

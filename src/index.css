@@ -2,86 +2,70 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-/* Referencias extraidas de https://es.wallapop.com/app/chat (2026-02-18). */
+/*
+ * Tipografia del proyecto: Nunito, autoalojada en `public/fonts` bajo SIL Open Font
+ * License 1.1 (el texto de la licencia viaja con los ficheros, como exige la OFL).
+ *
+ * Antes se cargaba "Wallie" desde el CDN de Wallapop. Wallie es una tipografia a medida
+ * que Extra Type diseno en exclusiva para ellos: no existe licencia que comprar, y los
+ * ficheros no traen ninguna concesion de derechos. Servirla desde su CDN contradecia el
+ * NOTICE de este repositorio, dependia de infraestructura ajena y gastaba su ancho de
+ * banda. Nunito comparte el aire redondeado y amable del original sin ninguna de esas
+ * pegas. Ver README.
+ *
+ * Es una fuente variable, asi que un unico fichero por subset cubre todo el eje de peso.
+ */
 @font-face {
-  font-family: "Wallie";
-  src:
-    url("https://d22j03ecumputt.cloudfront.net/fonts/Wallie-Skinny.woff2")
-      format("woff2"),
-    url("https://d22j03ecumputt.cloudfront.net/fonts/Wallie-Skinny.woff")
-      format("woff"),
-    url("https://d22j03ecumputt.cloudfront.net/fonts/Wallie-Skinny.ttf")
-      format("truetype");
-  font-display: fallback;
-  font-weight: 300;
+  font-family: "WM Sans";
+  src: url("/fonts/nunito-latin.woff2") format("woff2");
+  font-weight: 200 1000;
   font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-  font-family: "Wallie";
-  src:
-    url("https://d22j03ecumputt.cloudfront.net/fonts/Wallie-Fit.woff2")
-      format("woff2"),
-    url("https://d22j03ecumputt.cloudfront.net/fonts/Wallie-Fit.woff")
-      format("woff"),
-    url("https://d22j03ecumputt.cloudfront.net/fonts/Wallie-Fit.ttf")
-      format("truetype");
-  font-display: fallback;
+  font-family: "WM Sans";
+  src: url("/fonts/nunito-latin-ext.woff2") format("woff2");
+  font-weight: 200 1000;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/*
+ * Utilidades de tipografia. Antes el peso venia dentro del fichero: "WallieChunky" solo
+ * tenia un corte, el de 700, asi que cualquier texto con esa familia salia en negrita
+ * aunque heredase `font-weight: 400`.
+ *
+ * Con una fuente variable ese truco no se sostiene: declarar `font-weight: 700` en un
+ * @font-face variable NO la instancia en 700 (medido en Chromium, el texto salia identico
+ * al de 400), asi que las utilidades fijan el peso ellas mismas. Ninguna de las 196
+ * llamadas combina estas clases con una utilidad de peso, asi que no hay cascada que
+ * pueda pisarlas.
+ */
+@utility font-brand {
+  font-family: "WM Sans", system-ui, sans-serif;
+}
+
+@utility font-brand-text {
+  font-family: "WM Sans", system-ui, sans-serif;
   font-weight: 400;
-  font-style: normal;
 }
 
-@font-face {
-  font-family: "Wallie";
-  src:
-    url("https://d22j03ecumputt.cloudfront.net/fonts/Wallie-Chunky.woff2")
-      format("woff2"),
-    url("https://d22j03ecumputt.cloudfront.net/fonts/Wallie-Chunky.woff")
-      format("woff"),
-    url("https://d22j03ecumputt.cloudfront.net/fonts/Wallie-Chunky.ttf")
-      format("truetype");
-  font-display: fallback;
+@utility font-brand-strong {
+  font-family: "WM Sans", system-ui, sans-serif;
   font-weight: 700;
-  font-style: normal;
-}
-
-/* Alias utiles para componentes que requieren naming explicito. */
-@font-face {
-  font-family: "WallieFit";
-  src:
-    url("https://d22j03ecumputt.cloudfront.net/fonts/Wallie-Fit.woff2")
-      format("woff2"),
-    url("https://d22j03ecumputt.cloudfront.net/fonts/Wallie-Fit.woff")
-      format("woff"),
-    url("https://d22j03ecumputt.cloudfront.net/fonts/Wallie-Fit.ttf")
-      format("truetype");
-  font-display: fallback;
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "WallieChunky";
-  src:
-    url("https://d22j03ecumputt.cloudfront.net/fonts/Wallie-Chunky.woff2")
-      format("woff2"),
-    url("https://d22j03ecumputt.cloudfront.net/fonts/Wallie-Chunky.woff")
-      format("woff"),
-    url("https://d22j03ecumputt.cloudfront.net/fonts/Wallie-Chunky.ttf")
-      format("truetype");
-  font-display: fallback;
-  font-weight: 700;
-  font-style: normal;
 }
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "Wallie", system-ui, sans-serif;
-  --font-wallie: "Wallie", system-ui, sans-serif;
-  --font-wallie-fit: "WallieFit", "Wallie", system-ui, sans-serif;
-  --font-wallie-chunky: "WallieChunky", "Wallie", system-ui,
-    sans-serif;
+  --font-sans: "WM Sans", system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);

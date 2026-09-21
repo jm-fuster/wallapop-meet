@@ -35,7 +35,7 @@ function ChatMessageBubble({
       data-variant={variant}
       data-delivery-state={deliveryState}
       className={cn(
-        "inline-block max-w-[88%] rounded-[var(--wm-size-20)] font-wallie text-[length:var(--wm-size-16)] leading-5 text-[color:var(--wm-color-text-primary)] sm:max-w-[80%]",
+        "inline-block max-w-[88%] rounded-[var(--wm-size-20)] font-brand text-[length:var(--wm-size-16)] leading-5 text-[color:var(--wm-color-text-primary)] sm:max-w-[80%]",
         bubbleVariantClass[variant],
         className
       )}
@@ -44,7 +44,7 @@ function ChatMessageBubble({
       <div className="flex items-end gap-2">
         <span>{children}</span>
         {showMeta ? (
-          <span className="inline-flex shrink-0 items-center gap-1 self-end whitespace-nowrap font-wallie text-[length:var(--wm-size-14)] leading-[var(--wm-size-14)] text-[color:var(--text-bubble-meta)]">
+          <span className="inline-flex shrink-0 items-center gap-1 self-end whitespace-nowrap font-brand text-[length:var(--wm-size-14)] leading-[var(--wm-size-14)] text-[color:var(--text-bubble-meta)]">
             <span>{time}</span>
             {variant === "sent" ? (
               <span

@@ -493,8 +493,8 @@ function CatalogStoryCard({ entity }: { entity: CatalogEntity }) {
     if (!module) {
         return (
             <article className="rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] p-3">
-                <p className="font-wallie-chunky text-[length:var(--wm-size-16)] text-[color:var(--text-primary)]">{entity.title}</p>
-                <p className="mt-2 font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--feedback-error)]">
+                <p className="font-brand-strong text-[length:var(--wm-size-16)] text-[color:var(--text-primary)]">{entity.title}</p>
+                <p className="mt-2 font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--feedback-error)]">
                     No hay story disponible para {entity.storybookTitle}.
                 </p>
             </article>
@@ -542,7 +542,7 @@ function CatalogStoryCard({ entity }: { entity: CatalogEntity }) {
             : meta.component
                 ? React.createElement(meta.component, mergedArgs)
                 : (
-                    <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--feedback-error)]">
+                    <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--feedback-error)]">
                         Story sin preview renderizable.
                     </p>
                 )
@@ -647,8 +647,8 @@ function CatalogStoryCard({ entity }: { entity: CatalogEntity }) {
 
     return (
         <article className="rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] p-3">
-            <p className="font-wallie-chunky text-[length:var(--wm-size-16)] text-[color:var(--text-primary)]">{entity.title}</p>
-            <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">{entity.storybookTitle}</p>
+            <p className="font-brand-strong text-[length:var(--wm-size-16)] text-[color:var(--text-primary)]">{entity.title}</p>
+            <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">{entity.storybookTitle}</p>
             {entity.states.length > 1 ? (
                 <div className="mt-2 flex flex-wrap gap-1.5">
                     {entity.states.map((state) => (
@@ -658,8 +658,8 @@ function CatalogStoryCard({ entity }: { entity: CatalogEntity }) {
                             onClick={() => applyState(state)}
                             className={
                                 normalizeKey(selectedState) === normalizeKey(state)
-                                    ? "rounded-full border border-[color:var(--text-primary)] bg-[color:var(--text-primary)] px-2 py-0.5 font-wallie-fit text-[length:var(--wm-size-11)] text-[color:var(--bg-base)]"
-                                    : "rounded-full border border-[color:var(--border-divider)] bg-[color:var(--bg-surface)] px-2 py-0.5 font-wallie-fit text-[length:var(--wm-size-11)] text-[color:var(--text-primary)]"
+                                    ? "rounded-full border border-[color:var(--text-primary)] bg-[color:var(--text-primary)] px-2 py-0.5 font-brand-text text-[length:var(--wm-size-11)] text-[color:var(--bg-base)]"
+                                    : "rounded-full border border-[color:var(--border-divider)] bg-[color:var(--bg-surface)] px-2 py-0.5 font-brand-text text-[length:var(--wm-size-11)] text-[color:var(--text-primary)]"
                             }
                         >
                             {state}
@@ -671,7 +671,7 @@ function CatalogStoryCard({ entity }: { entity: CatalogEntity }) {
                 <div className="mt-3 grid gap-2 sm:grid-cols-2">
                     {selectableArgEntries.map(([propName, config]) => (
                         <label key={`${entity.id}-${propName}`} className="flex flex-col gap-1">
-                            <span className="font-wallie-fit text-[length:var(--wm-size-11)] text-[color:var(--text-secondary)]">{propName}</span>
+                            <span className="font-brand-text text-[length:var(--wm-size-11)] text-[color:var(--text-secondary)]">{propName}</span>
                             <select
                                 id={`ds-control-${entity.id}-${propName}`}
                                 name={`ds-control-${entity.id}-${propName}`}
@@ -683,7 +683,7 @@ function CatalogStoryCard({ entity }: { entity: CatalogEntity }) {
                                         [propName]: option,
                                     }))
                                 }}
-                                className="rounded-[var(--wm-size-8)] border border-[color:var(--border-divider)] bg-[color:var(--bg-base)] px-2 py-1 font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-primary)]"
+                                className="rounded-[var(--wm-size-8)] border border-[color:var(--border-divider)] bg-[color:var(--bg-base)] px-2 py-1 font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-primary)]"
                             >
                                 {(config.options ?? []).map((option) => (
                                     <option key={`${propName}-${String(option)}`} value={String(option)}>
@@ -699,7 +699,7 @@ function CatalogStoryCard({ entity }: { entity: CatalogEntity }) {
                 <PreviewErrorBoundary
                     resetKey={`${entity.id}-${selectedState}-${JSON.stringify(argOverrides)}`}
                     fallback={
-                        <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--feedback-error)]">
+                        <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--feedback-error)]">
                             Error al renderizar preview para {entity.storybookTitle}.
                         </p>
                     }
@@ -841,7 +841,7 @@ function DesignSystemPage() {
     const radiusTokens = normalizeRadiusTokens(foundations.radius)
     const shadowTokens = normalizeShadowTokens(foundations.shadow)
 
-    const fontPrimary = typographyTokens.find((item) => item.tokenPath.includes("family.primary"))?.value ?? "Wallie"
+    const fontPrimary = typographyTokens.find((item) => item.tokenPath.includes("family.primary"))?.value ?? "WM Sans"
     const fontFallback =
         String(getByPath(styles, "brand.typography.family.fallback") ?? "system-ui, sans-serif")
     const size100 = typographyTokens.find((item) => item.tokenPath.endsWith("size.100"))?.value ?? "12px"
@@ -865,8 +865,8 @@ function DesignSystemPage() {
                                 loading="lazy"
                             />
                             <div>
-                                <p className="font-wallie-chunky text-[length:var(--wm-size-18)] leading-6">Wallapop Meet</p>
-                                <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">Living Design System</p>
+                                <p className="font-brand-strong text-[length:var(--wm-size-18)] leading-6">Wallapop Meet</p>
+                                <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">Living Design System</p>
                             </div>
                         </div>
                     </div>
@@ -875,7 +875,7 @@ function DesignSystemPage() {
                             <a
                                 key={entry.id}
                                 href={`#${entry.id}`}
-                                className="block rounded-[var(--wm-size-8)] px-3 py-2 font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--text-secondary)] transition-colors hover:bg-[color:var(--bg-accent-subtle)] hover:text-[color:var(--text-primary)]"
+                                className="block rounded-[var(--wm-size-8)] px-3 py-2 font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-secondary)] transition-colors hover:bg-[color:var(--bg-accent-subtle)] hover:text-[color:var(--text-primary)]"
                             >
                                 {entry.label}
                             </a>
@@ -890,13 +890,13 @@ function DesignSystemPage() {
 
                 <div className="min-w-0 flex-1 space-y-10">
                     <header className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
-                        <p className="font-wallie-fit text-[length:var(--wm-size-12)] uppercase tracking-[0.08em] text-[color:var(--text-secondary)]">
+                        <p className="font-brand-text text-[length:var(--wm-size-12)] uppercase tracking-[0.08em] text-[color:var(--text-secondary)]">
                             Documentacion viva
                         </p>
-                        <h1 className="mt-1 font-wallie-chunky text-[length:var(--wm-size-34)] leading-[1.1] text-[color:var(--text-primary)]">
+                        <h1 className="mt-1 font-brand-strong text-[length:var(--wm-size-34)] leading-[1.1] text-[color:var(--text-primary)]">
                             Design System Viewer
                         </h1>
-                        <p className="mt-3 max-w-[65ch] font-wallie-fit text-[length:var(--wm-size-15)] leading-6 text-[color:var(--text-secondary)]">
+                        <p className="mt-3 max-w-[65ch] font-brand-text text-[length:var(--wm-size-15)] leading-6 text-[color:var(--text-secondary)]">
                             Esta pagina consume tokens de <code>styles.json</code> para documentar foundations,
                             componentes base en un unico portal operativo. Desde la app, el acceso rapido al viewer
                             esta siempre disponible con el control flotante inferior derecho «Design System».
@@ -904,8 +904,8 @@ function DesignSystemPage() {
                     </header>
 
                     <section id="foundations-color" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
-                        <h2 className="font-wallie-chunky text-[length:var(--wm-size-24)]">Color</h2>
-                        <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
+                        <h2 className="font-brand-strong text-[length:var(--wm-size-24)]">Color</h2>
+                        <p className="mt-1 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                             Paletas oficiales en escala 50-900.
                         </p>
                         <div className="mt-6 space-y-6">
@@ -918,7 +918,7 @@ function DesignSystemPage() {
                                 { title: "Neutral Scale", items: neutralScale },
                             ].map((group) => (
                                 <div key={group.title}>
-                                    <h4 className="mb-3 font-wallie-chunky text-[length:var(--wm-size-18)]">{group.title}</h4>
+                                    <h4 className="mb-3 font-brand-strong text-[length:var(--wm-size-18)]">{group.title}</h4>
                                     <div className="overflow-x-auto rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] p-2">
                                         <div className="flex min-w-max gap-2">
                                             {group.items.map((item) => {
@@ -933,12 +933,12 @@ function DesignSystemPage() {
                                                                 color: contrastHint.textColor,
                                                             }}
                                                         >
-                                                            <p className="font-wallie-fit text-[length:var(--wm-size-11)]">
+                                                            <p className="font-brand-text text-[length:var(--wm-size-11)]">
                                                                 {item.tokenPath.split(".").pop()}
                                                             </p>
-                                                            <p className="font-wallie-fit text-[length:var(--wm-size-11)] opacity-85">{item.value}</p>
+                                                            <p className="font-brand-text text-[length:var(--wm-size-11)] opacity-85">{item.value}</p>
                                                             <span
-                                                                className="mt-1 inline-flex rounded-full border px-1.5 py-0.5 font-wallie-fit text-[length:var(--wm-size-10)] leading-[1]"
+                                                                className="mt-1 inline-flex rounded-full border px-1.5 py-0.5 font-brand-text text-[length:var(--wm-size-10)] leading-[1]"
                                                                 style={{
                                                                     backgroundColor: contrastHint.pillBackground,
                                                                     color: contrastHint.textColor,
@@ -959,18 +959,18 @@ function DesignSystemPage() {
                     </section>
 
                     <section id="foundations-semantic-colors" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
-                        <h2 className="font-wallie-chunky text-[length:var(--wm-size-24)]">Semantic Colors</h2>
-                        <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
+                        <h2 className="font-brand-strong text-[length:var(--wm-size-24)]">Semantic Colors</h2>
+                        <p className="mt-1 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                             Inventario dinamico de <code>tokens.color.semantic.*</code>, sincronizado automaticamente desde <code>styles.json</code>.
                         </p>
                         <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
                             {visibleSemanticColors.map((item) => (
                                 <article key={item.tokenPath} className="rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] p-3">
                                     <div className="h-12 rounded-[var(--wm-size-8)] border border-[color:var(--border-divider)]" style={{ backgroundColor: item.value }} />
-                                    <p className="mt-2 font-wallie-chunky text-[length:var(--wm-size-14)] text-[color:var(--text-primary)]">{item.name}</p>
+                                    <p className="mt-2 font-brand-strong text-[length:var(--wm-size-14)] text-[color:var(--text-primary)]">{item.name}</p>
                                     <p className="mt-1 font-mono text-[length:var(--wm-size-11)] text-[color:var(--text-secondary)]">{item.tokenPath}</p>
                                     <p className="mt-2 font-mono text-[length:var(--wm-size-11)] text-[color:var(--text-primary)]">{`CSS: var(${item.aliasVar})`}</p>
-                                    <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-11)] text-[color:var(--text-secondary)]">{item.value}</p>
+                                    <p className="mt-1 font-brand-text text-[length:var(--wm-size-11)] text-[color:var(--text-secondary)]">{item.value}</p>
                                 </article>
                             ))}
                         </div>
@@ -979,7 +979,7 @@ function DesignSystemPage() {
                                 <button
                                     type="button"
                                     onClick={() => setShowAllSemanticColors((previous) => !previous)}
-                                    className="rounded-full border border-[color:var(--border-divider)] bg-[color:var(--bg-surface)] px-3 py-1.5 font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-primary)]"
+                                    className="rounded-full border border-[color:var(--border-divider)] bg-[color:var(--bg-surface)] px-3 py-1.5 font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-primary)]"
                                 >
                                     {showAllSemanticColors ? "Ver menos" : "Ver más"}
                                 </button>
@@ -988,17 +988,17 @@ function DesignSystemPage() {
                     </section>
 
                     <section id="foundations-typography" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
-                        <h2 className="font-wallie-chunky text-[length:var(--wm-size-24)]">Typography</h2>
-                        <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
+                        <h2 className="font-brand-strong text-[length:var(--wm-size-24)]">Typography</h2>
+                        <p className="mt-1 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                             Guia tipografica propuesta para Wallapop Meet basada en proporciones reales del producto. Familia principal: <code>{fontPrimary}</code>, fallbacks: <code>{fontFallback}</code>.
                         </p>
                         <div className="mt-5 space-y-4">
                             <article className="rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] p-4">
                                 <div className="grid gap-4 md:grid-cols-[190px_1fr] md:items-start">
                                     <div>
-                                        <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">Display / Hero</p>
-                                        <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">20px · LH 1.4</p>
-                                        <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">Peso 700</p>
+                                        <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">Display / Hero</p>
+                                        <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">20px · LH 1.4</p>
+                                        <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">Peso 700</p>
                                     </div>
                                     <div>
                                         <p
@@ -1012,7 +1012,7 @@ function DesignSystemPage() {
                                         >
                                             Quedada confirmada con Laura M.
                                         </p>
-                                        <p className="mt-2 font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--text-secondary)]">
+                                        <p className="mt-2 font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-secondary)]">
                                             Para encabezados de bloque, títulos de card y puntos de entrada principales.
                                         </p>
                                     </div>
@@ -1021,9 +1021,9 @@ function DesignSystemPage() {
                             <article className="rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] p-4">
                                 <div className="grid gap-4 md:grid-cols-[190px_1fr] md:items-start">
                                     <div>
-                                        <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">Section / Heading</p>
-                                        <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">16px · LH 1.5</p>
-                                        <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">Peso 600</p>
+                                        <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">Section / Heading</p>
+                                        <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">16px · LH 1.5</p>
+                                        <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">Peso 600</p>
                                     </div>
                                     <div>
                                         <p
@@ -1037,7 +1037,7 @@ function DesignSystemPage() {
                                         >
                                             Punto de encuentro y metodo de pago
                                         </p>
-                                        <p className="mt-2 font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--text-secondary)]">
+                                        <p className="mt-2 font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-secondary)]">
                                             Para subtitulos, grupos de formulario y jerarquias internas de pantalla.
                                         </p>
                                     </div>
@@ -1046,9 +1046,9 @@ function DesignSystemPage() {
                             <article className="rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] p-4">
                                 <div className="grid gap-4 md:grid-cols-[190px_1fr] md:items-start">
                                     <div>
-                                        <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">Body / Reading</p>
-                                        <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">14px · LH 1.5</p>
-                                        <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">Peso 400</p>
+                                        <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">Body / Reading</p>
+                                        <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">14px · LH 1.5</p>
+                                        <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">Peso 400</p>
                                     </div>
                                     <div>
                                         <p
@@ -1062,7 +1062,7 @@ function DesignSystemPage() {
                                         >
                                             Nos vemos a las 18:30 en la entrada principal. Lleva efectivo o paga con Wallet.
                                         </p>
-                                        <p className="mt-2 font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--text-secondary)]">
+                                        <p className="mt-2 font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-secondary)]">
                                             Tamaño base para contenido de conversación, mensajes y descripción funcional.
                                         </p>
                                     </div>
@@ -1071,9 +1071,9 @@ function DesignSystemPage() {
                             <article className="rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] p-4">
                                 <div className="grid gap-4 md:grid-cols-[190px_1fr] md:items-start">
                                     <div>
-                                        <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">Caption / Label</p>
-                                        <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">12px · LH 1.2</p>
-                                        <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">Peso 500-700</p>
+                                        <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">Caption / Label</p>
+                                        <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">12px · LH 1.2</p>
+                                        <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">Peso 500-700</p>
                                     </div>
                                     <div>
                                         <p
@@ -1087,7 +1087,7 @@ function DesignSystemPage() {
                                         >
                                             Estado: pendiente · actualizado hace 2 min
                                         </p>
-                                        <p className="mt-2 font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--text-secondary)]">
+                                        <p className="mt-2 font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-secondary)]">
                                             Para metadatos, etiquetas de estado y ayudas breves sin perder legibilidad.
                                         </p>
                                     </div>
@@ -1097,56 +1097,56 @@ function DesignSystemPage() {
                     </section>
 
                     <section id="foundations-spacing" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
-                        <h2 className="font-wallie-chunky text-[length:var(--wm-size-24)]">Spacing & Layout</h2>
-                        <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
+                        <h2 className="font-brand-strong text-[length:var(--wm-size-24)]">Spacing & Layout</h2>
+                        <p className="mt-1 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                             Escala basada en incrementos de 4px y 8px, consumida desde tokens.
                         </p>
                         <div className="mt-5 grid gap-3">
                             {spacingTokens.map((item) => (
                                 <div key={item.tokenPath} className="flex items-center gap-3 rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] p-3">
                                     <div className="h-3 rounded-[var(--wm-size-999)] bg-[color:var(--action-primary)]" style={{ width: `${Math.max(item.pixels, 2)}px` }} />
-                                    <p className="w-[var(--wm-size-190)] font-wallie-fit text-[length:var(--wm-size-12)]">{item.tokenPath}</p>
-                                    <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">{item.value}</p>
+                                    <p className="w-[var(--wm-size-190)] font-brand-text text-[length:var(--wm-size-12)]">{item.tokenPath}</p>
+                                    <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">{item.value}</p>
                                 </div>
                             ))}
                         </div>
                     </section>
 
                     <section id="foundations-radius" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
-                        <h2 className="font-wallie-chunky text-[length:var(--wm-size-24)]">Corner Radius</h2>
-                        <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
+                        <h2 className="font-brand-strong text-[length:var(--wm-size-24)]">Corner Radius</h2>
+                        <p className="mt-1 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                             Escala de radios para esquinas y pills.
                         </p>
                         <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
                             {radiusTokens.map((item) => (
                                 <article key={item.tokenPath} className="rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] p-3">
                                     <div className="h-14 w-full border border-[color:var(--border-strong)] bg-[color:var(--bg-surface)]" style={{ borderRadius: item.value }} />
-                                    <p className="mt-2 font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-primary)]">{item.tokenPath}</p>
-                                    <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">{item.value}</p>
+                                    <p className="mt-2 font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-primary)]">{item.tokenPath}</p>
+                                    <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">{item.value}</p>
                                 </article>
                             ))}
                         </div>
                     </section>
 
                     <section id="foundations-elevation" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
-                        <h2 className="font-wallie-chunky text-[length:var(--wm-size-24)]">Elevation</h2>
-                        <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
+                        <h2 className="font-brand-strong text-[length:var(--wm-size-24)]">Elevation</h2>
+                        <p className="mt-1 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                             Niveles de sombra para separar superficies y jerarquia visual.
                         </p>
                         <div className="mt-5 grid gap-4 md:grid-cols-2">
                             {shadowTokens.map((item) => (
                                 <article key={item.tokenPath} className="rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] bg-[color:var(--bg-base)] p-4">
                                     <div className="h-20 rounded-[var(--wm-size-12)] bg-[color:var(--bg-base)]" style={{ boxShadow: item.value }} />
-                                    <p className="mt-3 font-wallie-fit text-[length:var(--wm-size-12)]">{item.tokenPath}</p>
-                                    <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">{item.value}</p>
+                                    <p className="mt-3 font-brand-text text-[length:var(--wm-size-12)]">{item.tokenPath}</p>
+                                    <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">{item.value}</p>
                                 </article>
                             ))}
                         </div>
                     </section>
 
                     <section id="components-playground" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
-                        <h2 className="font-wallie-chunky text-[length:var(--wm-size-24)]">Components</h2>
-                        <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
+                        <h2 className="font-brand-strong text-[length:var(--wm-size-24)]">Components</h2>
+                        <p className="mt-1 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                             Explora estados y propiedades de cada componente desde previews vivas.
                         </p>
                         <div className="mt-5 space-y-4">
@@ -1162,16 +1162,16 @@ function DesignSystemPage() {
                     </section>
 
                     <section id="components-iconography" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
-                        <h2 className="font-wallie-chunky text-[length:var(--wm-size-24)]">Iconography</h2>
-                        <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
+                        <h2 className="font-brand-strong text-[length:var(--wm-size-24)]">Iconography</h2>
+                        <p className="mt-1 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                             Catalogo operativo de iconos usados en Wallapop Meet con su accion principal.
                         </p>
                         <div className="mt-5 grid gap-4 lg:grid-cols-2">
                             {iconColumns.map((column, index) => (
                                 <div key={`icon-column-${index}`} className="overflow-hidden rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)]">
                                     <div className="grid grid-cols-2 border-b border-[color:var(--border-divider)] bg-[color:var(--bg-surface)]">
-                                        <p className="px-3 py-2 font-wallie-chunky text-[length:var(--wm-size-13)] text-[color:var(--text-primary)]">Icono / Nombre</p>
-                                        <p className="px-3 py-2 font-wallie-chunky text-[length:var(--wm-size-13)] text-[color:var(--text-primary)]">Accion principal</p>
+                                        <p className="px-3 py-2 font-brand-strong text-[length:var(--wm-size-13)] text-[color:var(--text-primary)]">Icono / Nombre</p>
+                                        <p className="px-3 py-2 font-brand-strong text-[length:var(--wm-size-13)] text-[color:var(--text-primary)]">Accion principal</p>
                                     </div>
                                     {column.map((item) => (
                                         <div key={item.name} className="grid grid-cols-2 border-b border-[color:var(--border-divider)] last:border-b-0">
@@ -1181,7 +1181,7 @@ function DesignSystemPage() {
                                                 </span>
                                                 <p className="font-mono text-[length:var(--wm-size-12)] text-[color:var(--text-primary)]">{item.name}</p>
                                             </div>
-                                            <p className="px-3 py-2 font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">{item.action}</p>
+                                            <p className="px-3 py-2 font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">{item.action}</p>
                                         </div>
                                     ))}
                                 </div>

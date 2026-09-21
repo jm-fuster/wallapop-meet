@@ -73,8 +73,8 @@ function InboxBottomNav({
                 </span>
                 <span
                   className={cn(
-                    "max-w-full whitespace-nowrap text-center font-wallie text-[length:var(--wm-size-11)] leading-[var(--wm-size-14)]",
-                    isActive ? "font-wallie-chunky text-[color:var(--text-primary)]" : "text-[color:var(--text-tertiary)]"
+                    "max-w-full whitespace-nowrap text-center font-brand text-[length:var(--wm-size-11)] leading-[var(--wm-size-14)]",
+                    isActive ? "font-brand-strong text-[color:var(--text-primary)]" : "text-[color:var(--text-tertiary)]"
                   )}
                 >
                   {item.label}

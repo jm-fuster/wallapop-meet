@@ -98,7 +98,7 @@ function MeetupTimeline({ currentStatus }: MeetupTimelineProps) {
                             aria-hidden="true"
                             className={`inline-block size-2.5 rounded-full ${styles.dot}`}
                         />
-                        <span className={`font-wallie-fit text-[length:var(--wm-size-13)] leading-5 ${styles.text}`}>
+                        <span className={`font-brand-text text-[length:var(--wm-size-13)] leading-5 ${styles.text}`}>
                             {STEP_LABELS[step]}
                         </span>
                     </li>

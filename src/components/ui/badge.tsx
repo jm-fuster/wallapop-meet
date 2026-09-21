@@ -39,7 +39,7 @@ function Badge({
       data-slot="badge"
       data-variant={variant}
       className={cn(
-        "inline-flex min-h-6 min-w-6 items-center justify-center rounded-full px-1.5 font-wallie text-[length:var(--wm-size-12)] leading-[var(--wm-size-18)]",
+        "inline-flex min-h-6 min-w-6 items-center justify-center rounded-full px-1.5 font-brand text-[length:var(--wm-size-12)] leading-[var(--wm-size-18)]",
         badgeVariantClass[variant],
         className
       )}

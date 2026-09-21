@@ -110,7 +110,7 @@ function ChatProductCard({
                 {statusLabel ? (
                     <span
                         className={cn(
-                            "absolute right-4 bottom-4 inline-flex items-center gap-1 rounded-full bg-[color:var(--bg-status-badge)] px-3 py-1 font-wallie-chunky text-[length:var(--wm-size-14)]",
+                            "absolute right-4 bottom-4 inline-flex items-center gap-1 rounded-full bg-[color:var(--bg-status-badge)] px-3 py-1 font-brand-strong text-[length:var(--wm-size-14)]",
                             statusBadgeConfig.toneClassName
                         )}
                     >
@@ -150,15 +150,15 @@ function ChatProductCard({
             ) : null}
 
             <div className="px-4 py-4">
-                <h4 className="font-wallie-chunky text-[length:var(--wm-size-16)] leading-[var(--wm-size-20)] text-[color:var(--text-primary)]">
+                <h4 className="font-brand-strong text-[length:var(--wm-size-16)] leading-[var(--wm-size-20)] text-[color:var(--text-primary)]">
                     {title}
                 </h4>
                 <div className="mt-2 flex items-center justify-between gap-4">
-                    <p className="font-wallie-fit text-[length:var(--wm-size-16)] text-[color:var(--text-primary)]">
+                    <p className="font-brand-text text-[length:var(--wm-size-16)] text-[color:var(--text-primary)]">
                         {price}
                     </p>
                     {showStats ? (
-                        <div className="flex items-center gap-3 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
+                        <div className="flex items-center gap-3 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                             <span className="inline-flex items-center gap-1">
                                 <WallapopIcon name="eye" size={15} />
                                 {viewsCount}
@@ -171,7 +171,7 @@ function ChatProductCard({
                     ) : null}
                 </div>
                 {!showStats && stats ? (
-                    <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">{stats}</p>
+                    <p className="mt-1 font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">{stats}</p>
                 ) : null}
             </div>
         </article>

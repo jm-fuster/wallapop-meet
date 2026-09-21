@@ -45,9 +45,9 @@ function Toast({
             className={cn(toastVariants({ variant }), className)}
             {...props}
         >
-            <p className="font-wallie-chunky text-[length:var(--wm-size-14)] leading-[1.2]">{title}</p>
+            <p className="font-brand-strong text-[length:var(--wm-size-14)] leading-[1.2]">{title}</p>
             {description ? (
-                <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-12)] leading-[1.3] opacity-95">{description}</p>
+                <p className="mt-1 font-brand-text text-[length:var(--wm-size-12)] leading-[1.3] opacity-95">{description}</p>
             ) : null}
         </div>
     )
