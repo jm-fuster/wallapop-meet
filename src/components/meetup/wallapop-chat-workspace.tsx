@@ -3284,7 +3284,7 @@ function WallapopChatWorkspace() {
     }
 
     return (
-        <main className="h-[100dvh] w-full overflow-hidden bg-[color:var(--bg-base)]">
+        <main className="mt-[var(--wm-disclaimer-h)] h-[calc(100dvh-var(--wm-disclaimer-h))] w-full overflow-hidden bg-[color:var(--bg-base)]">
             <section className="hidden h-full overflow-hidden border-x border-[color:var(--border-strong)] md:grid md:grid-cols-[360px_1fr] lg:grid-cols-[360px_1fr_320px]">
                 <div className="min-h-0 border-r border-[color:var(--border-divider)]">
                     <InboxPane

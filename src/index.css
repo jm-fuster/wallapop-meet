@@ -618,6 +618,22 @@
   fill: var(--wm-map-marker-bg, var(--action-primary));
 }
 
+/*
+ * Site chrome, no producto: alto del aviso de concepto no oficial
+ * (src/components/site/unofficial-concept-notice.tsx). Vive aqui porque las dos
+ * pantallas lo descuentan de su alto de viewport, y crece en sm porque ahi el
+ * texto pasa a la version larga.
+ */
+:root {
+  --wm-disclaimer-h: 1.75rem;
+}
+
+@media (min-width: 40rem) {
+  :root {
+    --wm-disclaimer-h: 2rem;
+  }
+}
+
 .wm-map-marker-user-position {
   display: block;
   width: var(--wm-size-16);

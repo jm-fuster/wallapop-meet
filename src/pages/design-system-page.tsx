@@ -853,7 +853,7 @@ function DesignSystemPage() {
     const weightMedium = typographyTokens.find((item) => item.tokenPath.endsWith("weight.medium"))?.value ?? "500"
     const weightBold = typographyTokens.find((item) => item.tokenPath.endsWith("weight.bold"))?.value ?? "700"
     return (
-        <main className="min-h-dvh bg-[color:var(--bg-surface)] text-[color:var(--text-primary)]">
+        <main className="min-h-dvh bg-[color:var(--bg-surface)] pt-[var(--wm-disclaimer-h)] text-[color:var(--text-primary)]">
             <div className="mx-auto flex w-full max-w-[var(--wm-size-1400)] gap-8 px-6 py-8">
                 <aside className="sticky top-6 hidden h-[calc(100dvh-48px)] w-72 flex-col rounded-[var(--wm-size-12)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-4 lg:flex">
                     <div className="mb-4 border-b border-[color:var(--border-divider)] pb-3">
