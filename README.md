@@ -14,6 +14,8 @@
 </p>
 
 <p align="center">
+  <a href="https://wallapop-meet.vercel.app"><strong>Ver la demo</strong></a>
+  ·
   <a href="https://www.figma.com/community/file/1678855760007300709"><strong>Archivo en Figma Community</strong></a>
   ·
   <a href="https://www.figma.com/design/SV6DFkzoEbfCtGnj2xZtgt/Wallapop-Meet-%C2%B7-Case-Study---Concept-Design-System?node-id=50-6878"><strong>Caso de estudio</strong></a>
@@ -176,6 +178,10 @@ La app incluye un **visor del design system** en `/design-system` que consume `s
 ---
 
 ## Puesta en marcha
+
+El flujo se puede recorrer entero sin instalar nada en **[wallapop-meet.vercel.app](https://wallapop-meet.vercel.app)**: datos de ejemplo en memoria, sin cuentas y sin nada real detrás.
+
+Para levantarlo en local:
 
 ```bash
 npm install
