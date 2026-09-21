@@ -14,7 +14,9 @@
 </p>
 
 <p align="center">
-  <a href="https://www.figma.com/design/SV6DFkzoEbfCtGnj2xZtgt/Wallapop-Meet-%C2%B7-Case-Study---Concept-Design-System?node-id=50-6878"><strong>Caso de estudio en Figma</strong></a>
+  <a href="https://www.figma.com/community/file/1678855760007300709"><strong>Archivo en Figma Community</strong></a>
+  ·
+  <a href="https://www.figma.com/design/SV6DFkzoEbfCtGnj2xZtgt/Wallapop-Meet-%C2%B7-Case-Study---Concept-Design-System?node-id=50-6878"><strong>Caso de estudio</strong></a>
   ·
   <a href="https://www.figma.com/design/SV6DFkzoEbfCtGnj2xZtgt/Wallapop-Meet-%C2%B7-Case-Study---Concept-Design-System?node-id=50-6882"><strong>Prototipo navegable</strong></a>
   ·
@@ -125,6 +127,8 @@ La única acción sin dueño es la caducidad: la dispara el tiempo, y no tiene q
 ## El caso de estudio en Figma
 
 El archivo de Figma es la pieza principal del ejercicio; este repositorio es la implementación de sus reglas. Está escrito en inglés, con una excepción deliberada: **la UI del producto se queda en español**, porque es el mercado al que serviría y porque cada string en Figma es el que el producto muestra de verdad.
+
+Está publicado en **[Figma Community](https://www.figma.com/community/file/1678855760007300709)** bajo CC BY 4.0, así que se puede duplicar y abrir por dentro: las 349 variables, los 39 componentes y el prototipo completo. Los enlaces de la tabla llevan a cada página del archivo original.
 
 | Página | Qué contiene |
 | --- | --- |
