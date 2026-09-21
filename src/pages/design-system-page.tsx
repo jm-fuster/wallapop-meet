@@ -71,22 +71,22 @@ const sectionEntries = [
 
 const iconActionMap: Record<WallapopIconName, string> = {
     arrow_left: "Volver a la pantalla anterior o al listado.",
-    burguer_menu: "Abrir menu principal o menu contextual.",
-    chevron_right: "Navegar al siguiente paso o expandir seccion.",
+    burguer_menu: "Abrir menú principal o menú contextual.",
+    chevron_right: "Navegar al siguiente paso o expandir sección.",
     cross: "Cerrar modales, paneles o flujos activos.",
     ellipsis_horizontal: "Mostrar acciones secundarias de contexto.",
     paper_plane: "Enviar mensaje en composer de chat.",
     shield: "Representar seguridad y recomendaciones de confianza.",
     edit: "Editar datos de un artículo a la venta.",
-    home: "Acceso al inicio en navegacion inferior.",
+    home: "Acceso al inicio en navegación inferior.",
     heart: "Número de favoritos o guardados.",
-    plus: "Crear nueva accion o iniciar flujo.",
+    plus: "Crear nueva acción o iniciar flujo.",
     mail: "Entrar en inbox o conversaciones.",
-    user: "Acceso a perfil y area personal.",
+    user: "Acceso a perfil y área personal.",
     bookmark: "Representar el estado como reservado.",
-    bot: "Asistente automatizado y mensajes de sistema (por ejemplo, invitacion a valorar tras venta completada).",
+    bot: "Asistente automatizado y mensajes de sistema (por ejemplo, invitación a valorar tras venta completada).",
     deal: "Representar el estado como vendido.",
-    calendar: "Abrir selector de fecha y planificacion de quedada.",
+    calendar: "Abrir selector de fecha y planificación de quedada.",
     double_check: "Confirmar envío o lectura de mensaje.",
     eye: "Número de visitas de un artículo.",
 }
@@ -891,15 +891,15 @@ function DesignSystemPage() {
                 <div className="min-w-0 flex-1 space-y-10">
                     <header className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
                         <p className="font-brand-text text-[length:var(--wm-size-12)] uppercase tracking-[0.08em] text-[color:var(--text-secondary)]">
-                            Documentacion viva
+                            Documentación viva
                         </p>
                         <h1 className="mt-1 font-brand-strong text-[length:var(--wm-size-34)] leading-[1.1] text-[color:var(--text-primary)]">
                             Design System Viewer
                         </h1>
                         <p className="mt-3 max-w-[65ch] font-brand-text text-[length:var(--wm-size-15)] leading-6 text-[color:var(--text-secondary)]">
-                            Esta pagina consume tokens de <code>styles.json</code> para documentar foundations,
-                            componentes base en un unico portal operativo. Desde la app, el acceso rapido al viewer
-                            esta siempre disponible con el control flotante inferior derecho «Design System».
+                            Esta página consume tokens de <code>styles.json</code> para documentar foundations,
+                            componentes base en un único portal operativo. Desde la app, el acceso rápido al viewer
+                            está siempre disponible con el control flotante inferior derecho «Design System».
                         </p>
                     </header>
 
@@ -961,7 +961,7 @@ function DesignSystemPage() {
                     <section id="foundations-semantic-colors" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
                         <h2 className="font-brand-strong text-[length:var(--wm-size-24)]">Semantic Colors</h2>
                         <p className="mt-1 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
-                            Inventario dinamico de <code>tokens.color.semantic.*</code>, sincronizado automaticamente desde <code>styles.json</code>.
+                            Inventario dinámico de <code>tokens.color.semantic.*</code>, sincronizado automáticamente desde <code>styles.json</code>.
                         </p>
                         <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
                             {visibleSemanticColors.map((item) => (
@@ -990,7 +990,7 @@ function DesignSystemPage() {
                     <section id="foundations-typography" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
                         <h2 className="font-brand-strong text-[length:var(--wm-size-24)]">Typography</h2>
                         <p className="mt-1 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
-                            Guia tipografica propuesta para Wallapop Meet basada en proporciones reales del producto. Familia principal: <code>{fontPrimary}</code>, fallbacks: <code>{fontFallback}</code>.
+                            Guía tipográfica propuesta para Wallapop Meet basada en proporciones reales del producto. Familia principal: <code>{fontPrimary}</code>, fallbacks: <code>{fontFallback}</code>.
                         </p>
                         <div className="mt-5 space-y-4">
                             <article className="rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)] p-4">
@@ -1035,10 +1035,10 @@ function DesignSystemPage() {
                                                 fontWeight: 600,
                                             }}
                                         >
-                                            Punto de encuentro y metodo de pago
+                                            Punto de encuentro y método de pago
                                         </p>
                                         <p className="mt-2 font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-secondary)]">
-                                            Para subtitulos, grupos de formulario y jerarquias internas de pantalla.
+                                            Para subtítulos, grupos de formulario y jerarquías internas de pantalla.
                                         </p>
                                     </div>
                                 </div>
@@ -1131,7 +1131,7 @@ function DesignSystemPage() {
                     <section id="foundations-elevation" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
                         <h2 className="font-brand-strong text-[length:var(--wm-size-24)]">Elevation</h2>
                         <p className="mt-1 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
-                            Niveles de sombra para separar superficies y jerarquia visual.
+                            Niveles de sombra para separar superficies y jerarquía visual.
                         </p>
                         <div className="mt-5 grid gap-4 md:grid-cols-2">
                             {shadowTokens.map((item) => (
@@ -1164,14 +1164,14 @@ function DesignSystemPage() {
                     <section id="components-iconography" className="rounded-[var(--wm-size-16)] border border-[color:var(--border-strong)] bg-[color:var(--bg-base)] p-6">
                         <h2 className="font-brand-strong text-[length:var(--wm-size-24)]">Iconography</h2>
                         <p className="mt-1 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
-                            Catalogo operativo de iconos usados en Wallapop Meet con su accion principal.
+                            Catálogo operativo de iconos usados en Wallapop Meet con su acción principal.
                         </p>
                         <div className="mt-5 grid gap-4 lg:grid-cols-2">
                             {iconColumns.map((column, index) => (
                                 <div key={`icon-column-${index}`} className="overflow-hidden rounded-[var(--wm-size-12)] border border-[color:var(--border-divider)]">
                                     <div className="grid grid-cols-2 border-b border-[color:var(--border-divider)] bg-[color:var(--bg-surface)]">
                                         <p className="px-3 py-2 font-brand-strong text-[length:var(--wm-size-13)] text-[color:var(--text-primary)]">Icono / Nombre</p>
-                                        <p className="px-3 py-2 font-brand-strong text-[length:var(--wm-size-13)] text-[color:var(--text-primary)]">Accion principal</p>
+                                        <p className="px-3 py-2 font-brand-strong text-[length:var(--wm-size-13)] text-[color:var(--text-primary)]">Acción principal</p>
                                     </div>
                                     {column.map((item) => (
                                         <div key={item.name} className="grid grid-cols-2 border-b border-[color:var(--border-divider)] last:border-b-0">

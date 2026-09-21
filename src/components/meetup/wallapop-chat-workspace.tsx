@@ -248,7 +248,7 @@ const initialConversations: Conversation[] = [
         itemPrice: "240 €",
         messageDate: "Hoy",
         itemTitle: "Nintendo Switch OLED + dock",
-        messagePreview: "Perfecto, alli nos vemos. Gracias!",
+        messagePreview: "Perfecto, allí nos vemos. Gracias!",
         listingImageSrc:
             "https://images.pexels.com/photos/6993182/pexels-photo-6993182.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=400&h=400",
         profileImageSrc:
@@ -275,7 +275,7 @@ const initialConversations: Conversation[] = [
         itemPrice: "520 €",
         messageDate: "Hoy",
         itemTitle: "Bicicleta fixie Fuji",
-        messagePreview: "Si te encaja, te envio propuesta de quedada ahora.",
+        messagePreview: "Si te encaja, te envío propuesta de quedada ahora.",
         listingImageSrc:
             "https://images.pexels.com/photos/100582/pexels-photo-100582.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=400&h=400",
         profileImageSrc:
@@ -298,7 +298,7 @@ const initialConversations: Conversation[] = [
         userName: "Marta P.",
         itemPrice: "640 €",
         messageDate: "Hoy",
-        itemTitle: "Camara Fujifilm X-T20",
+        itemTitle: "Cámara Fujifilm X-T20",
         messagePreview: "Te acabo de enviar la propuesta con sitio y hora.",
         listingImageSrc:
             "https://images.pexels.com/photos/51383/photo-camera-subject-photographer-51383.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=400&h=400",
@@ -354,7 +354,7 @@ const initialConversations: Conversation[] = [
         itemPrice: "210 €",
         messageDate: "12 feb",
         itemTitle: "Monitor LG 27 pulgadas 144Hz",
-        messagePreview: "Prefiero venderselo a otra persona por tranquilidad.",
+        messagePreview: "Prefiero vendérselo a otra persona por tranquilidad.",
         listingImageSrc:
             "https://images.pexels.com/photos/1038916/pexels-photo-1038916.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=400&h=400",
         profileImageSrc:
@@ -396,14 +396,14 @@ const initialMessagesByConversation: Record<string, Message[]> = {
         },
         {
             id: "m-a-3",
-            text: "Una duda: por esa zona es facil aparcar o el parking es de pago?",
+            text: "Una duda: por esa zona es fácil aparcar o el parking es de pago?",
             variant: "received",
             time: formatTime(new Date(tsMinutesAgo(28))),
             createdAt: tsMinutesAgo(28),
         },
         {
             id: "m-a-4",
-            text: "No suele ser facil aparcar en la calle por ahi.",
+            text: "No suele ser fácil aparcar en la calle por ahí.",
             variant: "sent",
             time: formatTime(new Date(tsMinutesAgo(24))),
             createdAt: tsMinutesAgo(24),
@@ -427,7 +427,7 @@ const initialMessagesByConversation: Record<string, Message[]> = {
         },
         {
             id: "m-a-7",
-            text: "Perfecto, alli nos vemos. Gracias!",
+            text: "Perfecto, allí nos vemos. Gracias!",
             variant: "received",
             time: formatTime(new Date(tsMinutesAgo(18))),
             createdAt: tsMinutesAgo(18),
@@ -436,14 +436,14 @@ const initialMessagesByConversation: Record<string, Message[]> = {
     "conv-b-seller-propose": [
         {
             id: "m-b-1",
-            text: "Sigue disponible la bici? Podria verla esta tarde.",
+            text: "Sigue disponible la bici? Podría verla esta tarde.",
             variant: "received",
             time: formatTime(new Date(tsMinutesAgo(90))),
             createdAt: tsMinutesAgo(90),
         },
         {
             id: "m-b-2",
-            text: "Si, la bici esta revisada, frenos y ruedas al dia.",
+            text: "Sí, la bici está revisada, frenos y ruedas al día.",
             variant: "sent",
             time: formatTime(new Date(tsMinutesAgo(72))),
             createdAt: tsMinutesAgo(72),
@@ -458,7 +458,7 @@ const initialMessagesByConversation: Record<string, Message[]> = {
         },
         {
             id: "m-b-4",
-            text: "Alerta: salgo tarde del trabajo, revisa mi ultimo mensaje antes de proponer quedada.",
+            text: "Alerta: salgo tarde del trabajo, revisa mi último mensaje antes de proponer quedada.",
             variant: "received",
             time: formatTime(new Date(tsMinutesAgo(2))),
             createdAt: tsMinutesAgo(2),
@@ -467,7 +467,7 @@ const initialMessagesByConversation: Record<string, Message[]> = {
     "conv-c-buyer-incoming": [
         {
             id: "m-c-1",
-            text: "Hola, me interesa la camara. Te viene bien quedar hoy?",
+            text: "Hola, me interesa la cámara. Te viene bien quedar hoy?",
             variant: "sent",
             time: formatTime(new Date(tsMinutesAgo(26))),
             createdAt: tsMinutesAgo(26),
@@ -482,7 +482,7 @@ const initialMessagesByConversation: Record<string, Message[]> = {
         },
         {
             id: "m-c-3",
-            text: "Cuando puedas revisala y me dices si te cuadra.",
+            text: "Cuando puedas revísala y me dices si te cuadra.",
             variant: "received",
             time: formatTime(new Date(tsMinutesAgo(2))),
             createdAt: tsMinutesAgo(2),
@@ -514,7 +514,7 @@ const initialMessagesByConversation: Record<string, Message[]> = {
         },
         {
             id: "m-e-1",
-            text: "Veo que tu tasa de asistencia es baja y prefiero venderselo a otra persona, lo siento.",
+            text: "Veo que tu tasa de asistencia es baja y prefiero vendérselo a otra persona, lo siento.",
             variant: "sent",
             time: formatTime(new Date(tsMinutesAgo(2 * 24 * 60))),
             createdAt: tsMinutesAgo(2 * 24 * 60),
@@ -536,7 +536,7 @@ const safeMeetingPoints: SafeMeetingPoint[] = [
     {
         id: "mall",
         name: "Centro comercial Arenas",
-        hint: "Entrada principal, punto de informacion.",
+        hint: "Entrada principal, punto de información.",
         address: "Gran Via de les Corts Catalanes, 373, Barcelona",
         distanceMeters: 640,
         completedSales: 198,
@@ -800,7 +800,7 @@ function resolveMeetupTimelinePreview(meetup: MeetupMachine): string {
                 return "Quedada cancelada por no-show del comprador."
             }
             if (meetup.cancelReason === "NO_SHOW_FINAL_CONTRADICTION") {
-                return "Quedada cancelada tras contradiccion de presencia."
+                return "Quedada cancelada tras contradicción de presencia."
             }
             if (meetup.cancelReason === "PROPOSAL_EXPIRED") {
                 return "La propuesta caduco sin respuesta."
@@ -1432,7 +1432,7 @@ function MeetupProposalOverlay({
     onSubmit,
 }: MeetupProposalOverlayProps) {
     const stepLabels: Array<{ id: ProposalStep; label: string }> = [
-        { id: 1, label: "Dia y hora" },
+        { id: 1, label: "Día y hora" },
         { id: 2, label: "Punto de encuentro" },
         { id: 3, label: "Preferencia de pago" },
     ]
@@ -1522,10 +1522,10 @@ function MeetupProposalOverlay({
         isStepThreePriceMissing
             ? "Introduce un importe de 0 € o superior."
             : isFinalPriceAboveMaximum
-                ? `El importe maximo permitido es ${MAX_FINAL_PRICE_EUR} €.`
+                ? `El importe máximo permitido es ${MAX_FINAL_PRICE_EUR} €.`
                 : undefined
     const priceInputAlertText =
-        "Has excedido el importe maximo anual y Wallapop debera informar a Hacienda bajo la normativa DAC7."
+        "Has excedido el importe máximo anual y Wallapop deberá informar a Hacienda bajo la normativa DAC7."
 
     return (
         <div className="fixed inset-0 z-50 flex items-end justify-center bg-[color:var(--text-primary)]/50 p-0 md:items-center md:p-6">
@@ -1673,10 +1673,10 @@ function MeetupProposalOverlay({
                             {step === 1 ? (
                                 <div className="mt-4 space-y-4">
                                     <h3 className="font-brand-strong text-[length:var(--wm-size-20)] leading-[1.12] text-[color:var(--text-primary)] md:text-[length:var(--wm-size-22)]">
-                                        Seleccionar dia y hora
+                                        Seleccionar día y hora
                                     </h3>
                                     <CalendarPicker
-                                        label="Dia"
+                                        label="Día"
                                         monthDate={visibleCalendarMonth}
                                         selectedDateValue={selectedDateValue}
                                         minDateValue={minDateValue}
@@ -1685,7 +1685,7 @@ function MeetupProposalOverlay({
                                         state={isStepOneDateMissing ? "error" : "default"}
                                         error={
                                             isStepOneDateMissing
-                                                ? "Selecciona un dia para continuar."
+                                                ? "Selecciona un día para continuar."
                                                 : undefined
                                         }
                                     />
@@ -1864,7 +1864,7 @@ function MeetupProposalOverlay({
                                         </div>
                                         {isStepThreePaymentMissing ? (
                                             <p className="mt-2 text-[length:var(--wm-size-12)] leading-[1.4] text-[color:var(--wm-color-input-ring-error)]">
-                                                Selecciona un metodo de pago para continuar.
+                                                Selecciona un método de pago para continuar.
                                             </p>
                                         ) : null}
                                     </fieldset>
@@ -1908,7 +1908,7 @@ function InboxPane({
         <section className="flex h-full min-h-0 flex-col bg-[color:var(--bg-base)]">
             <div className="border-b border-[color:var(--border-divider)] px-4 py-4">
                 <div className="flex items-center">
-                    <h1 className="font-brand-strong text-[length:var(--wm-size-22)] text-[color:var(--text-primary)]">Buzon</h1>
+                    <h1 className="font-brand-strong text-[length:var(--wm-size-22)] text-[color:var(--text-primary)]">Buzón</h1>
                 </div>
                 <div
                     role="tablist"
@@ -2228,8 +2228,8 @@ function ConversationPane({
             <div className="shrink-0 border-t border-[color:var(--border-divider)] bg-[color:var(--bg-base)]">
                 <div className="px-3 pt-1 sm:px-4">
                     <ChatSecurityBanner
-                        message="Quedate en Wallapop. Mas facil, mas seguro."
-                        linkText="Mas informacion"
+                        message="Quédate en Wallapop. Más fácil, más seguro."
+                        linkText="Más información"
                         className="px-0 pt-1 pb-1"
                     />
                 </div>
@@ -2815,7 +2815,7 @@ function WallapopChatWorkspace() {
             "Cancelaste en los ultimos 30 min. Se notifico de forma prioritaria a la otra persona."
         )
         appendCounterpartMessage(
-            "He recibido la cancelacion de la quedada. Busquemos otra hora si te encaja."
+            "He recibido la cancelación de la quedada. Busquemos otra hora si te encaja."
         )
     }
 
@@ -2891,13 +2891,13 @@ function WallapopChatWorkspace() {
 
         if (next.status === "CANCELLED" && next.cancelReason === "NO_SHOW_BUYER") {
             appendSystemMessage(
-                `Quedada cancelada. Hemos penalizado a ${selectedConversation.userName} por no asistir. Tu articulo vuelve a estar disponible.`
+                `Quedada cancelada. Hemos penalizado a ${selectedConversation.userName} por no asistir. Tu artículo vuelve a estar disponible.`
             )
         }
 
         if (next.status === "CANCELLED" && next.cancelReason === "NO_SHOW_FINAL_CONTRADICTION") {
             appendSystemMessage(
-                "Confirmaste no-show final tras contradiccion de presencia. La reserva se canceló y el articulo vuelve a disponible."
+                "Confirmaste no-show final tras contradicción de presencia. La reserva se canceló y el artículo vuelve a disponible."
             )
         }
     }
@@ -3086,7 +3086,7 @@ function WallapopChatWorkspace() {
             return false
         }
         if (!isQuarterHourTimeValue(selectedTimeValue.slice(0, 5))) {
-            setProposalError("Selecciona una hora valida en intervalos de 15 minutos.")
+            setProposalError("Selecciona una hora válida en intervalos de 15 minutos.")
             return false
         }
         const scheduledAt = parseLocalDateTimeValue(proposalScheduledAt)
@@ -3205,7 +3205,7 @@ function WallapopChatWorkspace() {
             return
         }
         if (parsedFinalPrice > MAX_FINAL_PRICE_EUR) {
-            setProposalError(`El importe maximo permitido es ${MAX_FINAL_PRICE_EUR} €.`)
+            setProposalError(`El importe máximo permitido es ${MAX_FINAL_PRICE_EUR} €.`)
             return
         }
 

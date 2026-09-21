@@ -61,7 +61,7 @@ export const Variants: Story = {
       <Button variant="icon" aria-label="Colapsar sidebar">
         <ChevronLeft className="size-4" aria-hidden="true" />
       </Button>
-      <Button variant="menu_close" aria-label="Cerrar menu">
+      <Button variant="menu_close" aria-label="Cerrar menú">
         <X className="size-4" aria-hidden="true" />
       </Button>
     </div>
@@ -74,7 +74,7 @@ export const IconOnly: Story = {
       <Button variant="icon" aria-label="Colapsar sidebar">
         <ChevronLeft className="size-4" aria-hidden="true" />
       </Button>
-      <Button variant="menu_close" aria-label="Cerrar menu">
+      <Button variant="menu_close" aria-label="Cerrar menú">
         <X className="size-4" aria-hidden="true" />
       </Button>
     </div>

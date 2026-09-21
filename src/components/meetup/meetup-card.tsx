@@ -608,7 +608,7 @@ function MeetupCard({
 
     const paymentMethodValue = meetup.proposedPaymentMethod
         ? paymentMethodLabel(meetup.proposedPaymentMethod)
-        : "Sin metodo"
+        : "Sin método"
     const formattedPrice =
         meetup.finalPrice !== undefined ? `${meetup.finalPrice.toFixed(2)} \u20AC` : "sin precio"
     const currentStatusPill = statusPill(meetup)
@@ -673,7 +673,7 @@ function MeetupCard({
                             <MapPin size={14} />
                         </span>
                         <span className="truncate font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">
-                            {meetup.proposedLocation || "Ver ubicacion del punto de encuentro"}
+                            {meetup.proposedLocation || "Ver ubicación del punto de encuentro"}
                         </span>
                     </div>
                 )}
@@ -814,7 +814,7 @@ function MeetupCard({
                                 Seguro que quieres cancelar o rechazar la quedada?
                             </h3>
                             <p className="mt-2 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
-                                Esta accion no se puede deshacer.
+                                Esta acción no se puede deshacer.
                             </p>
                             {isRedZoneCancellation ? (
                                 <NoticeBanner className="mt-2 py-2">
@@ -852,7 +852,7 @@ function MeetupCard({
                                 Confirmar no-show del comprador?
                             </h3>
                             <p className="mt-2 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
-                                Esta accion cancela la quedada y libera el articulo.
+                                Esta acción cancela la quedada y libera el artículo.
                             </p>
                             <div className="mt-4 space-y-2">
                                 <Button

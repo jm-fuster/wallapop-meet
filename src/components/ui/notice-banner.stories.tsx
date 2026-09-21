@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>
 export const Warning: Story = {
     args: {
         tone: "warning",
-        children: "Atencion: revisa los datos antes de continuar.",
+        children: "Atención: revisa los datos antes de continuar.",
     },
 }
 

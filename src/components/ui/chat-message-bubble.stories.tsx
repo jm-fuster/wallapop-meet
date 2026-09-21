@@ -41,7 +41,7 @@ export const Sent: Story = {
 export const Received: Story = {
   args: {
     variant: "received",
-    children: "Te va bien manana a las 18:30?",
+    children: "Te va bien mañana a las 18:30?",
     time: "14:52",
   },
 }

@@ -37,7 +37,7 @@ export function resolveArrivalActionState(
     if (meetup.status !== "CONFIRMED" && meetup.status !== "ARRIVED") {
         return {
             enabled: false,
-            message: "La accion de llegada solo aplica a meetups confirmados o en curso.",
+            message: "La acción de llegada solo aplica a meetups confirmados o en curso.",
             proximityRequiredMessage: "",
         }
     }
@@ -68,7 +68,7 @@ export function resolveArrivalActionState(
             enabled: false,
             message: "",
             proximityRequiredMessage:
-                "Acercate a menos de 100 metros del punto de encuentro para indicar que has llegado.",
+                "Acércate a menos de 100 metros del punto de encuentro para indicar que has llegado.",
         }
     }
 

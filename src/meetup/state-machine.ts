@@ -246,7 +246,7 @@ export function transitionMeetup(
 
             if (!isWithinArrivalWindow(meetup.scheduledAt, event.occurredAt)) {
                 return fail(
-                    "La accion de llegada solo es valida entre 30 minutos antes y 2 horas despues."
+                    "La acción de llegada solo es válida entre 30 minutos antes y 2 horas después."
                 )
             }
 
@@ -406,7 +406,7 @@ export function transitionMeetup(
             }
 
             if (!meetup.noShowReport?.contradictionDetected) {
-                return fail("No existe contradiccion activa para confirmar no-show final.")
+                return fail("No existe contradicción activa para confirmar no-show final.")
             }
 
             return success({
@@ -428,7 +428,7 @@ export function transitionMeetup(
             }
 
             if (!isMeetupExpired(meetup, event.occurredAt)) {
-                return fail("La quedada todavia puede avanzar: aun no ha caducado.")
+                return fail("La quedada todavía puede avanzar: aún no ha caducado.")
             }
 
             const expiredAsProposal =

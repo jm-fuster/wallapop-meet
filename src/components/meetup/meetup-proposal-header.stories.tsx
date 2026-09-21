@@ -23,7 +23,7 @@ type Story = StoryObj<typeof meta>
 
 const baseSteps = [
   { id: 1, label: "Punto de encuentro" },
-  { id: 2, label: "Dia y hora" },
+  { id: 2, label: "Día y hora" },
   { id: 3, label: "Preferencia de pago" },
 ]
 
@@ -49,7 +49,7 @@ export const StepTwo: Story = {
     totalSteps: 3,
     steps: [
       { id: 1, label: "Punto de encuentro" },
-      { id: 2, label: "Dia y hora" },
+      { id: 2, label: "Día y hora" },
       { id: 3, label: "Preferencia de pago", disabled: true },
     ],
     onClose: () => undefined,

@@ -25,7 +25,7 @@ const MIN_CONVERSATION_NAMESPACE_LENGTH = 16
 
 function assertLength(value: string, maxLength: number, fieldName: string): void {
     if (value.length > maxLength) {
-        throw new Error(`${fieldName} supera el maximo de ${maxLength} caracteres.`)
+        throw new Error(`${fieldName} supera el máximo de ${maxLength} caracteres.`)
     }
 }
 
@@ -92,7 +92,7 @@ export const saveUserTextMessage = mutation({
         }
 
         if (conversationMessages.length >= MAX_MESSAGES_PER_CONVERSATION) {
-            throw new Error("Este hilo ha alcanzado el maximo de mensajes guardados.")
+            throw new Error("Este hilo ha alcanzado el máximo de mensajes guardados.")
         }
 
         /*

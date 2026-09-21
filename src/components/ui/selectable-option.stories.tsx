@@ -16,7 +16,7 @@ export const Default: Story = {
     args: {
         selected: false,
         title: "Punto de encuentro personalizado",
-        subtitle: "Calle Gran Via, 15 · Madrid",
+        subtitle: "Calle Gran Vía, 15 · Madrid",
         leftIcon: <WallapopIcon name="deal" size={16} />,
     },
 }
@@ -39,8 +39,8 @@ export const Disabled: Story = {
     args: {
         selected: false,
         disabled: true,
-        title: "Metodo alternativo",
-        subtitle: "Temporalmente no disponible para esta operacion",
+        title: "Método alternativo",
+        subtitle: "Temporalmente no disponible para esta operación",
         leftIcon: <WallapopIcon name="mail" size={16} />,
     },
 }

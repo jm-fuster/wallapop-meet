@@ -90,7 +90,7 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
       options,
       value,
       defaultValue,
-      placeholder = "Selecciona una opcion",
+      placeholder = "Selecciona una opción",
       onValueChange,
       children,
       disabled,
