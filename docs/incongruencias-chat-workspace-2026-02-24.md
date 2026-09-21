@@ -1,4 +1,4 @@
-﻿# Incongruencias y desactualizaciones detectadas (2026-02-24)
+# Incongruencias y desactualizaciones detectadas (2026-02-24)
 
 ## Alcance
 - Modulos revisados: `wallapop-chat-workspace`, `chat-product-card`, stories y docs de componente.

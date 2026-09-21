@@ -1,37 +1,37 @@
 # Checklist de accesibilidad y QA visual - Wallapop Meet
 
 ## Accesibilidad
-- Contraste m韓imo AA en texto principal y CTAs.
+- Contraste m铆nimo AA en texto principal y CTAs.
 - Foco visible en elementos interactivos.
-- Tama駉 t醕til m韓imo de 44x44 px para acciones cr韙icas.
-- Jerarqu韆 sem醤tica correcta en t韙ulos y etiquetas.
+- Tama帽o t谩ctil m铆nimo de 44x44 px para acciones cr铆ticas.
+- Jerarqu铆a sem谩ntica correcta en t铆tulos y etiquetas.
 - Campos con etiqueta persistente, ayuda y error descriptivo.
 - Inputs con label flotante deben mantener etiqueta legible en `default` y `filled/focused`.
-- Iconos cr韙icos acompa馻dos por texto.
+- Iconos cr铆ticos acompa帽ados por texto.
 - Estados nunca comunicados solo por color.
 - Botones `icon-only` (`icon`, `menu_close`) con `aria-label` obligatorio.
 - En botones `tab`, validar `role="tab"` y `aria-selected` consistente con el estado visual.
 - En `Input`, validar `aria-invalid`, `aria-describedby` (helper/counter) y anuncios de contador con `aria-live`.
 
 ## QA visual
-- Consistencia de espaciado seg鷑 escala de tokens.
+- Consistencia de espaciado seg煤n escala de tokens.
 - Radios, sombras y bordes aplicados solo desde tokens.
 - Estados `disabled`, `loading` y `error` validados por componente.
-- Sin desbordes en textos largos ni en localizaci髇.
-- Comportamiento correcto en m髒il y pantallas peque馻s.
-- Banner y toast sin solaparse con la navegaci髇.
-- Variantes de bot髇 alineadas a inventario real (`primary`, `nav_expandable`, `tab`, `inline_action`, `icon`, `menu_close`).
+- Sin desbordes en textos largos ni en localizaci贸n.
+- Comportamiento correcto en m贸vil y pantallas peque帽as.
+- Banner y toast sin solaparse con la navegaci贸n.
+- Variantes de bot贸n alineadas a inventario real (`primary`, `nav_expandable`, `tab`, `inline_action`, `icon`, `menu_close`).
 - Estados de input alineados a inventario real (`default`, `hover`, `focused`, `filled`, `error`, `success`, `disabled`).
 
 ## QA de flujo Meetup
 - El vendedor puede proponer; el comprador no inicia propuesta.
 - El comprador puede aceptar o contraofertar.
-- Las transiciones respetan la m醧uina de estados definida.
-- Acci髇 `Estoy aqui` solo dentro de la ventana v醠ida.
+- Las transiciones respetan la m谩quina de estados definida.
+- Acci贸n `Estoy aqui` solo dentro de la ventana v谩lida.
 - Seguimiento 24-48h dispara estado final esperado.
 
-## Salida de validaci髇
+## Salida de validaci贸n
 - Registro de incidencias por severidad: `blocker | major | minor`.
-- Evidencia por incidencia: captura y pasos de reproducci髇.
-- Aprobaci髇 final con fecha y versi髇 de tokens/componentes.
+- Evidencia por incidencia: captura y pasos de reproducci贸n.
+- Aprobaci贸n final con fecha y versi贸n de tokens/componentes.
 

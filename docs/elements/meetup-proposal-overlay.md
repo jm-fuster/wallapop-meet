@@ -41,7 +41,7 @@
 - Punto seguro:
   - Icono escudo.
   - Nombre + direccion.
-  - Label unico: `Punto seguro ù <N> ventas completadas`.
+  - Label unico: `Punto seguro ¬∑ <N> ventas completadas`.
 - Punto personalizado:
   - Icono de puntero en la card de opcion (negro, sin contenedor circular).
   - Direccion seleccionada.
@@ -112,9 +112,9 @@
   - Lista de hora en intervalos de 15 minutos durante todo el dia.
 - Paso 3:
   - Importe (`Input`) con estado `error` cuando falta o es invalido (< 0).
-  - El campo de importe limita entrada a `99999 Ä` y `2` decimales.
-  - Si el importe supera `2000 Ä`, se muestra alerta destacada (warning naranja) indicando impacto DAC7.
-  - La alerta DAC7 incluye CTA textual `M·s informaciÛn` enlazada a ayuda oficial:
+  - El campo de importe limita entrada a `99999 ‚Ç¨` y `2` decimales.
+  - Si el importe supera `2000 ‚Ç¨`, se muestra alerta destacada (warning naranja) indicando impacto DAC7.
+  - La alerta DAC7 incluye CTA textual `M√°s informaci√≥n` enlazada a ayuda oficial:
     - `https://ayuda.wallapop.com/hc/es-es/articles/19093732048785--Qu%C3%A9-es-DAC7-y-a-que-vendedores-de-Wallapop-les-afecta`
   - Iconografia de metodo de pago sin capsula/circulo de fondo (solo icono + label).
   - Metodo de pago: cada card se marca en rojo por separado cuando no hay seleccion.

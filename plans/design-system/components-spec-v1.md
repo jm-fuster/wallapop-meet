@@ -1,16 +1,16 @@
 # Componentes v1 - Wallapop Meet
 
 ## Objetivo
-Definir la API visual mùnima de componentes para implementar los flujos de Wallapop Meet con consistencia.
+Definir la API visual m√≠nima de componentes para implementar los flujos de Wallapop Meet con consistencia.
 
 
-## Regla global de implementaciùn (Source of Truth)
-- Storybook y componentes en `src/components/*` deben consumir tokens semùnticos/aliases (`styles.json` + `src/index.css`) como fuente de verdad.
-- En cùdigo nuevo de componentes documentados en Storybook (`Design System/*`), no se permite color hardcodeado en hex.
-- Para color semùntico usar copia directa: `var(--alias-corto)` y/o raùz Tailwind `text-/bg-/border-<raiz>`.
+## Regla global de implementaci√≥n (Source of Truth)
+- Storybook y componentes en `src/components/*` deben consumir tokens sem√°nticos/aliases (`styles.json` + `src/index.css`) como fuente de verdad.
+- En c√≥digo nuevo de componentes documentados en Storybook (`Design System/*`), no se permite color hardcodeado en hex.
+- Para color sem√°ntico usar copia directa: `var(--alias-corto)` y/o ra√≠z Tailwind `text-/bg-/border-<raiz>`.
 - Todo componente alcanzable desde `src/App.tsx` debe exportar `designSystemMeta` y tener story sincronizada en `Design System/*`.
 - Siempre que cambie un componente, actualizar tambien el Design System vivo (`src/pages/design-system-page.tsx`) para reflejar el nuevo estado/caso (de forma directa o consumiendo su story).
-## 1. Botùn (`Button`)
+## 1. Bot√≥n (`Button`)
 Propiedades visuales:
 - `variant`: `primary | secondary | ghost | link | nav_expandable | tab | inline_action | icon | menu_close`
 - `size`: `sm | md | lg | tab`
@@ -61,7 +61,7 @@ Reglas:
 - Variantes base y extendidas alineadas con capturas de Wallapop Chat y necesidades del flujo de meetup.
 - `loading` mantiene ancho para evitar cambios de layout.
 - `icon` y `menu_close` requieren `aria-label` obligatorio.
-- En mùvil, cualquier acciùn crùtica mantiene ùrea tùctil mùnima de `44x44` aunque el icono visual sea menor.
+- En m√≥vil, cualquier acci√≥n cr√≠tica mantiene √°rea t√°ctil m√≠nima de `44x44` aunque el icono visual sea menor.
 
 ## 2. Campo de entrada (`Input`)
 Propiedades visuales:
@@ -86,8 +86,8 @@ Tokens base:
 
 Reglas:
 - Basado en captura oficial de `https://es.wallapop.com/app/catalog/upload/consumer-goods` (2026-02-18).
-- Usar `box-shadow inset` para representar borde/ring; no usar `border` fùsico.
-- `label` flotante: tamaùo `16px/24px` en `default`, `14px/20px` en `filled/focused`.
+- Usar `box-shadow inset` para representar borde/ring; no usar `border` f√≠sico.
+- `label` flotante: tama√±o `16px/24px` en `default`, `14px/20px` en `filled/focused`.
 - Mostrar ayuda/error siempre debajo del campo, nunca en placeholder.
 - Si existe `error`, prevalece sobre `hint`.
 - `counter` se muestra con formato `actual/max` cuando existe `maxLength`.
@@ -98,35 +98,35 @@ Propiedades visuales:
 - `state`: `default | focused | error | disabled`
 - `size`: `md | lg`
 - `dropdownDirection`: `down | up`
-- `maxVisibleOptions`: nùmero de opciones visibles antes de scroll
+- `maxVisibleOptions`: n√∫mero de opciones visibles antes de scroll
 
 Reglas:
 - Debe soportar lista de puntos de encuentro sugeridos.
-- Altura tùctil mùnima de 44 px.
+- Altura t√°ctil m√≠nima de 44 px.
 - El panel del dropdown debe tener altura fija y scroll interno para listas largas.
-- En overlays mùviles, permitir desplegar hacia arriba (`dropdownDirection=up`) para no ocultar opciones fuera de viewport.
+- En overlays m√≥viles, permitir desplegar hacia arriba (`dropdownDirection=up`) para no ocultar opciones fuera de viewport.
 
 ## Matriz de estados (fase inicial)
 
 ### `Button`
-| Estado | Quù cambia visualmente | Comportamiento |
+| Estado | Qu√© cambia visualmente | Comportamiento |
 | --- | --- | --- |
-| `default` | Segùn `variant` real (`primary`, `nav_expandable`, `tab`, `inline_action`, `icon`, `menu_close`) | Acciùn disponible |
+| `default` | Seg√∫n `variant` real (`primary`, `nav_expandable`, `tab`, `inline_action`, `icon`, `menu_close`) | Acci√≥n disponible |
 | `hover` | Ajuste de color/fondo sin alterar dimensiones | Solo feedback visual |
-| `pressed` | Ajuste de contraste o elevaciùn segùn variante | Mantiene semùntica de la variante |
-| `focused` | `focus ring` visible con `tokens.color.border.focus` | Navegaciùn por teclado accesible |
+| `pressed` | Ajuste de contraste o elevaci√≥n seg√∫n variante | Mantiene sem√°ntica de la variante |
+| `focused` | `focus ring` visible con `tokens.color.border.focus` | Navegaci√≥n por teclado accesible |
 | `disabled` | Opacidad reducida + cursor no interactivo | No dispara `onClick` |
-| `loading` | Spinner + texto de carga; ancho estable | Bloquea interacciùn temporalmente |
+| `loading` | Spinner + texto de carga; ancho estable | Bloquea interacci√≥n temporalmente |
 
 ### `Input`
-| Estado | Quù cambia visualmente | Comportamiento |
+| Estado | Qu√© cambia visualmente | Comportamiento |
 | --- | --- | --- |
 | `default` | Ring `1px inset` en `tokens.color.input.ring.default`, label `16px/24px` | Entrada editable |
 | `hover` | Ring `2px inset` en `tokens.color.input.ring.hover` | Solo feedback visual |
-| `focused` | Ring `2px inset` en `tokens.color.input.ring.hover`, padding compacto, label flotante compacta | Foco visible y ediciùn activa |
-| `filled` | Mantiene label compacta (`14px/20px`) y padding compacto | Conserva jerarquùa label/valor |
+| `focused` | Ring `2px inset` en `tokens.color.input.ring.hover`, padding compacto, label flotante compacta | Foco visible y edici√≥n activa |
+| `filled` | Mantiene label compacta (`14px/20px`) y padding compacto | Conserva jerarqu√≠a label/valor |
 | `error` | Ring `2px inset` en `tokens.color.input.ring.error`, label y helper en error | `aria-invalid=true` |
-| `success` | Ring `2px inset` en `tokens.color.input.ring.success`, helper en success | Confirmaciùn visual de validez |
+| `success` | Ring `2px inset` en `tokens.color.input.ring.success`, helper en success | Confirmaci√≥n visual de validez |
 | `disabled` | Opacidad `tokens.opacity.input_disabled`, sin hover interactivo | No editable |
 
 Notas:
@@ -134,15 +134,15 @@ Notas:
 - Si existe `error`, prevalece sobre `hint`.
 
 ### `Select`
-| Estado | Quù cambia visualmente | Comportamiento |
+| Estado | Qu√© cambia visualmente | Comportamiento |
 | --- | --- | --- |
-| `default` | Borde `tokens.color.border.default` + icono de desplegable | Selecciùn disponible |
+| `default` | Borde `tokens.color.border.default` + icono de desplegable | Selecci√≥n disponible |
 | `focused` | `focus ring` + borde `tokens.color.border.focus` | Navegable por teclado |
 | `error` | Borde `2px` en `tokens.color.input.ring.error` + mensaje de error | `aria-invalid=true` |
 | `disabled` | Opacidad reducida + cursor no interactivo | No se puede abrir |
 
 Notas:
-- Tamaùos soportados: `md` (44 px) y `lg` (48 px).
+- Tama√±os soportados: `md` (44 px) y `lg` (48 px).
 - Debe aceptar opciones de puntos de encuentro sugeridos.
 - Cuando la lista supere `maxVisibleOptions`, usar scroll interno sin desplazar layout general.
 
@@ -152,7 +152,7 @@ Propiedades visuales:
 - `state`: `default | selected | disabled`
 
 Uso:
-- Mostrar estado de meetup y filtros rùpidos de propuestas.
+- Mostrar estado de meetup y filtros r√°pidos de propuestas.
 
 ## 5. Tarjeta (`Card`)
 Propiedades visuales:
@@ -169,8 +169,8 @@ Propiedades visuales:
 - `dismissible`: `true | false`
 
 Uso:
-- Banner persistente del dùa del meetup.
-- Alertas de ventana de llegada y expiraciùn.
+- Banner persistente del d√≠a del meetup.
+- Alertas de ventana de llegada y expiraci√≥n.
 
 ## 7. Mensaje emergente (`Toast`)
 Propiedades visuales:
@@ -179,7 +179,7 @@ Propiedades visuales:
 
 Reglas:
 - No usar para errores bloqueantes.
-- Mostrar un solo `toast` a la vez y con cierre automùtico por duraciùn.
+- Mostrar un solo `toast` a la vez y con cierre autom√°tico por duraci√≥n.
 
 ## 8. Modal
 Propiedades visuales:
@@ -187,7 +187,7 @@ Propiedades visuales:
 - `size`: `sm | md | lg`
 
 Uso:
-- Confirmar cancelaciùn.
+- Confirmar cancelaci√≥n.
 - Confirmar resultado post meetup.
 
 ## 9. Elemento de lista (`List Item`)
@@ -204,7 +204,7 @@ Propiedades visuales:
 - `variant`: `success | error | warning | info | neutral`
 
 Uso:
-- Estado compacto en chat o lùnea temporal.
+- Estado compacto en chat o l√≠nea temporal.
 
 ## 11. Iconografia (`WallapopIcon`)
 Propiedades visuales:
@@ -285,7 +285,7 @@ Reglas:
   - `ARRIVED` -> `has llegado`
   - `COMPLETED` -> `completada`
   - `CANCELLED` -> `cancelada`
-- Icono a la izquierda del texto en el chip (Lucide `lucide-react`), tamaùo `var(--wm-size-12)`, decorativo `aria-hidden` (el texto describe el estado):
+- Icono a la izquierda del texto en el chip (Lucide `lucide-react`), tama√±o `var(--wm-size-12)`, decorativo `aria-hidden` (el texto describe el estado):
   - `pendiente` / `COUNTER_PROPOSED`: `Clock`
   - `confirmada`: `CheckCircle2`
   - `has llegado`: `MapPin`
@@ -408,7 +408,7 @@ Reglas:
 - Las cards de punto seguro muestran:
   - Nombre
   - Direccion
-  - Label unico `Punto seguro ù <N> ventas completadas`.
+  - Label unico `Punto seguro ¬∑ <N> ventas completadas`.
 - Las cards de punto personalizado muestran:
   - Icono `deal` (manos) en el pin del mapa
   - Direccion seleccionada
@@ -423,8 +423,8 @@ Reglas:
   - Mensaje global unificado: `Faltan campos por rellenar`.
   - Cada bloque incompleto debe mostrar helper/error debajo del propio componente o grupo.
   - El estado de error debe usar mismo color y grosor que `Input` (`tokens.color.input.ring.error`, `2px`).
-  - En paso 3, el importe admite hasta `99999 ù` con maximo `2` decimales.
-  - En paso 3, si el importe supera `2000 ù`, mostrar alerta destacada de normativa DAC7 con enlace de ayuda (`Mùs informaciùn`).
+  - En paso 3, el importe admite hasta `99999 ‚Ç¨` con maximo `2` decimales.
+  - En paso 3, si el importe supera `2000 ‚Ç¨`, mostrar alerta destacada de normativa DAC7 con enlace de ayuda (`M√°s informaci√≥n`).
 - En paso 3, los iconos de metodos de pago se muestran sin capsula/circunferencia de fondo.
 - En vista de mapa:
   - Permitir seleccion de punto seguro y punto personalizado (tap libre sobre mapa).
@@ -444,7 +444,7 @@ Propiedades visuales:
 Reglas:
 - Uso previsto en desktop dentro del sidebar derecho del workspace de chat.
 - Debe mantener jerarquia de lectura: nombre > rating > distancia/ubicacion.
-- El nombre comparte tamaùo base con metadatos y se diferencia por peso tipografico.
+- El nombre comparte tama√±o base con metadatos y se diferencia por peso tipografico.
 
 ## 21. Card de producto en chat (`ChatProductCard`)
 Propiedades visuales:
@@ -469,30 +469,30 @@ Reglas:
 Propiedades visuales:
 - `monthDate`: mes visible actual.
 - `selectedDateValue`: fecha seleccionada en formato local (`YYYY-MM-DD`).
-- `minDateValue`: fecha mùnima seleccionable.
-- `onMonthChange`: navegaciùn de mes.
-- `onSelectDate`: selecciùn de dùa.
+- `minDateValue`: fecha m√≠nima seleccionable.
+- `onMonthChange`: navegaci√≥n de mes.
+- `onSelectDate`: selecci√≥n de d√≠a.
 - `state`: `default | error`.
 - `error`: texto de ayuda/error inferior opcional.
 
 Reglas:
 - Grid fijo de 6 semanas (42 celdas) para evitar saltos de layout entre meses.
-- Dùas fuera del mes visible se muestran con menor contraste.
-- Dùas bloqueados por fecha mùnima deben estar deshabilitados visual y semùnticamente.
-- Dùa seleccionado usa borde oscuro + texto oscuro (sin fondo de acciùn principal).
-- Flechas de navegaciùn izquierda/derecha deben compartir el mismo lenguaje visual (`chevron`).
+- D√≠as fuera del mes visible se muestran con menor contraste.
+- D√≠as bloqueados por fecha m√≠nima deben estar deshabilitados visual y sem√°nticamente.
+- D√≠a seleccionado usa borde oscuro + texto oscuro (sin fondo de acci√≥n principal).
+- Flechas de navegaci√≥n izquierda/derecha deben compartir el mismo lenguaje visual (`chevron`).
 - En `error`, usar borde `2px` en `tokens.color.input.ring.error` y helper inferior en el mismo color.
 
 ## 23. Cabecera de paso de wizard (`MeetupWizardStepHeading`)
 Propiedades visuales:
 - `caption`: texto contextual de paso.
-- `title`: tùtulo opcional del bloque.
-- `onBack`: acciùn de volver.
+- `title`: t√≠tulo opcional del bloque.
+- `onBack`: acci√≥n de volver.
 
 Reglas:
-- Botùn de vuelta circular con iconografùa `arrow_left`.
-- `caption` siempre visible para contexto, incluso si no existe tùtulo.
-- Si `title` existe, usar jerarquùa tipogrùfica de encabezado de paso (`20/22`).
+- Bot√≥n de vuelta circular con iconograf√≠a `arrow_left`.
+- `caption` siempre visible para contexto, incluso si no existe t√≠tulo.
+- Si `title` existe, usar jerarqu√≠a tipogr√°fica de encabezado de paso (`20/22`).
 
 ## 24. Footer de propuesta (`MeetupProposalFooter`)
 Propiedades visuales:
@@ -502,7 +502,7 @@ Propiedades visuales:
 - `onAction`: callback de CTA.
 
 Reglas:
-- Layout de 2 zonas: contexto de ùtem/comprador (izquierda) + CTA (derecha).
+- Layout de 2 zonas: contexto de √≠tem/comprador (izquierda) + CTA (derecha).
 - Debe truncar textos largos sin desplazar la CTA.
 - En estado deshabilitado, CTA mantiene fondo gris y texto oscuro.
 
@@ -512,25 +512,25 @@ Propiedades visuales:
 - `totalSteps`: total de pasos del wizard.
 - `steps`: metadatos de cada paso (`id`, `label`, `disabled`).
 - `onClose`: cierre de overlay.
-- `onStepChange`: navegaciùn por paso.
+- `onStepChange`: navegaci√≥n por paso.
 - `helpLabel`: texto de ayuda contextual.
 
 Reglas:
-- Estructura en 2 bloques: fila superior (cerrar, tùtulo, ayuda) + barra de progreso clicable.
+- Estructura en 2 bloques: fila superior (cerrar, t√≠tulo, ayuda) + barra de progreso clicable.
 - La barra de progreso debe reflejar estado activo/inactivo por paso.
-- Los pasos bloqueados deben deshabilitar interacciùn manteniendo seùal visual.
+- Los pasos bloqueados deben deshabilitar interacci√≥n manteniendo se√±al visual.
 
 ## Criterio de completitud
 - Cada componente define propiedades, estados, tokens y regla de uso.
-- No hay ambigùedad entre uso de `badge`, `chip`, `banner` y `toast`.
+- No hay ambig√ºedad entre uso de `badge`, `chip`, `banner` y `toast`.
 
-## Componentes base aùadidos para evitar duplicaciùn local
+## Componentes base a√±adidos para evitar duplicaci√≥n local
 
 - `IconButton` (`src/components/ui/icon-button.tsx`)
   - Wrapper de `Button` para controles icon-only.
-  - `aria-label` obligatorio vùa prop `label`.
+  - `aria-label` obligatorio v√≠a prop `label`.
 - `SelectableOption` (`src/components/ui/selectable-option.tsx`)
-  - Patrùn reutilizable de opciùn seleccionable con estado visual `selected`.
+  - Patr√≥n reutilizable de opci√≥n seleccionable con estado visual `selected`.
   - Unifica bordes y estado activo en flujos de propuesta.
 - `ChatMeetRatingPromptBubble` (`src/components/meetup/chat-meet-rating-prompt-bubble.tsx`)
   - Mensaje de invitacion a valorar tras venta completada en chat; presentacion como mensaje entrante (izquierda).
@@ -646,7 +646,7 @@ Si hay conflicto entre addendum v2 y v3, prevalece v3.
 ## A. `MeetupCard` (contrato vigente)
 
 Ajustes de props:
-- Aùadido `counterpartName?: string` para titulado contextual tras confirmacion.
+- A√±adido `counterpartName?: string` para titulado contextual tras confirmacion.
 
 Titulos:
 - Todos los estados:
@@ -765,7 +765,7 @@ Si hay conflicto entre addendum v4 y este bloque, prevalece v5.
 - Parrafo de apoyo: instruccion para que el vendedor escanee y complete el cobro.
 - Area del QR: componente `WalletInPersonQr` (render proporcional al ancho del contenedor).
 - Codigo numerico de 6 digitos en tipografia destacada (`font-wallie-chunky`, tracking amplio), estable por meetup via `deriveWalletDisplayCode`.
-- Subtitulo bajo el numero: `Cùdigo de verificaciùn`.
+- Subtitulo bajo el numero: `C√≥digo de verificaci√≥n`.
 - CTA primaria al pie: `Cerrar`. Cierre adicional: tap en scrim fuera del panel.
 
 ### B. Acceso
