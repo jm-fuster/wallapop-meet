@@ -56,7 +56,7 @@ type CatalogEntity = {
     states: string[]
 }
 
-const wallapopLogoUrl = "https://es.wallapop.com/favicon.ico"
+const wallapopLogoUrl = "/favicon.ico"
 
 const sectionEntries = [
     { id: "foundations-color", label: "Color" },

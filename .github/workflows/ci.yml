@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # El proyecto "storybook" de Vitest ejecuta las stories en Chromium.
+      - name: Install Chromium for Vitest browser mode
+        run: npx playwright install --with-deps chromium
+
+      - name: Lint (auditoria DS + ds:check + ESLint)
+        run: npm run lint
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build

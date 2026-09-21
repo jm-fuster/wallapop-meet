@@ -2405,7 +2405,9 @@ function WallapopChatWorkspace() {
     const convexHydrationRequestIdRef = React.useRef(0)
     const [clockNowMs, setClockNowMs] = React.useState(() => Date.now())
     const meetupByConversationRef = React.useRef(meetupByConversation)
-    meetupByConversationRef.current = meetupByConversation
+    React.useEffect(() => {
+        meetupByConversationRef.current = meetupByConversation
+    }, [meetupByConversation])
 
     const selectedConversation = React.useMemo(
         () =>
@@ -2632,6 +2634,23 @@ function WallapopChatWorkspace() {
         target.scrollIntoView({ behavior: "smooth", block: "center" })
     }, [selectedMeetup])
 
+    const markRatingPromptCompleted = React.useCallback(
+        (messageId: string) => {
+            setMessagesByConversation((previous) => {
+                const messages = previous[selectedConversationId] ?? []
+                return {
+                    ...previous,
+                    [selectedConversationId]: messages.map((m) =>
+                        m.id === messageId && m.messageKind === "rating_prompt"
+                            ? { ...m, ratingPromptCompleted: true }
+                            : m
+                    ),
+                }
+            })
+        },
+        [selectedConversationId]
+    )
+
     if (!selectedConversation) {
         return null
     }
@@ -2731,24 +2750,6 @@ function WallapopChatWorkspace() {
             [selectedConversation.id]: [...(previous[selectedConversation.id] ?? []), nextMessage],
         }))
     }
-
-    const markRatingPromptCompleted = React.useCallback(
-        (messageId: string) => {
-            setMessagesByConversation((previous) => {
-                const conversationId = selectedConversation.id
-                const messages = previous[conversationId] ?? []
-                return {
-                    ...previous,
-                    [conversationId]: messages.map((m) =>
-                        m.id === messageId && m.messageKind === "rating_prompt"
-                            ? { ...m, ratingPromptCompleted: true }
-                            : m
-                    ),
-                }
-            })
-        },
-        [selectedConversation.id]
-    )
 
     const appendCounterpartMessage = (text: string) => {
         const nowMs = Date.now()
