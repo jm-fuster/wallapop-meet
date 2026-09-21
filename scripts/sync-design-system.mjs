@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync, readdirSync } from "node:fs"
 import path from "node:path"
+import { fileURLToPath } from "node:url"
 import ts from "typescript"
 
 const rootDir = process.cwd()
@@ -17,6 +18,27 @@ const globImportRegex = /import\.meta\.glob\(\s*["']([^"']+)["']/g
  * pattern here, any component wired into the live catalog only via its own story file
  * looks unreachable and silently drops out of the generated catalog.
  */
+/**
+ * Traduce los segmentos comodin de un glob a una expresion regular.
+ *
+ * `**` seguido de barra tiene que poder no casar ningun directorio: en glob,
+ * `** / *.stories.tsx` incluye tambien los ficheros que cuelgan directamente de la carpeta
+ * base. La version anterior lo convertia en `.*` con la barra literal detras, que exige al
+ * menos un nivel, de modo que un fichero en la raiz del patron no casaba nunca.
+ */
+export function globPatternToRegExp(patternSegments) {
+    const regexSource = patternSegments
+        .join("/")
+        .replace(/[.+^${}()|[\]\\]/g, "\\$&")
+        .replace(/\*\*\//g, "@@GLOBSTAR_SLASH@@")
+        .replace(/\*\*/g, "@@GLOBSTAR@@")
+        .replace(/\*/g, "[^/]*")
+        .replace(/@@GLOBSTAR_SLASH@@/g, "(?:[^/]+/)*")
+        .replace(/@@GLOBSTAR@@/g, ".*")
+
+    return new RegExp(`^${regexSource}$`)
+}
+
 function expandGlobPattern(pattern, fromAbsoluteDir) {
     const segments = pattern.split("/")
     const wildcardIndex = segments.findIndex((segment) => segment.includes("*"))
@@ -31,13 +53,7 @@ function expandGlobPattern(pattern, fromAbsoluteDir) {
         return []
     }
 
-    const regexSource = patternSegments
-        .join("/")
-        .replace(/[.+^${}()|[\]\\]/g, "\\$&")
-        .replace(/\*\*/g, "@@GLOBSTAR@@")
-        .replace(/\*/g, "[^/]*")
-        .replace(/@@GLOBSTAR@@/g, ".*")
-    const matcher = new RegExp(`^${regexSource}$`)
+    const matcher = globPatternToRegExp(patternSegments)
 
     const matches = []
     const walk = (dir) => {
@@ -289,12 +305,84 @@ function extractStoryTitle(storyPath) {
     return titleMatch?.[1] ?? null
 }
 
+const storyAnalysisCache = new Map()
+
+function normalizeStateToken(value) {
+    return value.toLowerCase().replace(/[^a-z0-9]/g, "")
+}
+
+/**
+ * Tokens reales de una story: literales de cadena e identificadores, leidos del AST, mas los
+ * nombres de sus exports. Mirar el AST y no el texto crudo es lo que separa un dato de un
+ * trozo de sintaxis.
+ */
+function analyzeStoryFile(storyPath) {
+    const cached = storyAnalysisCache.get(storyPath)
+    if (cached) {
+        return cached
+    }
+
+    const absolutePath = absolutePathFromProject(storyPath)
+    const sourceFile = ts.createSourceFile(
+        absolutePath,
+        readFileSync(absolutePath, "utf8"),
+        ts.ScriptTarget.Latest,
+        /* setParentNodes */ false,
+        ts.ScriptKind.TSX
+    )
+
+    const tokens = new Set()
+    const visit = (node) => {
+        if (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)) {
+            tokens.add(normalizeStateToken(node.text))
+        } else if (ts.isIdentifier(node)) {
+            tokens.add(normalizeStateToken(node.text))
+        }
+        ts.forEachChild(node, visit)
+    }
+    visit(sourceFile)
+
+    const storyNames = []
+    for (const statement of sourceFile.statements) {
+        if (!ts.isVariableStatement(statement)) {
+            continue
+        }
+        const exported = statement.modifiers?.some((m) => m.kind === ts.SyntaxKind.ExportKeyword)
+        if (!exported) {
+            continue
+        }
+        for (const declaration of statement.declarationList.declarations) {
+            if (ts.isIdentifier(declaration.name)) {
+                storyNames.push(declaration.name.text)
+            }
+        }
+    }
+
+    const analysis = { tokens, storyNames }
+    storyAnalysisCache.set(storyPath, analysis)
+    return analysis
+}
+
+/*
+ * Antes esto era `content.toLowerCase().includes(state.toLowerCase())` sobre el fichero entero,
+ * asi que el estado "default" casaba con el `export default meta` que tienen todas las stories
+ * y la comprobacion no fallaba jamas. Ahora se mira el AST: `export default` es una palabra
+ * clave, no un identificador ni una cadena, y deja de contar.
+ */
 function hasStateCoverage(storyPath, stateName) {
     if (!storyPath) {
         return false
     }
-    const content = readFileSync(absolutePathFromProject(storyPath), "utf8").toLowerCase()
-    return content.includes(stateName.toLowerCase())
+
+    const { tokens, storyNames } = analyzeStoryFile(storyPath)
+    const token = normalizeStateToken(stateName)
+
+    // "default" es el componente sin modificadores: cualquier story lo esta enseñando.
+    if (token === "default") {
+        return storyNames.length > 0
+    }
+
+    return tokens.has(token)
 }
 
 function tokenPathExists(tokenPath, stylesRoot) {
@@ -431,4 +519,13 @@ function run() {
     console.log(`Design System ${isCheckMode ? "check" : "sync"} OK. Entidades=${entities.length}.`)
 }
 
-run()
+export { hasStateCoverage }
+
+// Solo se ejecuta al invocarlo como script; importarlo desde un test no dispara la sincronizacion.
+const invocadoDirectamente =
+    process.argv[1] !== undefined &&
+    path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+
+if (invocadoDirectamente) {
+    run()
+}

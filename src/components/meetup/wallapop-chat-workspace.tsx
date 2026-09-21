@@ -15,9 +15,12 @@ import { MeetupProposalHeader } from "@/components/meetup/meetup-proposal-header
 import { MeetupPendingSaleBanner } from "@/components/meetup/meetup-pending-sale-banner"
 import {
     buildConvexConversationKey,
+    buildMeetupExpiryKey,
     buildReverseGeocodeUrl,
+    collectExpiredMeetups,
     resolveInitialProposalDateTimeValue,
     shouldApplyReverseGeocodeResult,
+    sumReleasedWalletHoldEur,
 } from "@/components/meetup/wallapop-chat-workspace-utils"
 import { MeetupWizardStepHeading } from "@/components/meetup/meetup-wizard-step-heading"
 import { ChatComposer } from "@/components/ui/chat-composer"
@@ -2410,6 +2413,7 @@ function WallapopChatWorkspace() {
     React.useEffect(() => {
         meetupByConversationRef.current = meetupByConversation
     }, [meetupByConversation])
+    const appliedExpiryKeysRef = React.useRef(new Set<string>())
 
     const selectedConversation = React.useMemo(
         () =>
@@ -2440,6 +2444,46 @@ function WallapopChatWorkspace() {
         }, 30 * 1000)
         return () => window.clearInterval(intervalId)
     }, [])
+
+    /*
+     * Cierre por tiempo. La maquina implementaba `EXPIRE` desde el principio, pero nadie lo
+     * disparaba: una propuesta sin responder seguia aceptable horas despues de su hora, y los
+     * dos motivos de cancelacion por caducidad no llegaban a pintarse nunca. Lo dispara el
+     * reloj, no las partes, que es justo lo que dice la regla.
+     */
+    React.useEffect(() => {
+        const now = new Date(clockNowMs)
+        const expired = collectExpiredMeetups(meetupByConversationRef.current, now).filter(
+            ({ conversationId, previous }) =>
+                !appliedExpiryKeysRef.current.has(buildMeetupExpiryKey(conversationId, previous))
+        )
+
+        if (expired.length === 0) {
+            return
+        }
+
+        for (const { conversationId, previous } of expired) {
+            appliedExpiryKeysRef.current.add(buildMeetupExpiryKey(conversationId, previous))
+        }
+
+        setMeetupByConversation((current) => {
+            const next = { ...current }
+            for (const transition of expired) {
+                const history = current[transition.conversationId] ?? []
+                next[transition.conversationId] = history.map((item) =>
+                    item.id === transition.previous.id ? transition.next : item
+                )
+            }
+            return next
+        })
+
+        // Fuera del updater a proposito: llamarlo dentro lo haria impuro y en StrictMode
+        // devolveria el saldo dos veces.
+        const releasedEur = sumReleasedWalletHoldEur(expired)
+        if (releasedEur > 0) {
+            setBuyerWalletAvailableEur((balance) => balance + releasedEur)
+        }
+    }, [clockNowMs])
 
     React.useEffect(() => {
         const now = new Date(clockNowMs)
