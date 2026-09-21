@@ -47,6 +47,20 @@ export function resolveInitialProposalDateTimeValue(meetup: MeetupMachine): stri
     return resolveProposalScheduledAtValue(roundedMeetup)
 }
 
+/**
+ * Clave con la que se guarda y se lee un hilo en Convex. Los identificadores de conversacion
+ * del demo (`conv-a-arrival` y companyia) son constantes compartidas: usados tal cual, todo
+ * el mundo escribia y leia el mismo hilo, asi que cualquier visitante veia lo que habian
+ * tecleado los demas. Anteponer el identificador local del visitante da a cada uno su propio
+ * espacio de nombres.
+ */
+export function buildConvexConversationKey(
+    localChatUserId: string,
+    conversationId: string
+): string {
+    return `${localChatUserId}/${conversationId}`
+}
+
 export function buildReverseGeocodeUrl(point: MapPoint): string {
     const lat = encodeURIComponent(String(point.lat))
     const lng = encodeURIComponent(String(point.lng))

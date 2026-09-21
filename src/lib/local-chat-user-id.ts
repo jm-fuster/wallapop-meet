@@ -1,12 +1,10 @@
-const CHAT_USER_ID_STORAGE_KEY = "wm_chat_user_id"
+import { randomUuid } from "@/lib/secure-random"
 
-function buildFallbackUserId(): string {
-    return `user-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`
-}
+const CHAT_USER_ID_STORAGE_KEY = "wm_chat_user_id"
 
 export function getOrCreateLocalChatUserId(): string {
     if (typeof window === "undefined") {
-        return buildFallbackUserId()
+        return randomUuid()
     }
 
     const current = window.localStorage.getItem(CHAT_USER_ID_STORAGE_KEY)
@@ -14,11 +12,7 @@ export function getOrCreateLocalChatUserId(): string {
         return current
     }
 
-    const generated =
-        typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
-            ? crypto.randomUUID()
-            : buildFallbackUserId()
-
+    const generated = randomUuid()
     window.localStorage.setItem(CHAT_USER_ID_STORAGE_KEY, generated)
     return generated
 }
