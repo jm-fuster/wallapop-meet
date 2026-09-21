@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync, readdirSync } from "node:fs"
 import path from "node:path"
+import ts from "typescript"
 
 const rootDir = process.cwd()
 const entryFile = "src/App.tsx"
@@ -130,33 +131,105 @@ function collectReachableFiles(entryProjectPath) {
     return [...visited].map(projectPathFromAbsolute)
 }
 
-function extractObjectLiteral(text, startToken) {
-    const tokenIndex = text.indexOf(startToken)
-    if (tokenIndex < 0) {
+/**
+ * Convierte un nodo del AST en el valor que representa, y solo si es un literal.
+ * Cualquier otra cosa (una llamada, una referencia, una plantilla con interpolacion)
+ * se rechaza con un error legible en vez de ejecutarse.
+ */
+function literalValueFromNode(node, describePath) {
+    if (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)) {
+        return node.text
+    }
+    if (ts.isNumericLiteral(node)) {
+        return Number(node.text)
+    }
+    if (node.kind === ts.SyntaxKind.TrueKeyword) {
+        return true
+    }
+    if (node.kind === ts.SyntaxKind.FalseKeyword) {
+        return false
+    }
+    if (node.kind === ts.SyntaxKind.NullKeyword) {
         return null
     }
-
-    const objectStart = text.indexOf("{", tokenIndex)
-    if (objectStart < 0) {
-        return null
+    if (ts.isPrefixUnaryExpression(node) && node.operator === ts.SyntaxKind.MinusToken) {
+        return -literalValueFromNode(node.operand, describePath)
+    }
+    if (ts.isArrayLiteralExpression(node)) {
+        return node.elements.map((element, index) =>
+            literalValueFromNode(element, `${describePath}[${index}]`)
+        )
+    }
+    if (ts.isObjectLiteralExpression(node)) {
+        return objectValueFromNode(node, describePath)
     }
 
-    let depth = 0
-    for (let i = objectStart; i < text.length; i += 1) {
-        const ch = text[i]
-        if (ch === "{") {
-            depth += 1
-        } else if (ch === "}") {
-            depth -= 1
-            if (depth === 0) {
-                return text.slice(objectStart, i + 1)
-            }
-        }
-    }
-
-    return null
+    throw new Error(`${describePath} no es un literal admitido.`)
 }
 
+function objectValueFromNode(node, describePath) {
+    const value = {}
+    for (const property of node.properties) {
+        if (!ts.isPropertyAssignment(property)) {
+            throw new Error(`${describePath} solo admite propiedades literales.`)
+        }
+
+        const nameNode = property.name
+        const key =
+            ts.isIdentifier(nameNode) || ts.isStringLiteral(nameNode)
+                ? nameNode.text
+                : null
+        if (key === null) {
+            throw new Error(`${describePath} tiene una clave que no es un nombre simple.`)
+        }
+
+        value[key] = literalValueFromNode(property.initializer, `${describePath}.${key}`)
+    }
+    return value
+}
+
+/** Quita los envoltorios de tipo (`satisfies X`, `as const`) que no cambian el valor. */
+function unwrapTypeAssertions(node) {
+    let current = node
+    while (
+        ts.isSatisfiesExpression(current) ||
+        ts.isAsExpression(current) ||
+        ts.isParenthesizedExpression(current)
+    ) {
+        current = current.expression
+    }
+    return current
+}
+
+function findDesignSystemMetaInitializer(sourceFile) {
+    let initializer = null
+
+    const visit = (node) => {
+        if (initializer) {
+            return
+        }
+        if (
+            ts.isVariableDeclaration(node) &&
+            ts.isIdentifier(node.name) &&
+            node.name.text === "designSystemMeta" &&
+            node.initializer
+        ) {
+            initializer = node.initializer
+            return
+        }
+        ts.forEachChild(node, visit)
+    }
+
+    visit(sourceFile)
+    return initializer
+}
+
+/*
+ * El objeto se lee del AST de TypeScript, no se ejecuta. Antes se recortaba contando llaves
+ * y se pasaba por `Function()`, lo que ejecutaba codigo del repositorio durante `npm run lint`
+ * (tambien en CI, sobre la rama de cualquier pull request) y ademas se equivocaba de limite
+ * en cuanto una cadena contenia una llave.
+ */
 function parseDesignSystemMeta(componentPath) {
     const absolutePath = absolutePathFromProject(componentPath)
     const content = readFileSync(absolutePath, "utf8")
@@ -168,21 +241,36 @@ function parseDesignSystemMeta(componentPath) {
         }
     }
 
-    const objectLiteral = extractObjectLiteral(content, "const designSystemMeta")
-    if (!objectLiteral) {
+    const sourceFile = ts.createSourceFile(
+        absolutePath,
+        content,
+        ts.ScriptTarget.Latest,
+        /* setParentNodes */ false,
+        ts.ScriptKind.TSX
+    )
+
+    const initializer = findDesignSystemMetaInitializer(sourceFile)
+    if (!initializer) {
         return {
             ok: false,
             error: "No se pudo parsear el objeto designSystemMeta.",
         }
     }
 
+    const objectLiteral = unwrapTypeAssertions(initializer)
+    if (!ts.isObjectLiteralExpression(objectLiteral)) {
+        return {
+            ok: false,
+            error: "designSystemMeta debe ser un objeto literal.",
+        }
+    }
+
     try {
-        const meta = Function(`"use strict"; return (${objectLiteral});`)()
-        return { ok: true, meta }
+        return { ok: true, meta: objectValueFromNode(objectLiteral, "designSystemMeta") }
     } catch (error) {
         return {
             ok: false,
-            error: `designSystemMeta invalido: ${String(error)}`,
+            error: `designSystemMeta invalido: ${error instanceof Error ? error.message : String(error)}`,
         }
     }
 }

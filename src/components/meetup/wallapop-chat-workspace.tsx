@@ -14,6 +14,7 @@ import { MeetupProposalFooter } from "@/components/meetup/meetup-proposal-footer
 import { MeetupProposalHeader } from "@/components/meetup/meetup-proposal-header"
 import { MeetupPendingSaleBanner } from "@/components/meetup/meetup-pending-sale-banner"
 import {
+    buildConvexConversationKey,
     buildReverseGeocodeUrl,
     resolveInitialProposalDateTimeValue,
     shouldApplyReverseGeocodeResult,
@@ -39,6 +40,7 @@ import { getOrCreateLocalChatUserId } from "@/lib/local-chat-user-id"
 import { Select } from "@/components/ui/select"
 import { WallapopIcon } from "@/components/ui/wallapop-icon"
 import { getConvexHttpClient } from "@/lib/convex-client"
+import { randomMessageId } from "@/lib/secure-random"
 import { createMeetupMachine } from "@/meetup"
 import { transitionMeetup } from "@/meetup/state-machine"
 import type {
@@ -2512,7 +2514,7 @@ function WallapopChatWorkspace() {
         try {
             const persistedMessages = (await convexClient.query(
                 api.messages.listByConversation,
-                { conversationId }
+                { conversationId: buildConvexConversationKey(localChatUserId, conversationId) }
             )) as ConvexChatMessage[]
 
             if (convexHydrationRequestIdRef.current !== requestId) {
@@ -2669,7 +2671,7 @@ function WallapopChatWorkspace() {
         }
         const nowMs = Date.now()
         const nextMessage: Message = {
-            id: `m-${nowMs}`,
+            id: randomMessageId("m"),
             senderUserId: localChatUserId,
             text: trimmedText,
             variant: "sent",
@@ -2688,37 +2690,33 @@ function WallapopChatWorkspace() {
             return
         }
 
+        /*
+         * Un solo intento. El reintento anterior repetia la llamada sin `senderUserId`, asi
+         * que el mensaje se guardaba a nombre de nadie y al recargar volvia pintado como si
+         * lo hubiese escrito la otra parte.
+         */
         void convexClient
             .mutation(api.messages.saveUserTextMessage, {
-                conversationId: selectedConversation.id,
+                conversationId: buildConvexConversationKey(
+                    localChatUserId,
+                    selectedConversation.id
+                ),
                 clientMessageId: nextMessage.id,
                 senderUserId: localChatUserId,
                 text: nextMessage.text,
+                variant: nextMessage.variant,
                 time: nextMessage.time,
                 deliveryState: nextMessage.deliveryState,
-                createdAt: nextMessage.createdAt,
             })
-            .catch(async () => {
-                try {
-                    await convexClient.mutation(api.messages.saveUserTextMessage, {
-                        conversationId: selectedConversation.id,
-                        clientMessageId: nextMessage.id,
-                        text: nextMessage.text,
-                        variant: nextMessage.variant,
-                        time: nextMessage.time,
-                        deliveryState: nextMessage.deliveryState,
-                        createdAt: nextMessage.createdAt,
-                    })
-                } catch {
-                    setLastError("No se pudo guardar el mensaje en Convex.")
-                }
+            .catch(() => {
+                setLastError("No se pudo guardar el mensaje en Convex.")
             })
     }
 
     const appendSystemMessage = (text: string) => {
         const nowMs = Date.now()
         const nextMessage: Message = {
-            id: `sys-${nowMs}`,
+            id: randomMessageId("sys"),
             senderUserId: localChatUserId,
             text,
             variant: "sent",
@@ -2736,7 +2734,7 @@ function WallapopChatWorkspace() {
     const appendRatingPromptMessage = () => {
         const nowMs = Date.now()
         const nextMessage: Message = {
-            id: `rating-${nowMs}`,
+            id: randomMessageId("rating"),
             senderUserId: "wally",
             text: MEET_RATING_PROMPT_COPY,
             messageKind: "rating_prompt",
@@ -2754,7 +2752,7 @@ function WallapopChatWorkspace() {
     const appendCounterpartMessage = (text: string) => {
         const nowMs = Date.now()
         const nextMessage: Message = {
-            id: `cp-${nowMs}`,
+            id: randomMessageId("cp"),
             senderUserId: `counterpart:${selectedConversation.id}`,
             text,
             variant: "received",

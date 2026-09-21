@@ -5,6 +5,12 @@ on:
     branches: [main]
   pull_request:
 
+# Este workflow solo lee el repositorio: nada de lo que hace necesita permiso de escritura
+# sobre el GITHUB_TOKEN. Declararlo aqui mantiene el minimo privilegio aunque cambie el
+# ajuste por defecto de la cuenta o alguien copie el workflow a otro repositorio.
+permissions:
+  contents: read
+
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -23,7 +29,9 @@ jobs:
       - name: Install Chromium for Vitest browser mode
         run: npx playwright install --with-deps chromium
 
-      - name: Lint (auditoria DS + ds:check + ESLint)
+      # `npm run build` solo compila `src` y `vite.config.ts`; las funciones de `convex/`
+      # quedaban fuera de todo control de tipos, asi que `lint` las comprueba aparte.
+      - name: Lint (auditoria DS + ds:check + ESLint + tipos de Convex)
         run: npm run lint
 
       - name: Test
