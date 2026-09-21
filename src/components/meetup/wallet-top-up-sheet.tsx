@@ -66,7 +66,7 @@ function WalletTopUpSheet({ open, onClose, minSuggestedAmountEur, onConfirmTopUp
 
             <div className="min-h-0 flex-1 overflow-y-auto px-4 py-5">
                 <p className="font-brand-strong text-[length:var(--wm-size-18)] leading-tight text-[color:var(--text-primary)]">
-                    ¿Cuanto dinero quieres recargar?
+                    ¿Cuánto dinero quieres recargar?
                 </p>
 
                 <div className="mt-4 rounded-[var(--wm-size-16)] border border-[color:var(--border-divider)] bg-[color:var(--bg-base)] p-4 shadow-[var(--wm-shadow-200)]">
@@ -85,7 +85,7 @@ function WalletTopUpSheet({ open, onClose, minSuggestedAmountEur, onConfirmTopUp
                     </div>
                     <div className="mt-3 border-t border-[color:var(--border-divider)] pt-3">
                         <p className="text-center font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--action-link)]">
-                            Tarifa segun el importe de la recarga.
+                            Tarifa según el importe de la recarga.
                         </p>
                     </div>
                     <Button
@@ -101,7 +101,7 @@ function WalletTopUpSheet({ open, onClose, minSuggestedAmountEur, onConfirmTopUp
 
                 <div className="mt-8">
                     <p className="font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-tertiary)]">
-                        Metodo de pago
+                        Método de pago
                     </p>
                     <div className="mt-2 border-t border-[color:var(--border-divider)] pt-3">
                         <div className="flex items-center justify-between gap-3">

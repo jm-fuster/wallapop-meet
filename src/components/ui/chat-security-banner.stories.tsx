@@ -17,7 +17,7 @@ const meta = {
     ),
   ],
   args: {
-    message: "Quedate en Wallapop. Mas facil, mas seguro.",
+    message: "Quédate en Wallapop. Más fácil, más seguro.",
     linkText: "Preguntas? Habla con nuestro chatbot",
   },
 } satisfies Meta<typeof ChatSecurityBanner>
@@ -30,7 +30,7 @@ export const Playground: Story = {}
 export const CompactFooter: Story = {
   args: {
     className: "px-0 pt-1 pb-1",
-    linkText: "Mas informacion",
+    linkText: "Más información",
   },
 }
 

@@ -38,7 +38,7 @@ export const Variants: Story = {
             <Toast
                 variant="error"
                 title="No se pudo confirmar la llegada"
-                description="Comprueba la conexion y vuelve a intentarlo."
+                description="Comprueba la conexión y vuelve a intentarlo."
             />
             <Toast
                 variant="info"

@@ -26,7 +26,7 @@ function ChatComposer({
   submitLabel = "Enviar",
   submitAriaLabel = "Enviar mensaje",
   secondaryActionLabel,
-  secondaryActionAriaLabel = "Accion secundaria",
+  secondaryActionAriaLabel = "Acción secundaria",
   secondaryActionIconName = "deal",
   onSecondaryAction,
   secondaryActionDisabled = false,

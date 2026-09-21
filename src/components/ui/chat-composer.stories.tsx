@@ -17,7 +17,7 @@ const meta = {
     ),
   ],
   args: {
-    defaultValue: "Te va bien quedar manana?",
+    defaultValue: "Te va bien quedar mañana?",
   },
 } satisfies Meta<typeof ChatComposer>
 
@@ -26,7 +26,7 @@ type Story = StoryObj<typeof meta>
 
 export const Buyer: Story = {
   args: {
-    defaultValue: "Te va bien quedar manana?",
+    defaultValue: "Te va bien quedar mañana?",
     secondaryActionLabel: undefined,
     onSecondaryAction: undefined,
   },

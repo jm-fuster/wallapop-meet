@@ -27,7 +27,7 @@ export const WithTitle: Story = {
   },
   args: {
     caption: "Paso anterior",
-    title: "Seleccionar dia y hora",
+    title: "Seleccionar día y hora",
     onBack: () => undefined,
   },
 }

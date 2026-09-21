@@ -1,5 +1,6 @@
 import * as React from "react"
 import { DesignSystemDevLink } from "@/components/design-system/design-system-dev-link"
+import { UnofficialConceptNotice } from "@/components/site/unofficial-concept-notice"
 import { WallapopChatWorkspace } from "@/components/meetup/wallapop-chat-workspace"
 import { DesignSystemPage } from "@/pages/design-system-page"
 import { NAVIGATION_EVENT_NAME } from "@/lib/navigation"
@@ -19,6 +20,7 @@ function App() {
 
     return (
         <>
+            <UnofficialConceptNotice />
             {pathname === "/design-system" ? <DesignSystemPage /> : <WallapopChatWorkspace />}
             <DesignSystemDevLink />
         </>

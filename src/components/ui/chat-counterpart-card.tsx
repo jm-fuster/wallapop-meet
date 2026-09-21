@@ -83,7 +83,7 @@ function ChatCounterpartCard({
     const attendanceMessage: { text: string; className: string; Icon?: LucideIcon } | null =
         hasNoAttendanceHistory
             ? {
-                  text: "Sin nivel de fiabilidad aun (0 quedadas)",
+                  text: "Sin nivel de fiabilidad aún (0 quedadas)",
                   className: "text-[color:var(--wm-color-text-secondary)]",
               }
             : resolvedAttendanceRate === null

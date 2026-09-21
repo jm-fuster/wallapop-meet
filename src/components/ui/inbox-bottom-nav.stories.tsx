@@ -31,7 +31,7 @@ export const WithBadge: Story = {
       { id: "home", label: "Inicio", icon: "home" },
       { id: "favorites", label: "Favoritos", icon: "heart", badgeCount: 2 },
       { id: "sell", label: "Vender", icon: "plus" },
-      { id: "inbox", label: "Buzon", icon: "mail" },
+      { id: "inbox", label: "Buzón", icon: "mail" },
       { id: "profile", label: "Tu", icon: "user" },
     ],
   },

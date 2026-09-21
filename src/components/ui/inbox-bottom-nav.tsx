@@ -27,7 +27,7 @@ const inboxBottomNavDefaultItems: InboxBottomNavItem[] = [
   { id: "home", label: "Inicio", icon: "home" },
   { id: "favorites", label: "Favoritos", icon: "heart" },
   { id: "sell", label: "Vender", icon: "plus" },
-  { id: "inbox", label: "Buzon", icon: "mail" },
+  { id: "inbox", label: "Buzón", icon: "mail" },
   { id: "profile", label: "Tu", icon: "user" },
 ]
 
