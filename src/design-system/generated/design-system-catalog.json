@@ -1,5 +1,5 @@
 {
-    "generatedAt": "2026-09-20T18:42:33.329Z",
+    "generatedAt": "2026-09-21T14:26:26.066Z",
     "entryFile": "src/App.tsx",
     "entities": [
         {
@@ -195,15 +195,15 @@
             "stateCoverage": [
                 {
                     "state": "high",
-                    "covered": true
+                    "covered": false
                 },
                 {
                     "state": "medium",
-                    "covered": true
+                    "covered": false
                 },
                 {
                     "state": "low",
-                    "covered": true
+                    "covered": false
                 },
                 {
                     "state": "sin_nivel",
@@ -237,7 +237,7 @@
             "stateCoverage": [
                 {
                     "state": "unselected",
-                    "covered": true
+                    "covered": false
                 },
                 {
                     "state": "selected",
@@ -612,7 +612,7 @@
                 },
                 {
                     "state": "thirty_minutes_before",
-                    "covered": false
+                    "covered": true
                 },
                 {
                     "state": "arrival",
@@ -658,7 +658,7 @@
                 },
                 {
                     "state": "selected",
-                    "covered": true
+                    "covered": false
                 }
             ]
         },

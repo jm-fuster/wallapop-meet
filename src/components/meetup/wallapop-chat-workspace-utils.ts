@@ -1,8 +1,68 @@
+import { isMeetupExpired, transitionMeetup } from "@/meetup/state-machine"
+
 import type { MeetupMachine } from "@/meetup/types"
 
 type MapPoint = {
     lat: number
     lng: number
+}
+
+export type ExpiredMeetupTransition = {
+    conversationId: string
+    previous: MeetupMachine
+    next: MeetupMachine
+}
+
+/**
+ * Identidad de un vencimiento concreto. Sirve para no aplicarlo dos veces: React invoca
+ * los efectos dos veces en StrictMode, y sin esta marca el saldo retenido se devolveria
+ * por duplicado. Incluye `proposedAt` porque volver a proponer tras una cancelacion
+ * reutiliza el mismo `id`, y ese vencimiento posterior si es uno nuevo.
+ */
+export function buildMeetupExpiryKey(conversationId: string, meetup: MeetupMachine): string {
+    return [
+        conversationId,
+        meetup.id,
+        meetup.status ?? "NONE",
+        meetup.proposedAt?.getTime() ?? 0,
+        meetup.scheduledAt.getTime(),
+    ].join("|")
+}
+
+/**
+ * Quedadas que ya no pueden avanzar y que el sistema debe cerrar. `EXPIRE` no lo dispara
+ * ninguna de las dos partes: una propuesta caduca a su hora y una quedada confirmada al
+ * cerrarse la ventana de llegada. Devuelve la transicion sin aplicarla para que quien
+ * llama decida como escribirla en el estado.
+ */
+export function collectExpiredMeetups(
+    meetupByConversation: Record<string, MeetupMachine[]>,
+    now: Date
+): ExpiredMeetupTransition[] {
+    const expired: ExpiredMeetupTransition[] = []
+
+    for (const [conversationId, history] of Object.entries(meetupByConversation)) {
+        const current = history?.[history.length - 1]
+        if (!current || !isMeetupExpired(current, now)) {
+            continue
+        }
+
+        const result = transitionMeetup(current, { type: "EXPIRE", occurredAt: now })
+        if (result.ok) {
+            expired.push({ conversationId, previous: current, next: result.meetup })
+        }
+    }
+
+    return expired
+}
+
+/** Saldo de Wallet que vuelve al comprador al cerrarse estas quedadas sin completarse. */
+export function sumReleasedWalletHoldEur(transitions: ExpiredMeetupTransition[]): number {
+    return transitions.reduce(
+        (total, { previous }) =>
+            total + (typeof previous.walletHoldAmountEur === "number" ? previous.walletHoldAmountEur : 0),
+        0
+    )
 }
 
 type ShouldApplyReverseGeocodeResultInput = {
