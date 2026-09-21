@@ -1,13 +1,13 @@
 # Inventario de `Chat Product Card` observado en Wallapop Chat
 
-## Fuente de analisis
+## Fuente de análisis
 - URL: `https://es.wallapop.com/app/chat`
 - Fecha de captura: 2026-02-21
-- Metodo: inspeccion con MCP Chrome DevTools + `getComputedStyle`
+- Método: inspección con MCP Chrome DevTools + `getComputedStyle`
 - Viewport de referencia: `1536x678` (`devicePixelRatio: 1.25`)
-- Contexto: panel derecho de conversacion con card del item
+- Contexto: panel derecho de conversación con card del item
 
-## Especificacion visual del componente (seller)
+## Especificación visual del componente (seller)
 
 ### 1) Contenedor `card`
 - Elemento/clase: `a.card`
@@ -36,7 +36,7 @@ Botones embebidos:
   - Texto: `#FFFFFF`
   - Borde: `0.8px solid transparent`
   - Radio: `25px`
-  - Tipografia: `12px/18px`, `400`, `Wallie, Helvetica`
+  - Tipografía: `12px/18px`, `400`, `Wallie, Helvetica`
 - `.btn.btn-sold`
   - `120.8x27.6px`
   - Padding: `4px 20px`
@@ -44,22 +44,22 @@ Botones embebidos:
   - Texto: `#FFFFFF`
   - Borde: `0.8px solid transparent`
   - Radio: `25px`
-  - Tipografia: `12px/18px`, `400`, `Wallie, Helvetica`
+  - Tipografía: `12px/18px`, `400`, `Wallie, Helvetica`
 
-Reglas de estado en implementacion (`src/components/ui/chat-product-card.tsx`):
+Reglas de estado en implementación (`src/components/ui/chat-product-card.tsx`):
 - Si el anuncio esta `Vendido`, se ocultan las acciones de seller (`Reservar` y `Vendido`).
-- Si el anuncio esta `Vendido`, tambien se oculta el boton `Editar` superpuesto y las metricas de visitas/likes.
-- Si el anuncio esta `Reservado`, el boton izquierdo pasa a modo outline y texto `Anular reserva`.
+- Si el anuncio esta `Vendido`, también se oculta el botón `Editar` superpuesto y las métricas de visitas/likes.
+- Si el anuncio esta `Reservado`, el botón izquierdo pasa a modo outline y texto `Anular reserva`.
 - Si no hay estado comercial, se mantiene la variante original (`Reservar` relleno + `Vendido` relleno).
 - El toggle de `Reservar`/`Anular reserva` actualiza de forma consistente:
   - indicador visual del listado (`leadingIndicator=bookmark`);
   - badge de estado en la card derecha (`Reservado`).
-- Integracion con meetup en `wallapop-chat-workspace`:
+- Integración con meetup en `wallapop-chat-workspace`:
   - `CONFIRMED` y `ARRIVED` fuerzan estado `Reservado`;
   - `CANCELLED` limpia estado de reserva;
-  - `Vendido` prevalece frente a cambios automaticos.
+  - `Vendido` prevalece frente a cambios automáticos.
 
-### 4) Boton de editar superpuesto (solo seller)
+### 4) Botón de editar superpuesto (solo seller)
 - Nodo: `a.btn.btn-edit`
 - Dimensiones: `40x40px`
 - Fondo: `#FFFFFF`
@@ -83,9 +83,9 @@ Texto:
   - Color: `#607D8B`
 
 ## Variante comprador (buyer)
-- No aparece boton de editar.
+- No aparece botón de editar.
 - No aparecen botones `Reservar` / `Vendido`.
-- No aparecen metricas de visitas/likes junto al precio.
+- No aparecen métricas de visitas/likes junto al precio.
 - Puede mostrarse badge de estado comercial (`Vendido`) sobre la imagen.
 
 ## Tokens candidatos
@@ -97,10 +97,10 @@ Texto:
 - `tokens.radius.card.base = 10px`
 - `tokens.radius.card.action_pill = 25px`
 
-## Notas de normalizacion DS
+## Notas de normalización DS
 - El componente debe exponer `viewerRole`:
-  - `seller`: habilita acciones y metricas de publicacion.
-  - `buyer`: oculta acciones/metricas y mantiene vista informativa.
-- Referencias de implementacion:
+  - `seller`: habilita acciones y métricas de publicación.
+  - `buyer`: oculta acciones/métricas y mantiene vista informativa.
+- Referencias de implementación:
   - `src/components/ui/chat-product-card.tsx`
   - `src/components/ui/chat-product-card.stories.tsx`

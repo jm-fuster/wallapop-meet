@@ -1,14 +1,14 @@
 # Inventario de `Message Bubble` observado en Wallapop Chat
 
-## Fuente de analisis
+## Fuente de análisis
 - URL: `https://es.wallapop.com/app/chat`
 - Fecha de captura: 2026-02-19
-- Metodo: inspeccion con MCP Chrome DevTools + `getComputedStyle`
+- Método: inspección con MCP Chrome DevTools + `getComputedStyle`
 - Viewport de referencia: `1536x678` (`devicePixelRatio: 1.25`)
-- Contexto: conversacion abierta en bandeja
+- Contexto: conversación abierta en bandeja
 
-## Validacion movil (responsive)
-- Fecha de validacion: 2026-02-19
+## Validación móvil (responsive)
+- Fecha de validación: 2026-02-19
 - Viewport: `390x844` (`devicePixelRatio: 1`)
 - `message_bubble.sent`: `131.4x37.6px`
 - `message_bubble.received`: `119.1x37.6px`
@@ -16,7 +16,7 @@
   - `sent`: `8px 32px 8px 12px`
   - `received`: `8px 12px`
 
-## Especificacion visual del componente
+## Especificación visual del componente
 
 ### 1) `message_bubble.received`
 - Elemento/clase: `.CurrentConversation__notMessageOwner .message-cloud`
@@ -25,7 +25,7 @@
 - Fondo: `transparent`
 - Borde: `0.8px solid #ECEFF1`
 - Radio: `20px`
-- Tipografia del texto:
+- Tipografía del texto:
   - `16px/20px`, `400`, `Wallie, Helvetica`
   - Color: `#253238`
 
@@ -36,7 +36,7 @@
 - Fondo: `#ECEFF1`
 - Borde: `0.8px solid #ECEFF1`
 - Radio: `20px`
-- Tipografia del texto:
+- Tipografía del texto:
   - `16px/20px`, `400`, `Wallie, Helvetica`
   - Color: `#253238`
 
@@ -52,11 +52,11 @@
 - `tokens.color.chat.bubble.meta.delivery.sent = #C2CDD3`
 - `tokens.color.chat.bubble.meta.delivery.read = #13C1AC`
 
-## Notas de normalizacion DS
+## Notas de normalización DS
 - Mantener variantes separadas `sent` y `received` por diferencia de relleno y fondo.
 - En Wallapop Meet se permite metadato inline dentro del bubble para `time` y estado de entrega.
 - En variante `sent`, mostrar doble check en la esquina inferior derecha con `WallapopIcon(name="double_check")`:
   - `deliveryState = sent`: checks en gris.
   - `deliveryState = read`: checks en verde.
-- Ajuste de implementacion Wallapop Meet (2026-02-20):
-  - `message_bubble.sent` usa padding horizontal simetrico (`px-3`) para evitar hueco visual excesivo a la derecha.
+- Ajuste de implementación Wallapop Meet (2026-02-20):
+  - `message_bubble.sent` usa padding horizontal simétrico (`px-3`) para evitar hueco visual excesivo a la derecha.

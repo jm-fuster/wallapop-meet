@@ -68,7 +68,7 @@ Entregables:
   - Tarjeta de meetup confirmado.
   - Banner persistente del día de meetup.
   - Notificación interactiva (especificación visual + comportamiento esperado).
-  - UI de check-in "Estoy aqui" dentro de la ventana válida.
+  - UI de check-in "Estoy aquí" dentro de la ventana válida.
   - Follow-up post meetup (24-48h) para confirmar venta.
 
 Criterios de aceptación:

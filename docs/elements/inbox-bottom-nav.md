@@ -1,9 +1,9 @@
-# Inventario de navegacion inferior observado en Wallapop Chat (movil)
+# Inventario de navegación inferior observado en Wallapop Chat (móvil)
 
-## Fuente de analisis
+## Fuente de análisis
 - URL: `https://es.wallapop.com/app/chat`
 - Fecha de captura: 2026-02-19
-- Metodo: inspeccion visual sobre captura compartida + calibracion con componentes existentes
+- Método: inspección visual sobre captura compartida + calibración con componentes existentes
 - Viewport de referencia: `390x844`
 - Contexto: bandeja de conversaciones (`Buzon`) activa
 
@@ -18,15 +18,15 @@
     - `Buzon` (activo en captura)
     - `Tu`
 
-## Especificacion visual del componente
+## Especificación visual del componente
 
 ### 1) Contenedor (`inbox_bottom_nav`)
-- Alto visual aproximado: `68-74px` segun safe area
+- Alto visual aproximado: `68-74px` según safe area
 - Borde superior: `1px`, neutral claro
 - Fondo: `#FFFFFF`
 - Layout: `display:flex` con 5 columnas equivalentes
 
-### 2) Item de navegacion (`inbox_bottom_nav.item`)
+### 2) Item de navegación (`inbox_bottom_nav.item`)
 - Estructura vertical:
   - Icono (`20px`)
   - Label (`11px/14px`)
@@ -40,13 +40,13 @@
 
 ### 3) CTA central (`Vender`)
 - Sin tratamiento especial respecto al resto de items
-- Mantiene exactamente la misma grilla (ancho, alto y separacion) para preservar equilibrio visual
+- Mantiene exactamente la misma grilla (ancho, alto y separación) para preservar equilibrio visual
 
 ### 4) Badge opcional por item
 - Burbuja circular en esquina superior del item
 - Fondo: `#D32069`
 - Texto: blanco
-- Uso: contador de actividad pendiente (ejemplo: favoritos o buzon)
+- Uso: contador de actividad pendiente (ejemplo: favoritos o buzón)
 
 ## Tokens candidatos
 - `tokens.color.bottom_nav.background = #FFFFFF`
@@ -59,7 +59,7 @@
 - `tokens.typography.bottom_nav.label.size = 11px`
 - `tokens.typography.bottom_nav.label.line_height = 14px`
 
-## Decision de implementacion en Wallapop Meet
+## Decisión de implementación en Wallapop Meet
 - Componente: `src/components/ui/inbox-bottom-nav.tsx`
 - Storybook: `Design System/Inbox Bottom Nav`
 - API:
