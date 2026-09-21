@@ -56,10 +56,10 @@ function MeetupSimulator() {
         <section className="w-full rounded-[var(--wm-size-16)] border border-[color:var(--wm-color-border-default)] bg-[color:var(--bg-base)] p-5 shadow-[var(--wm-shadow-100)]">
             <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                    <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">
+                    <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">
                         Wallapop Meet Demo
                     </p>
-                    <h1 className="font-wallie-chunky text-[length:var(--wm-size-24)] leading-8 text-[color:var(--text-primary)]">
+                    <h1 className="font-brand-strong text-[length:var(--wm-size-24)] leading-8 text-[color:var(--text-primary)]">
                         Flujo de meetup
                     </h1>
                 </div>
@@ -125,7 +125,7 @@ function MeetupSimulator() {
                 </Button>
             </div>
 
-            <p className="mt-3 font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--text-secondary)]">
+            <p className="mt-3 font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-secondary)]">
                 Hora simulada: {currentTime.toLocaleString()}
             </p>
 
@@ -144,7 +144,7 @@ function MeetupSimulator() {
             </div>
 
             {lastError ? (
-                <p className="mt-3 rounded-[var(--wm-size-8)] bg-[color:var(--bg-surface)] px-3 py-2 font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--feedback-error)]">
+                <p className="mt-3 rounded-[var(--wm-size-8)] bg-[color:var(--bg-surface)] px-3 py-2 font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--feedback-error)]">
                     {lastError}
                 </p>
             ) : null}

@@ -50,7 +50,7 @@ function StarRating({ rating, ratingCount }: { rating: number; ratingCount?: num
                 })}
             </div>
             {typeof ratingCount === "number" && ratingCount > 0 ? (
-                <span className="font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--wm-color-text-secondary)]">
+                <span className="font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--wm-color-text-secondary)]">
                     ({ratingCount})
                 </span>
             ) : null}
@@ -114,17 +114,17 @@ function ChatCounterpartCard({
         >
             <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
-                    <h3 className="truncate font-wallie-chunky text-[length:var(--wm-size-16)] text-[color:var(--wm-color-text-primary)]">
+                    <h3 className="truncate font-brand-strong text-[length:var(--wm-size-16)] text-[color:var(--wm-color-text-primary)]">
                         {name}
                     </h3>
                     <div className="mt-2">
                         <StarRating rating={rating} ratingCount={ratingCount} />
                     </div>
-                    <p className="mt-2 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--wm-color-text-secondary)]">
+                    <p className="mt-2 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--wm-color-text-secondary)]">
                         {distanceLabel}
                     </p>
                     {attendanceMessage ? (
-                        <p className={`mt-1 flex items-center gap-1 font-wallie-fit text-[length:var(--wm-size-14)] ${attendanceMessage.className}`}>
+                        <p className={`mt-1 flex items-center gap-1 font-brand-text text-[length:var(--wm-size-14)] ${attendanceMessage.className}`}>
                             {attendanceMessage.Icon ? (
                                 <attendanceMessage.Icon size={14} className="shrink-0" aria-hidden />
                             ) : null}

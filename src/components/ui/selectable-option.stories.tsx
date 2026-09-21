@@ -28,7 +28,7 @@ export const Selected: Story = {
         subtitle: "Centro Comercial Sol · 124 ventas",
         leftIcon: <WallapopIcon name="shield" size={16} />,
         children: (
-            <span className="rounded-full bg-[color:var(--bg-accent-subtle)] px-2 py-0.5 font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--action-primary-pressed)]">
+            <span className="rounded-full bg-[color:var(--bg-accent-subtle)] px-2 py-0.5 font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--action-primary-pressed)]">
                 Punto seguro
             </span>
         ),

@@ -45,7 +45,7 @@ export const ByStatus: Story = {
         <div className="space-y-3">
             {flowStatuses.map((status) => (
                 <div key={status} className="rounded-[var(--wm-size-8)] border border-[color:var(--border-divider)] p-3">
-                    <p className="mb-2 font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">
+                    <p className="mb-2 font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">
                         Estado: {status}
                     </p>
                     <MeetupTimeline currentStatus={status} />

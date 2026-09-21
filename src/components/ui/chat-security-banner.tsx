@@ -31,13 +31,13 @@ function ChatSecurityBanner({
             <WallapopIcon name="shield" size="small" className="text-[color:var(--action-primary)]" />
           </span>
         ) : null}
-        <p className="font-wallie text-[length:var(--wm-size-12)] leading-[var(--wm-size-18)] text-[color:var(--text-security)]">
+        <p className="font-brand text-[length:var(--wm-size-12)] leading-[var(--wm-size-18)] text-[color:var(--text-security)]">
           {message}{" "}
           {linkText ? (
             <button
               type="button"
               onClick={onLinkClick}
-              className="font-wallie-fit text-[length:var(--wm-size-12)] leading-4 text-[color:var(--action-link)] underline"
+              className="font-brand-text text-[length:var(--wm-size-12)] leading-4 text-[color:var(--action-link)] underline"
             >
               {linkText}
             </button>

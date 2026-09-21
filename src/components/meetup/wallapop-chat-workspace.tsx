@@ -1307,7 +1307,7 @@ function MeetupMapPreviewModal({
         <div className="fixed inset-0 z-[60] bg-[color:var(--text-primary)]/55 p-0 md:p-6">
             <section className="flex h-full w-full flex-col bg-[color:var(--bg-base)] md:mx-auto md:h-[88vh] md:max-w-[var(--wm-size-760)] md:rounded-[var(--wm-size-20)]">
                 <header className="flex items-center justify-between border-b border-[color:var(--border-divider)] px-4 py-3">
-                    <p className="font-wallie-chunky text-[length:var(--wm-size-18)] text-[color:var(--text-primary)]">Mapa de la quedada</p>
+                    <p className="font-brand-strong text-[length:var(--wm-size-18)] text-[color:var(--text-primary)]">Mapa de la quedada</p>
                     <IconButton
                         label="Cerrar mapa"
                         icon={<WallapopIcon name="cross" size="small" />}
@@ -1538,7 +1538,7 @@ function MeetupProposalOverlay({
                                     onClick={onCloseMapPicker}
                                     className="h-10 w-10 rounded-full bg-transparent p-0 text-[color:var(--text-primary)]"
                                 />
-                                <h2 className="font-wallie-chunky text-[length:var(--wm-size-22)] text-[color:var(--text-primary)] md:text-[length:var(--wm-size-24)]">Elige un punto</h2>
+                                <h2 className="font-brand-strong text-[length:var(--wm-size-22)] text-[color:var(--text-primary)] md:text-[length:var(--wm-size-24)]">Elige un punto</h2>
                                 <span className="h-10 w-10" aria-hidden />
                             </div>
                             <LocationSearchInput
@@ -1605,18 +1605,18 @@ function MeetupProposalOverlay({
                                                         <MapPin size={14} />
                                                     </span>
                                                 )}
-                                                <p className="font-wallie-chunky text-[length:var(--wm-size-20)] text-[color:var(--text-primary)] md:text-[length:var(--wm-size-22)]">
+                                                <p className="font-brand-strong text-[length:var(--wm-size-20)] text-[color:var(--text-primary)] md:text-[length:var(--wm-size-22)]">
                                                     {mapSelectedPoint
                                                         ? mapSelectedPoint.name
                                                         : shortenLocationLabel(customLocationLabel || "Calle seleccionada")}
                                                 </p>
                                             </div>
-                                            <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-tertiary)]">
+                                            <p className="mt-1 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-tertiary)]">
                                                 {mapSelectedPoint ? mapSelectedPoint.address : (customLocationLabel || "Calle seleccionada")}
                                             </p>
                                         </div>
                                         <div className="shrink-0">
-                                            <p className="whitespace-nowrap font-wallie-chunky text-[length:var(--wm-size-15)] text-[color:var(--action-primary-pressed)]">
+                                            <p className="whitespace-nowrap font-brand-strong text-[length:var(--wm-size-15)] text-[color:var(--action-primary-pressed)]">
                                                 <span className="inline-flex w-fit rounded-full bg-[color:var(--bg-accent-subtle)] px-3 py-1">
                                                     {mapSelectedPoint
                                                         ? formatDistance(mapSelectedPoint.distanceMeters)
@@ -1627,7 +1627,7 @@ function MeetupProposalOverlay({
                                     </div>
                                     {mapSelectedPoint ? (
                                         <NoticeBanner tone="success" className="mt-2 inline-flex w-fit">
-                                            <span className="font-wallie-chunky">
+                                            <span className="font-brand-strong">
                                                 {mapSelectedPoint.completedSales} ventas completadas
                                             </span>
                                             <span className="ml-1">en este punto seguro.</span>
@@ -1661,7 +1661,7 @@ function MeetupProposalOverlay({
                             onClose={onCancel}
                         />
                         {errorMessage ? (
-                            <p className="mx-4 mt-3 rounded-[var(--wm-size-8)] bg-[color:var(--bg-error-subtle)] px-3 py-2 font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--feedback-error)]">
+                            <p className="mx-4 mt-3 rounded-[var(--wm-size-8)] bg-[color:var(--bg-error-subtle)] px-3 py-2 font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--feedback-error)]">
                                 {errorMessage}
                             </p>
                         ) : null}
@@ -1669,7 +1669,7 @@ function MeetupProposalOverlay({
                         <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-4">
                             {step === 1 ? (
                                 <div className="mt-4 space-y-4">
-                                    <h3 className="font-wallie-chunky text-[length:var(--wm-size-20)] leading-[1.12] text-[color:var(--text-primary)] md:text-[length:var(--wm-size-22)]">
+                                    <h3 className="font-brand-strong text-[length:var(--wm-size-20)] leading-[1.12] text-[color:var(--text-primary)] md:text-[length:var(--wm-size-22)]">
                                         Seleccionar dia y hora
                                     </h3>
                                     <CalendarPicker
@@ -1709,7 +1709,7 @@ function MeetupProposalOverlay({
                                                     timeOption < minTimeValue,
                                             })),
                                         ]}
-                                        className="rounded-[var(--wm-size-12)] bg-[color:var(--bg-base)] px-3 py-2 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-primary)] focus:border-[color:var(--action-primary)]"
+                                        className="rounded-[var(--wm-size-12)] bg-[color:var(--bg-base)] px-3 py-2 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-primary)] focus:border-[color:var(--action-primary)]"
                                     />
                                 </div>
                             ) : null}
@@ -1740,15 +1740,15 @@ function MeetupProposalOverlay({
                                                         </span>
                                                     )}
                                                     <div className="min-w-0 flex-1">
-                                                        <p className="font-wallie-chunky text-[length:var(--wm-size-18)] leading-tight text-[color:var(--text-primary)] md:text-[length:var(--wm-size-19)]">
+                                                        <p className="font-brand-strong text-[length:var(--wm-size-18)] leading-tight text-[color:var(--text-primary)] md:text-[length:var(--wm-size-19)]">
                                                             {option.label}
                                                         </p>
-                                                        <p className="mt-1 font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--text-tertiary)]">
+                                                        <p className="mt-1 font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-tertiary)]">
                                                             {option.address}
                                                         </p>
                                                         <div className="mt-1 flex items-center gap-2">
                                                             {option.kind === "safe" ? (
-                                                                <span className="rounded-full bg-[color:var(--bg-accent-subtle)] px-2 py-0.5 font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--action-primary-pressed)]">
+                                                                <span className="rounded-full bg-[color:var(--bg-accent-subtle)] px-2 py-0.5 font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--action-primary-pressed)]">
                                                                     Punto seguro · {option.completedSales ?? 0} ventas completadas
                                                                 </span>
                                                             ) : null}
@@ -1771,10 +1771,10 @@ function MeetupProposalOverlay({
                                                 <WallapopIcon name="plus" size={16} />
                                             </span>
                                             <div className="min-w-0 flex-1">
-                                                <p className="font-wallie-chunky text-[length:var(--wm-size-18)] text-[color:var(--text-primary)] md:text-[length:var(--wm-size-19)]">
+                                                <p className="font-brand-strong text-[length:var(--wm-size-18)] text-[color:var(--text-primary)] md:text-[length:var(--wm-size-19)]">
                                                     Elige un punto
                                                 </p>
-                                                <p className="font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--text-tertiary)]">
+                                                <p className="font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-tertiary)]">
                                                     Puede ser un punto personalizado u otro punto seguro.
                                                 </p>
                                             </div>
@@ -1811,7 +1811,7 @@ function MeetupProposalOverlay({
                                                 href="https://ayuda.wallapop.com/hc/es-es/articles/19093732048785--Qu%C3%A9-es-DAC7-y-a-que-vendedores-de-Wallapop-les-afecta"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="font-wallie-chunky underline"
+                                                className="font-brand-strong underline"
                                             >
                                                 Más información
                                             </a>
@@ -1819,7 +1819,7 @@ function MeetupProposalOverlay({
                                     ) : null}
 
                                     <fieldset>
-                                        <legend className="mb-2 font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--text-primary)]">
+                                        <legend className="mb-2 font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-primary)]">
                                             Preferencia de pago
                                         </legend>
                                         <div className="grid gap-3 sm:grid-cols-2">
@@ -1849,7 +1849,7 @@ function MeetupProposalOverlay({
                                                                 {icon()}
                                                             </span>
                                                             <div className="min-w-0 flex-1">
-                                                                <p className="font-wallie-fit text-[length:var(--wm-size-14)] leading-[1.2] text-[color:var(--text-primary)] md:text-[length:var(--wm-size-15)]">
+                                                                <p className="font-brand-text text-[length:var(--wm-size-14)] leading-[1.2] text-[color:var(--text-primary)] md:text-[length:var(--wm-size-15)]">
                                                                     {paymentMethodLabel(method)}
                                                                 </p>
                                                             </div>
@@ -1905,7 +1905,7 @@ function InboxPane({
         <section className="flex h-full min-h-0 flex-col bg-[color:var(--bg-base)]">
             <div className="border-b border-[color:var(--border-divider)] px-4 py-4">
                 <div className="flex items-center">
-                    <h1 className="font-wallie-chunky text-[length:var(--wm-size-22)] text-[color:var(--text-primary)]">Buzon</h1>
+                    <h1 className="font-brand-strong text-[length:var(--wm-size-22)] text-[color:var(--text-primary)]">Buzon</h1>
                 </div>
                 <div
                     role="tablist"
@@ -2088,10 +2088,10 @@ function ConversationPane({
                         className="h-11 w-11 rounded-[var(--wm-size-12)] object-cover"
                     />
                     <div className="min-w-0">
-                        <p className="truncate font-wallie-chunky text-[length:var(--wm-size-16)] text-[color:var(--text-primary)]">
+                        <p className="truncate font-brand-strong text-[length:var(--wm-size-16)] text-[color:var(--text-primary)]">
                             {conversation.itemPrice}
                         </p>
-                        <p className="truncate font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--text-tertiary)]">
+                        <p className="truncate font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-tertiary)]">
                             {conversation.itemTitle}
                         </p>
                     </div>
@@ -2129,7 +2129,7 @@ function ConversationPane({
                                 <div key={entry.id} className="space-y-2">
                                     {showDateSeparator ? (
                                         <div className="flex justify-center">
-                                            <span className="inline-flex rounded-full bg-[color:var(--bg-date-chip)] px-4 py-1 font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--text-tertiary)]">
+                                            <span className="inline-flex rounded-full bg-[color:var(--bg-date-chip)] px-4 py-1 font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-tertiary)]">
                                                 {formatTimelineDayLabel(entry.createdAt)}
                                             </span>
                                         </div>
@@ -2168,7 +2168,7 @@ function ConversationPane({
                             <div key={entry.id} className="space-y-2 pt-2">
                                 {showDateSeparator ? (
                                     <div className="flex justify-center">
-                                        <span className="inline-flex rounded-full bg-[color:var(--bg-date-chip)] px-4 py-1 font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--text-tertiary)]">
+                                        <span className="inline-flex rounded-full bg-[color:var(--bg-date-chip)] px-4 py-1 font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-tertiary)]">
                                             {formatTimelineDayLabel(entry.createdAt)}
                                         </span>
                                     </div>
@@ -2216,7 +2216,7 @@ function ConversationPane({
                 ) : null}
 
                 {errorMessage ? (
-                    <p className="mt-4 rounded-[var(--wm-size-8)] bg-[color:var(--bg-error-subtle)] px-3 py-2 font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--feedback-error)]">
+                    <p className="mt-4 rounded-[var(--wm-size-8)] bg-[color:var(--bg-error-subtle)] px-3 py-2 font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--feedback-error)]">
                         {errorMessage}
                     </p>
                 ) : null}

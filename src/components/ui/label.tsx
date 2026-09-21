@@ -29,7 +29,7 @@ function Label({ tone = "pending", className, children, ...props }: LabelProps) 
             data-slot="label"
             data-tone={tone}
             className={cn(
-                "inline-flex rounded-full border px-2.5 py-1 font-wallie-fit text-[length:var(--wm-size-11)] leading-[1]",
+                "inline-flex rounded-full border px-2.5 py-1 font-brand-text text-[length:var(--wm-size-11)] leading-[1]",
                 toneClassMap[tone],
                 className
             )}

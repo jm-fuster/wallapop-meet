@@ -64,6 +64,14 @@ Esto es lo más importante que hay que entender antes de mirar nada:
 > [!NOTE]
 > Citando la propia página del prototipo en Figma: *«A prototype is a demonstration, not the product»*. No se simulan la escritura de texto, el desplazamiento del mapa, la navegación del calendario ni la validación de formularios. Cada pantalla muestra **un estado comprometido** del flujo. Las reglas que gobiernan esas interacciones están escritas —y en este repositorio, implementadas y testeadas—, pero el prototipo enseña la forma del recorrido, no el producto.
 
+### Sobre la tipografía
+
+La tipografía corporativa de Wallapop se llama **Wallie** y es un encargo a medida que [Extra Type](https://extratype.com/news/custom/wallapop) diseñó en exclusiva para ellos: no está en ningún catálogo y no existe licencia que comprar.
+
+Este proyecto usa **[Nunito](https://fonts.google.com/specimen/Nunito)** ([SIL Open Font License 1.1](public/fonts/OFL.txt)), autoalojada en `public/fonts`. Comparte la estructura redondeada y el aire amable del original, pero no es la misma tipografía y no pretende serlo. Lo mismo vale para el favicon, dibujado para este repositorio.
+
+Es una decisión deliberada: un caso de estudio no oficial no debería servir los activos propietarios de la marca que estudia. Ver [NOTICE](NOTICE).
+
 ---
 
 ## El flujo

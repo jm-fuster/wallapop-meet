@@ -85,18 +85,18 @@ function ChatListItem({
       </div>
       <div className="min-w-0 flex-1">
         <div className="flex items-center justify-between gap-2">
-          <p className="truncate font-wallie text-[length:var(--wm-size-12)] leading-[var(--wm-size-18)] text-[color:var(--text-meta)]">
+          <p className="truncate font-brand text-[length:var(--wm-size-12)] leading-[var(--wm-size-18)] text-[color:var(--text-meta)]">
             {userName}
           </p>
-          <p className="shrink-0 font-wallie text-[length:var(--wm-size-12)] leading-[var(--wm-size-18)] text-[color:var(--text-meta)]">
+          <p className="shrink-0 font-brand text-[length:var(--wm-size-12)] leading-[var(--wm-size-18)] text-[color:var(--text-meta)]">
             {messageDate}
           </p>
         </div>
-        <p className="truncate font-wallie-chunky text-[length:var(--wm-size-16)] leading-[var(--wm-size-16)] text-[color:var(--wm-color-text-primary)]">
+        <p className="truncate font-brand-strong text-[length:var(--wm-size-16)] leading-[var(--wm-size-16)] text-[color:var(--wm-color-text-primary)]">
           {itemTitle}
         </p>
         <div className="mt-1 flex min-h-6 items-center justify-between gap-2">
-          <p className="flex min-w-0 items-center gap-1 font-wallie text-[length:var(--wm-size-14)] leading-[var(--wm-size-14)] text-[color:var(--text-meta)]">
+          <p className="flex min-w-0 items-center gap-1 font-brand text-[length:var(--wm-size-14)] leading-[var(--wm-size-14)] text-[color:var(--text-meta)]">
             {lastMessageDeliveryState ? (
               <span
                 aria-label={lastMessageDeliveryState === "read" ? "Leido" : "Enviado"}

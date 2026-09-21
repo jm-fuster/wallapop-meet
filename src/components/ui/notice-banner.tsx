@@ -20,7 +20,7 @@ function NoticeBanner({ className, tone = "warning", ...props }: NoticeBannerPro
     return (
         <p
             className={cn(
-                "rounded-[var(--wm-size-8)] px-2 py-1 font-wallie-fit text-[length:var(--wm-size-13)]",
+                "rounded-[var(--wm-size-8)] px-2 py-1 font-brand-text text-[length:var(--wm-size-13)]",
                 toneClassName[tone],
                 className
             )}

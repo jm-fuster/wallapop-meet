@@ -207,10 +207,10 @@ function ChatConversationHeader({
                             className="h-[var(--wm-size-42)] w-[var(--wm-size-42)]"
                         />
                         <div className="min-w-0">
-                            <p className="truncate font-wallie-chunky text-[length:var(--wm-size-19)] leading-[var(--wm-size-21)] text-[color:var(--text-primary)]">
+                            <p className="truncate font-brand-strong text-[length:var(--wm-size-19)] leading-[var(--wm-size-21)] text-[color:var(--text-primary)]">
                                 {itemPrice}
                             </p>
-                            <p className="truncate pt-0.5 font-wallie-fit text-[length:var(--wm-size-15)] leading-[var(--wm-size-19)] text-[color:var(--text-primary)]">
+                            <p className="truncate pt-0.5 font-brand-text text-[length:var(--wm-size-15)] leading-[var(--wm-size-19)] text-[color:var(--text-primary)]">
                                 {itemTitle}
                             </p>
                         </div>
@@ -291,10 +291,10 @@ function ChatConversationHeader({
                             isExpanded ? "opacity-100" : "opacity-0"
                         )}
                     >
-                        <p className="truncate font-wallie-chunky text-[length:var(--wm-size-22)] leading-[var(--wm-size-24)] text-[color:var(--text-primary)]">
+                        <p className="truncate font-brand-strong text-[length:var(--wm-size-22)] leading-[var(--wm-size-24)] text-[color:var(--text-primary)]">
                             {itemPrice}
                         </p>
-                        <p className="truncate pt-0.5 font-wallie-fit text-[length:var(--wm-size-16)] leading-[var(--wm-size-20)] text-[color:var(--text-primary)]">
+                        <p className="truncate pt-0.5 font-brand-text text-[length:var(--wm-size-16)] leading-[var(--wm-size-20)] text-[color:var(--text-primary)]">
                             {itemTitle}
                         </p>
                     </div>
@@ -318,14 +318,14 @@ function ChatConversationHeader({
                             />
                         )}
                         <div className="pr-[var(--wm-size-60)]">
-                            <p className="truncate font-wallie-chunky text-[length:var(--wm-size-20)] leading-[var(--wm-size-21)] text-[color:var(--text-secondary)]">
+                            <p className="truncate font-brand-strong text-[length:var(--wm-size-20)] leading-[var(--wm-size-21)] text-[color:var(--text-secondary)]">
                                 {userName}
                             </p>
                         </div>
                         <div className="mt-0 pr-[var(--wm-size-60)] space-y-0">
                             {typeof rating === "number" ? <StarRating rating={rating} /> : null}
                             {distanceLabel ? (
-                                <p className="flex items-center gap-2 truncate font-wallie-fit text-[length:var(--wm-size-16)] leading-[var(--wm-size-20)] text-[color:var(--text-secondary)]">
+                                <p className="flex items-center gap-2 truncate font-brand-text text-[length:var(--wm-size-16)] leading-[var(--wm-size-20)] text-[color:var(--text-secondary)]">
                                     <MapPin size={15} />
                                     {distanceLabel}
                                 </p>
@@ -333,7 +333,7 @@ function ChatConversationHeader({
                             {attendanceMessage ? (
                                 <p
                                     className={cn(
-                                        "truncate font-wallie-fit text-[length:var(--wm-size-16)] leading-[var(--wm-size-20)]",
+                                        "truncate font-brand-text text-[length:var(--wm-size-16)] leading-[var(--wm-size-20)]",
                                         attendanceMessage.className
                                     )}
                                 >

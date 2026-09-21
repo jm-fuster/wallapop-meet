@@ -53,15 +53,15 @@ function MeetupProposalFooter({
               className="h-[var(--wm-size-42)] w-[var(--wm-size-42)] shrink-0 rounded-[var(--wm-size-12)] object-cover"
             />
             <div className="min-w-0">
-              <p className="truncate font-wallie-chunky text-[length:var(--wm-size-15)] leading-tight text-[color:var(--text-primary)]">
+              <p className="truncate font-brand-strong text-[length:var(--wm-size-15)] leading-tight text-[color:var(--text-primary)]">
                 {userName}
               </p>
               {attendanceLabel ? (
-                <p className={`truncate font-wallie-fit text-[length:var(--wm-size-12)] leading-tight ${attendanceColorClass}`}>
+                <p className={`truncate font-brand-text text-[length:var(--wm-size-12)] leading-tight ${attendanceColorClass}`}>
                   {attendanceLabel}
                 </p>
               ) : null}
-              <p className="truncate font-wallie-fit text-[length:var(--wm-size-12)] leading-tight text-[color:var(--text-secondary)]">
+              <p className="truncate font-brand-text text-[length:var(--wm-size-12)] leading-tight text-[color:var(--text-secondary)]">
                 {itemTitle}
               </p>
             </div>
@@ -71,7 +71,7 @@ function MeetupProposalFooter({
         <div className="shrink-0 flex justify-end gap-2">
           <button
             type="button"
-            className={`rounded-full px-4 py-2 font-wallie-chunky text-[length:var(--wm-size-14)] ${
+            className={`rounded-full px-4 py-2 font-brand-strong text-[length:var(--wm-size-14)] ${
               actionDisabled
                 ? "cursor-not-allowed border border-[color:var(--border-strong)] bg-[color:var(--action-disabled-bg)] text-[color:var(--action-disabled-text)] shadow-none"
                 : "bg-[color:var(--action-primary)] text-[color:var(--text-on-action)]"

@@ -37,13 +37,13 @@ function MeetupProposalHeader({
         >
           <WallapopIcon name="cross" size={22} />
         </button>
-        <h2 className="font-wallie-chunky text-[length:var(--wm-size-18)] text-[color:var(--text-primary)] md:text-[length:var(--wm-size-20)]">
+        <h2 className="font-brand-strong text-[length:var(--wm-size-18)] text-[color:var(--text-primary)] md:text-[length:var(--wm-size-20)]">
           Paso {currentStep} de {totalSteps}
         </h2>
         <button
           type="button"
           onClick={onHelp}
-          className="font-wallie-chunky text-[length:var(--wm-size-15)] text-[color:var(--action-link)] hover:text-[color:var(--action-primary-pressed)] active:text-[color:var(--action-primary-pressed)] md:text-[length:var(--wm-size-16)]"
+          className="font-brand-strong text-[length:var(--wm-size-15)] text-[color:var(--action-link)] hover:text-[color:var(--action-primary-pressed)] active:text-[color:var(--action-primary-pressed)] md:text-[length:var(--wm-size-16)]"
         >
           {helpLabel}
         </button>

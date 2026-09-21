@@ -91,11 +91,11 @@ function MeetTransactionRatingModal({
                 </div>
                 <h2
                     id={titleId}
-                    className="pr-10 font-wallie-chunky text-[length:var(--wm-size-18)] leading-6 text-[color:var(--text-primary)]"
+                    className="pr-10 font-brand-strong text-[length:var(--wm-size-18)] leading-6 text-[color:var(--text-primary)]"
                 >
                     Valora tu experiencia con {counterpartName}
                 </h2>
-                <p className="mt-2 font-wallie-fit text-[length:var(--wm-size-14)] leading-5 text-[color:var(--text-secondary)]">
+                <p className="mt-2 font-brand-text text-[length:var(--wm-size-14)] leading-5 text-[color:var(--text-secondary)]">
                     Cuántas más estrellas, mejor ha sido tu experiencia.
                 </p>
 
@@ -152,13 +152,13 @@ function MeetTransactionRatingModal({
                             onChange={(event) => setReview(event.target.value)}
                             placeholder="Escribir valoración (opcional)"
                             rows={4}
-                            className="min-h-[var(--wm-size-88)] w-full resize-none border-none bg-transparent p-0 font-wallie-fit text-[length:var(--wm-size-16)] leading-6 text-[color:var(--wm-color-input-text)] outline-none placeholder:text-[color:var(--wm-color-input-placeholder-focus)]"
+                            className="min-h-[var(--wm-size-88)] w-full resize-none border-none bg-transparent p-0 font-brand-text text-[length:var(--wm-size-16)] leading-6 text-[color:var(--wm-color-input-text)] outline-none placeholder:text-[color:var(--wm-color-input-placeholder-focus)]"
                         />
                     </div>
                     <div className="flex justify-end pt-1">
                         <span
                             aria-live="polite"
-                            className="font-wallie-fit text-[length:var(--wm-size-12)] leading-4 text-[color:var(--wm-color-input-label)]"
+                            className="font-brand-text text-[length:var(--wm-size-12)] leading-4 text-[color:var(--wm-color-input-label)]"
                         >
                             {review.length}/{REVIEW_MAX_LENGTH}
                         </span>
@@ -169,7 +169,7 @@ function MeetTransactionRatingModal({
                     <Button
                         type="button"
                         size="lg"
-                        className="h-[var(--wm-size-47)] w-full rounded-[var(--wm-size-999)] border-[color:var(--meet-rating-prompt-cta)] bg-[color:var(--meet-rating-prompt-cta)] font-wallie-chunky text-[length:var(--wm-size-16)] text-[color:var(--meet-rating-prompt-cta-text)] hover:border-[color:var(--meet-rating-prompt-cta-hover)] hover:bg-[color:var(--meet-rating-prompt-cta-hover)] active:border-[color:var(--meet-rating-prompt-cta-hover)] active:bg-[color:var(--meet-rating-prompt-cta-hover)] disabled:border-[color:var(--action-disabled-bg)] disabled:bg-[color:var(--action-disabled-bg)] disabled:text-[color:var(--action-disabled-text)]"
+                        className="h-[var(--wm-size-47)] w-full rounded-[var(--wm-size-999)] border-[color:var(--meet-rating-prompt-cta)] bg-[color:var(--meet-rating-prompt-cta)] font-brand-strong text-[length:var(--wm-size-16)] text-[color:var(--meet-rating-prompt-cta-text)] hover:border-[color:var(--meet-rating-prompt-cta-hover)] hover:bg-[color:var(--meet-rating-prompt-cta-hover)] active:border-[color:var(--meet-rating-prompt-cta-hover)] active:bg-[color:var(--meet-rating-prompt-cta-hover)] disabled:border-[color:var(--action-disabled-bg)] disabled:bg-[color:var(--action-disabled-bg)] disabled:text-[color:var(--action-disabled-text)]"
                         disabled={stars < 1}
                         onClick={handlePublish}
                     >

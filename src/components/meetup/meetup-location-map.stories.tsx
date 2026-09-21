@@ -62,7 +62,7 @@ function MapHarness({
                     setSelectedCustomPoint(null)
                 }}
             />
-            <p className="font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">
+            <p className="font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">
                 Punto seleccionado: {selectedPointId || "ninguno"}
             </p>
         </div>

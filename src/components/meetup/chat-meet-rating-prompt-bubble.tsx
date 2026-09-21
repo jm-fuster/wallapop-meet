@@ -44,13 +44,13 @@ function ChatMeetRatingPromptBubble({
                     />
                 </div>
                 <div className="min-w-0 flex-1">
-                    <p className="font-wallie-fit text-[length:var(--wm-size-16)] leading-5 text-[color:var(--meet-rating-prompt-text)]">
+                    <p className="font-brand-text text-[length:var(--wm-size-16)] leading-5 text-[color:var(--meet-rating-prompt-text)]">
                         {MEET_RATING_PROMPT_COPY}
                     </p>
                     {completed ? (
                         <p
                             role="status"
-                            className="mt-3 font-wallie-chunky text-[length:var(--wm-size-16)] leading-5 text-[color:var(--meet-rating-prompt-text)]"
+                            className="mt-3 font-brand-strong text-[length:var(--wm-size-16)] leading-5 text-[color:var(--meet-rating-prompt-text)]"
                         >
                             <span aria-hidden className="mr-1">
                                 ✓
@@ -63,13 +63,13 @@ function ChatMeetRatingPromptBubble({
                                 type="button"
                                 aria-label="Valorar experiencia con este usuario"
                                 onClick={() => onValorar?.()}
-                                className="h-10 min-w-[var(--wm-size-200)] rounded-[var(--wm-size-999)] bg-[color:var(--meet-rating-prompt-cta)] px-6 font-wallie-chunky text-[length:var(--wm-size-16)] text-[color:var(--meet-rating-prompt-cta-text)] shadow-[var(--wm-shadow-inset-cta)] transition-colors hover:bg-[color:var(--meet-rating-prompt-cta-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--border-focus)] active:bg-[color:var(--meet-rating-prompt-cta-hover)]"
+                                className="h-10 min-w-[var(--wm-size-200)] rounded-[var(--wm-size-999)] bg-[color:var(--meet-rating-prompt-cta)] px-6 font-brand-strong text-[length:var(--wm-size-16)] text-[color:var(--meet-rating-prompt-cta-text)] shadow-[var(--wm-shadow-inset-cta)] transition-colors hover:bg-[color:var(--meet-rating-prompt-cta-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--border-focus)] active:bg-[color:var(--meet-rating-prompt-cta-hover)]"
                             >
                                 Valorar
                             </button>
                         </div>
                     )}
-                    <p className="mt-2 text-right font-wallie-fit text-[length:var(--wm-size-14)] leading-[var(--wm-size-14)] text-[color:var(--meet-rating-prompt-meta)]">
+                    <p className="mt-2 text-right font-brand-text text-[length:var(--wm-size-14)] leading-[var(--wm-size-14)] text-[color:var(--meet-rating-prompt-meta)]">
                         {time}
                     </p>
                 </div>

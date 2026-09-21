@@ -42,13 +42,13 @@ function MeetupPendingSaleBanner({ scheduledAt, onJumpToMeetup }: MeetupPendingS
                     strokeWidth={2}
                     className="shrink-0 text-[color:var(--text-on-action)]"
                 />
-                <p className="min-w-0 flex-1 truncate font-wallie-chunky text-[length:var(--wm-size-13)] text-[color:var(--text-on-action)]">
+                <p className="min-w-0 flex-1 truncate font-brand-strong text-[length:var(--wm-size-13)] text-[color:var(--text-on-action)]">
                     Hay una venta pendiente en {formatCountdown(scheduledAt, now)}.
                 </p>
                 <Button
                     variant="outline"
                     size="sm"
-                    className="h-8 rounded-[var(--wm-size-999)] border-[color:var(--text-on-action)] bg-transparent px-3 font-wallie-chunky text-[length:var(--wm-size-13)] text-[color:var(--text-on-action)] hover:border-[color:var(--text-on-action)] hover:bg-[color:var(--action-primary-hover)] hover:text-[color:var(--text-on-action)]"
+                    className="h-8 rounded-[var(--wm-size-999)] border-[color:var(--text-on-action)] bg-transparent px-3 font-brand-strong text-[length:var(--wm-size-13)] text-[color:var(--text-on-action)] hover:border-[color:var(--text-on-action)] hover:bg-[color:var(--action-primary-hover)] hover:text-[color:var(--text-on-action)]"
                     onClick={onJumpToMeetup}
                 >
                     Ir al mensaje

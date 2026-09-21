@@ -51,21 +51,21 @@ function WalletTopUpSheet({ open, onClose, minSuggestedAmountEur, onConfirmTopUp
                     className="h-10 w-10 rounded-full bg-transparent p-0 text-[color:var(--text-primary)]"
                     onClick={onClose}
                 />
-                <h1 className="min-w-0 flex-1 text-center font-wallie-chunky text-[length:var(--wm-size-18)] text-[color:var(--text-primary)]">
+                <h1 className="min-w-0 flex-1 text-center font-brand-strong text-[length:var(--wm-size-18)] text-[color:var(--text-primary)]">
                     Recarga el monedero
                 </h1>
                 <a
                     href="https://ayuda.wallapop.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="shrink-0 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--action-link)]"
+                    className="shrink-0 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--action-link)]"
                 >
                     ¿Dudas?
                 </a>
             </header>
 
             <div className="min-h-0 flex-1 overflow-y-auto px-4 py-5">
-                <p className="font-wallie-chunky text-[length:var(--wm-size-18)] leading-tight text-[color:var(--text-primary)]">
+                <p className="font-brand-strong text-[length:var(--wm-size-18)] leading-tight text-[color:var(--text-primary)]">
                     ¿Cuanto dinero quieres recargar?
                 </p>
 
@@ -76,22 +76,22 @@ function WalletTopUpSheet({ open, onClose, minSuggestedAmountEur, onConfirmTopUp
                             inputMode="decimal"
                             value={rawAmount}
                             onChange={(e) => setRawAmount(e.target.value)}
-                            className="w-full max-w-[var(--wm-size-280)] border-0 bg-transparent p-0 text-center font-wallie-chunky text-[length:var(--wm-size-34)] leading-none text-[color:var(--text-primary)] outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--border-focus)] focus-visible:ring-offset-2"
+                            className="w-full max-w-[var(--wm-size-280)] border-0 bg-transparent p-0 text-center font-brand-strong text-[length:var(--wm-size-34)] leading-none text-[color:var(--text-primary)] outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--border-focus)] focus-visible:ring-offset-2"
                             aria-label="Importe a recargar en euros"
                         />
-                        <span className="font-wallie-chunky text-[length:var(--wm-size-28)] text-[color:var(--text-primary)]">
+                        <span className="font-brand-strong text-[length:var(--wm-size-28)] text-[color:var(--text-primary)]">
                             €
                         </span>
                     </div>
                     <div className="mt-3 border-t border-[color:var(--border-divider)] pt-3">
-                        <p className="text-center font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--action-link)]">
+                        <p className="text-center font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--action-link)]">
                             Tarifa segun el importe de la recarga.
                         </p>
                     </div>
                     <Button
                         type="button"
                         variant="primary"
-                        className="mt-4 h-11 w-full rounded-[var(--wm-size-12)] font-wallie-chunky text-[length:var(--wm-size-16)]"
+                        className="mt-4 h-11 w-full rounded-[var(--wm-size-12)] font-brand-strong text-[length:var(--wm-size-16)]"
                         disabled={!amountValid}
                         onClick={handleSubmit}
                     >
@@ -100,22 +100,22 @@ function WalletTopUpSheet({ open, onClose, minSuggestedAmountEur, onConfirmTopUp
                 </div>
 
                 <div className="mt-8">
-                    <p className="font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--text-tertiary)]">
+                    <p className="font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-tertiary)]">
                         Metodo de pago
                     </p>
                     <div className="mt-2 border-t border-[color:var(--border-divider)] pt-3">
                         <div className="flex items-center justify-between gap-3">
                             <div className="min-w-0">
-                                <p className="font-wallie-fit text-[length:var(--wm-size-15)] text-[color:var(--text-primary)]">
+                                <p className="font-brand-text text-[length:var(--wm-size-15)] text-[color:var(--text-primary)]">
                                     Tarjeta bancaria
                                 </p>
-                                <p className="mt-0.5 font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">
+                                <p className="mt-0.5 font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">
                                     Tarjeta terminada en 4242
                                 </p>
                             </div>
                             <button
                                 type="button"
-                                className="shrink-0 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--action-link)]"
+                                className="shrink-0 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--action-link)]"
                             >
                                 Editar
                             </button>

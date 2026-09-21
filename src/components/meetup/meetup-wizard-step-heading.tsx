@@ -23,10 +23,10 @@ function MeetupWizardStepHeading({
         >
           <WallapopIcon name="arrow_left" size="small" />
         </button>
-        <span className="font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--text-secondary)]">{caption}</span>
+        <span className="font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-secondary)]">{caption}</span>
       </div>
       {title ? (
-        <h3 className="font-wallie-chunky text-[length:var(--wm-size-20)] leading-[1.12] text-[color:var(--text-primary)] md:text-[length:var(--wm-size-22)]">
+        <h3 className="font-brand-strong text-[length:var(--wm-size-20)] leading-[1.12] text-[color:var(--text-primary)] md:text-[length:var(--wm-size-22)]">
           {title}
         </h3>
       ) : null}

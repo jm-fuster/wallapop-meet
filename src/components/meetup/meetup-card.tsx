@@ -326,11 +326,11 @@ function MeetupCard({
 
     const actions: CardAction[] = []
     const PRIMARY_ACTION_CLASS =
-        "h-10 w-full font-wallie-chunky text-[length:var(--wm-size-16)]"
+        "h-10 w-full font-brand-strong text-[length:var(--wm-size-16)]"
     const OUTLINE_ACTION_CLASS =
-        "h-10 w-full rounded-[var(--wm-size-999)] border-[color:var(--action-link)] bg-[color:var(--bg-base)] font-wallie-chunky text-[length:var(--wm-size-16)] text-[color:var(--action-link)] hover:bg-[color:var(--bg-surface)]"
+        "h-10 w-full rounded-[var(--wm-size-999)] border-[color:var(--action-link)] bg-[color:var(--bg-base)] font-brand-strong text-[length:var(--wm-size-16)] text-[color:var(--action-link)] hover:bg-[color:var(--bg-surface)]"
     const TEXT_ACTION_CLASS =
-        "h-auto border-transparent bg-transparent px-0 py-1 font-wallie-chunky text-[length:var(--wm-size-16)] text-[color:var(--text-secondary)] underline underline-offset-2 hover:bg-transparent hover:text-[color:var(--text-primary)]"
+        "h-auto border-transparent bg-transparent px-0 py-1 font-brand-strong text-[length:var(--wm-size-16)] text-[color:var(--text-secondary)] underline underline-offset-2 hover:bg-transparent hover:text-[color:var(--text-primary)]"
 
     const runCancel = () => {
         setIsCancelModalOpen(true)
@@ -557,7 +557,7 @@ function MeetupCard({
                             occurredAt: currentTime,
                         }),
                     className:
-                        "h-auto min-h-10 w-full rounded-[var(--wm-size-999)] border-transparent px-4 py-2.5 font-wallie-chunky text-[length:var(--wm-size-16)] leading-snug",
+                        "h-auto min-h-10 w-full rounded-[var(--wm-size-999)] border-transparent px-4 py-2.5 font-brand-strong text-[length:var(--wm-size-16)] leading-snug",
                     fullWidth: true,
                     ariaLabel: scanLabel,
                 }
@@ -672,7 +672,7 @@ function MeetupCard({
                         <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[color:var(--bg-base)]">
                             <MapPin size={14} />
                         </span>
-                        <span className="truncate font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">
+                        <span className="truncate font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">
                             {meetup.proposedLocation || "Ver ubicacion del punto de encuentro"}
                         </span>
                     </div>
@@ -680,7 +680,7 @@ function MeetupCard({
             </button>
 
             <div className="flex items-center gap-2.5">
-                <p className="font-wallie-chunky text-[length:var(--wm-size-18)] leading-[1.1] text-[color:var(--text-primary)]">
+                <p className="font-brand-strong text-[length:var(--wm-size-18)] leading-[1.1] text-[color:var(--text-primary)]">
                     {title}
                 </p>
                 <Label
@@ -697,7 +697,7 @@ function MeetupCard({
                     <dt className="inline-flex items-center justify-center text-[color:var(--text-primary)]">
                         <WallapopIcon name="calendar" size={14} />
                     </dt>
-                    <dd className="font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--text-primary)]">
+                    <dd className="font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-primary)]">
                         {formatScheduledAt(meetup.scheduledAt)}
                     </dd>
                 </div>
@@ -705,7 +705,7 @@ function MeetupCard({
                     <dt className="inline-flex items-center justify-center text-[color:var(--text-primary)]">
                         <MapPin size={14} />
                     </dt>
-                    <dd className="font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--text-primary)]">
+                    <dd className="font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-primary)]">
                         {meetup.proposedLocation || "Calle sin definir"}
                     </dd>
                 </div>
@@ -713,9 +713,9 @@ function MeetupCard({
                     <dt className="inline-flex items-center justify-center text-[color:var(--text-primary)]">
                         <PaymentMethodIcon method={meetup.proposedPaymentMethod} />
                     </dt>
-                    <dd className="font-wallie-fit text-[length:var(--wm-size-13)] text-[color:var(--text-primary)]">
+                    <dd className="font-brand-text text-[length:var(--wm-size-13)] text-[color:var(--text-primary)]">
                         {paymentMethodValue} {" \u00B7 "}
-                        <span className="font-wallie-chunky text-[color:var(--text-primary)]">
+                        <span className="font-brand-strong text-[color:var(--text-primary)]">
                             {formattedPrice}
                         </span>
                     </dd>
@@ -740,7 +740,7 @@ function MeetupCard({
                         variant="status_sold_solid"
                         size="md"
                         onClick={() => setIsWalletQrDialogOpen(true)}
-                        className="h-auto min-h-10 w-full rounded-[var(--wm-size-999)] border-transparent px-4 py-2.5 font-wallie-chunky text-[length:var(--wm-size-16)] leading-snug"
+                        className="h-auto min-h-10 w-full rounded-[var(--wm-size-999)] border-transparent px-4 py-2.5 font-brand-strong text-[length:var(--wm-size-16)] leading-snug"
                         aria-label="Mostrar código QR"
                     >
                         <span className="inline-flex w-full items-center justify-center gap-2">
@@ -796,12 +796,12 @@ function MeetupCard({
                 </div>
             ) : null}
             {noShowGraceError ? (
-                <p className="mt-2 text-center font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--feedback-error)]">
+                <p className="mt-2 text-center font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--feedback-error)]">
                     {noShowGraceError}
                 </p>
             ) : null}
             {sentAt ? (
-                <p className="absolute bottom-3 right-4 text-right font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">
+                <p className="absolute bottom-3 right-4 text-right font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">
                     {formatMessageTime(sentAt)}
                 </p>
             ) : null}
@@ -810,10 +810,10 @@ function MeetupCard({
                 ? createPortal(
                     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[color:var(--overlay-scrim)] px-4">
                         <div className="w-full max-w-[var(--wm-size-420)] rounded-[var(--wm-size-16)] bg-[color:var(--bg-base)] p-4 shadow-[var(--wm-shadow-300)]">
-                            <h3 className="font-wallie-chunky text-[length:var(--wm-size-18)] text-[color:var(--text-primary)]">
+                            <h3 className="font-brand-strong text-[length:var(--wm-size-18)] text-[color:var(--text-primary)]">
                                 Seguro que quieres cancelar o rechazar la quedada?
                             </h3>
-                            <p className="mt-2 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
+                            <p className="mt-2 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                                 Esta accion no se puede deshacer.
                             </p>
                             {isRedZoneCancellation ? (
@@ -848,10 +848,10 @@ function MeetupCard({
                 ? createPortal(
                     <div className="fixed inset-0 z-50 flex items-end justify-center bg-[color:var(--overlay-scrim)]">
                         <div className="w-full max-w-[var(--wm-size-560)] rounded-t-[var(--wm-size-20)] bg-[color:var(--bg-base)] p-4 shadow-[var(--wm-shadow-300)]">
-                            <h3 className="font-wallie-chunky text-[length:var(--wm-size-18)] text-[color:var(--text-primary)]">
+                            <h3 className="font-brand-strong text-[length:var(--wm-size-18)] text-[color:var(--text-primary)]">
                                 Confirmar no-show del comprador?
                             </h3>
-                            <p className="mt-2 font-wallie-fit text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
+                            <p className="mt-2 font-brand-text text-[length:var(--wm-size-14)] text-[color:var(--text-secondary)]">
                                 Esta accion cancela la quedada y libera el articulo.
                             </p>
                             <div className="mt-4 space-y-2">
@@ -893,20 +893,20 @@ function MeetupCard({
                           >
                               <h3
                                   id="wallet-qr-dialog-title"
-                                  className="font-wallie-chunky text-[length:var(--wm-size-18)] text-[color:var(--text-primary)]"
+                                  className="font-brand-strong text-[length:var(--wm-size-18)] text-[color:var(--text-primary)]"
                               >
                                   Pago con Wallapop Wallet
                               </h3>
-                              <p className="mt-2 font-wallie-fit text-[length:var(--wm-size-13)] leading-[1.45] text-[color:var(--text-secondary)]">
+                              <p className="mt-2 font-brand-text text-[length:var(--wm-size-13)] leading-[1.45] text-[color:var(--text-secondary)]">
                                   Muestra este código al vendedor para que lo escanee y complete el cobro.
                               </p>
                               <div className="mt-4 flex justify-center rounded-[var(--wm-size-12)] bg-[color:var(--bg-surface)] p-4">
                                   <WalletInPersonQr value={walletInPersonQrPayload} />
                               </div>
-                              <p className="mt-4 text-center font-wallie-chunky text-[length:var(--wm-size-22)] tracking-[0.2em] text-[color:var(--text-primary)]">
+                              <p className="mt-4 text-center font-brand-strong text-[length:var(--wm-size-22)] tracking-[0.2em] text-[color:var(--text-primary)]">
                                   {walletDisplayCode}
                               </p>
-                              <p className="mt-1 text-center font-wallie-fit text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">
+                              <p className="mt-1 text-center font-brand-text text-[length:var(--wm-size-12)] text-[color:var(--text-secondary)]">
                                   Código de verificación
                               </p>
                               <div className="mt-4">

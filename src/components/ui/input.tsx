@@ -26,13 +26,13 @@ const wrapperStateClass: Record<InputState, string> = {
 }
 
 const helperTextClass =
-    "font-wallie-fit text-[length:var(--wm-size-12)] leading-4 text-[color:var(--wm-color-input-label)]"
+    "font-brand-text text-[length:var(--wm-size-12)] leading-4 text-[color:var(--wm-color-input-label)]"
 const successTextClass =
-    "font-wallie-fit text-[length:var(--wm-size-12)] leading-4 text-[color:var(--wm-color-input-ring-success)]"
+    "font-brand-text text-[length:var(--wm-size-12)] leading-4 text-[color:var(--wm-color-input-ring-success)]"
 const counterTextClass =
-    "flex-1 text-right font-wallie-fit text-[length:var(--wm-size-12)] leading-4 text-[color:var(--wm-color-input-label)]"
+    "flex-1 text-right font-brand-text text-[length:var(--wm-size-12)] leading-4 text-[color:var(--wm-color-input-label)]"
 const errorTextClass =
-    "font-wallie-fit text-[length:var(--wm-size-12)] leading-4 text-[color:var(--wm-color-input-ring-error)]"
+    "font-brand-text text-[length:var(--wm-size-12)] leading-4 text-[color:var(--wm-color-input-ring-error)]"
 
 const getInitialValue = (value: React.ComponentProps<"input">["defaultValue"]) =>
     value == null ? "" : String(value)
@@ -123,7 +123,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                         <label
                             htmlFor={resolvedId}
                             className={cn(
-                                "pointer-events-none absolute right-14 left-4 overflow-hidden text-ellipsis whitespace-nowrap font-wallie-fit transition-all duration-200 ease-out",
+                                "pointer-events-none absolute right-14 left-4 overflow-hidden text-ellipsis whitespace-nowrap font-brand-text transition-all duration-200 ease-out",
                                 resolvedState === "error"
                                     ? "text-[color:var(--wm-color-input-ring-error)]"
                                     : "text-[color:var(--wm-color-input-label)]",
@@ -153,7 +153,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                             onBlur={handleBlur}
                             onChange={handleChange}
                             className={cn(
-                                "w-full border-none bg-transparent p-0 pr-8 font-wallie-fit text-[length:var(--wm-size-16)] leading-6 text-[color:var(--wm-color-input-text)] outline-none",
+                                "w-full border-none bg-transparent p-0 pr-8 font-brand-text text-[length:var(--wm-size-16)] leading-6 text-[color:var(--wm-color-input-text)] outline-none",
                                 "placeholder:text-transparent focus:placeholder:text-[color:var(--wm-color-input-placeholder-focus)]",
                                 "transition-colors duration-100 ease-out",
                                 disabled ? "cursor-initial" : "cursor-pointer",

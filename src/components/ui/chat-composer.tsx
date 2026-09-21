@@ -98,7 +98,7 @@ function ChatComposer({
             rows={1}
             placeholder={placeholder}
             className={cn(
-              "max-h-32 min-h-7 min-w-0 flex-1 resize-none border-none bg-transparent px-1 py-1.5 font-wallie text-[length:var(--wm-size-16)] leading-6 text-[color:var(--text-primary)] outline-none",
+              "max-h-32 min-h-7 min-w-0 flex-1 resize-none border-none bg-transparent px-1 py-1.5 font-brand text-[length:var(--wm-size-16)] leading-6 text-[color:var(--text-primary)] outline-none",
               "placeholder:text-[color:var(--text-meta)]"
             )}
             {...props}
